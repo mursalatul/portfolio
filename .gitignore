@@ -35,3 +35,4 @@ Thumbs.db
 
 # Node (for Vercel CLI)
 node_modules/
+.vercel

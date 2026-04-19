@@ -1,0 +1,6 @@
+# Exclude from Vercel lambda bundle (served by static build or not needed in lambda)
+staticfiles/
+media/
+.conda/
+node_modules/
+*.pdf
