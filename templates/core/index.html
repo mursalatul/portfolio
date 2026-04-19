@@ -1,0 +1,535 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Md Mursalatul Islam Pallob — Software Engineer, AI/ML Researcher & Competitive Programmer. Portfolio showcasing projects, research, and achievements."/>
+  <meta property="og:title" content="Pallob | Digital Portfolio"/>
+  <meta property="og:description" content="Software Engineer & AI/ML Researcher — Django, Python, ML, Competitive Programming"/>
+  <meta property="og:type" content="website"/>
+  <title>Pallob — Digital Portfolio</title>
+  <!-- Devicons for skill icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"/>
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+</head>
+<body>
+
+<!-- ======= NAVIGATION ======= -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">P<span>allob</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#publications">Research</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <button id="theme-toggle" aria-label="Toggle dark/light mode">
+        <div class="toggle-track">
+          <div class="toggle-icons"><span>🌙</span><span>☀️</span></div>
+          <div class="toggle-thumb">🌙</div>
+        </div>
+      </button>
+      <button class="hamburger" id="hamburger-btn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#achievements">Achievements</a></li>
+      <li><a href="#publications">Research</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ======= HERO ======= -->
+<section id="hero">
+  <canvas id="particle-canvas"></canvas>
+  <div class="hero-gradient"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <p class="hero-greeting">Hello, World! &nbsp;👋</p>
+      <h1 class="hero-name">
+        Md Mursalatul<br/>
+        <span class="highlight">Islam Pallob</span>
+      </h1>
+      <div class="hero-role-wrapper">
+        <span class="hero-role-prefix">I'm a &nbsp;</span>
+        <span id="typewriter-text"
+          data-roles="{% if profile %}{{ profile.get_roles_list|join:',' }}{% else %}Software Developer,AI/ML Researcher,Competitive Programmer{% endif %}">
+        </span>
+      </div>
+      <p class="hero-desc">
+        {% if profile %}{{ profile.about_text|truncatewords:30 }}{% else %}
+        Building intelligent systems at the intersection of AI research and full-stack engineering.
+        {% endif %}
+      </p>
+      <div class="hero-buttons">
+        <a href="#projects" class="btn-primary">
+          <span>🚀</span><span>View My Work</span>
+        </a>
+        <a href="#contact" class="btn-secondary">
+          <span>💬</span><span>Get In Touch</span>
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="num" data-count="{% if profile %}{{ profile.achievements_count }}{% else %}12{% endif %}" data-suffix="+">0+</span>
+          <span class="label">Achievements</span>
+        </div>
+        <div class="hero-stat">
+          <span class="num" data-count="{% if profile %}{{ profile.projects_count }}{% else %}10{% endif %}" data-suffix="+">0+</span>
+          <span class="label">Projects</span>
+        </div>
+        <div class="hero-stat">
+          <span class="num" data-count="59" data-suffix="">0</span>
+          <span class="label">CP Problems Authored</span>
+        </div>
+        <div class="hero-stat">
+          <span class="num" data-count="3" data-suffix="">0</span>
+          <span class="label">Publications</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="profile-ring-container">
+        <div class="ring-outer"></div>
+        <div class="ring-middle"></div>
+        <div class="ring-inner"></div>
+        <div class="profile-photo-wrap">
+          {% if profile and profile.profile_photo %}
+            <img src="{{ profile.profile_photo.url }}" alt="Md Mursalatul Islam Pallob"/>
+          {% else %}
+            <div class="profile-photo-placeholder">
+              <span class="avatar-icon">👨‍💻</span>
+              <span>Upload via Admin</span>
+            </div>
+          {% endif %}
+        </div>
+        <div class="floating-badge badge-1">
+          <span class="dot" style="background:#10B981"></span>
+          <span>AI/ML Research</span>
+        </div>
+        <div class="floating-badge badge-2">
+          <span class="dot" style="background:var(--accent-blue)"></span>
+          <span>Django Expert</span>
+        </div>
+        <div class="floating-badge badge-3">
+          <span class="dot" style="background:#F59E0B"></span>
+          <span>ICPC Contestant</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <span>scroll</span>
+    <span class="arrow">↓</span>
+  </div>
+</section>
+
+<!-- ======= ABOUT ======= -->
+<section id="about" class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">// about me</span>
+      <h2 class="section-title">Who Am I?</h2>
+      <div class="section-line"></div>
+    </div>
+    {% if profile %}
+    <div class="about-grid">
+      <div class="about-card reveal-left">
+        {% if profile.profile_photo %}
+          <img src="{{ profile.profile_photo.url }}" alt="Pallob" class="about-photo"/>
+        {% else %}
+          <div class="about-photo-placeholder">👨‍💻</div>
+        {% endif %}
+        <div class="about-name">{{ profile.name }}</div>
+        <div class="about-university">BSc CSE · Dhaka International University</div>
+        <ul class="about-contact-list">
+          {% if profile.email %}
+          <li><span class="icon">📧</span> {{ profile.email }}</li>
+          {% endif %}
+          {% if profile.phone %}
+          <li><span class="icon">📱</span> {{ profile.phone }}</li>
+          {% endif %}
+          <li><span class="icon">📍</span> Dhaka, Bangladesh</li>
+          <li><span class="icon">🎓</span> CGPA {{ profile.cgpa }}</li>
+        </ul>
+        <div class="about-social">
+          {% if profile.github_url %}
+          <a href="{{ profile.github_url }}" target="_blank" class="social-btn">
+            <span>⌨</span> GitHub
+          </a>
+          {% endif %}
+          {% if profile.linkedin_url %}
+          <a href="{{ profile.linkedin_url }}" target="_blank" class="social-btn">
+            <span>💼</span> LinkedIn
+          </a>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="about-right reveal-right">
+        <p class="about-text">{{ profile.about_text }}</p>
+        <div class="about-highlights">
+          <div class="highlight-card">
+            <div class="h-num" data-count="{{ profile.achievements_count }}" data-suffix="+">{{ profile.achievements_count }}+</div>
+            <div class="h-label">Achievements</div>
+          </div>
+          <div class="highlight-card">
+            <div class="h-num" data-count="{{ profile.projects_count }}" data-suffix="+">{{ profile.projects_count }}+</div>
+            <div class="h-label">Projects Built</div>
+          </div>
+          <div class="highlight-card">
+            <div class="h-num">3</div>
+            <div class="h-label">NASA Space Apps</div>
+          </div>
+          <div class="highlight-card">
+            <div class="h-num">{{ profile.cgpa }}</div>
+            <div class="h-label">CGPA</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<!-- ======= SKILLS ======= -->
+<section id="skills" class="section section-alt">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">// tech stack</span>
+      <h2 class="section-title">Skills & Expertise</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="skills-container">
+      {% for category, skills in skills_by_category.items %}
+      <div class="skill-category reveal" data-delay="{{ forloop.counter0 }}00">
+        <div class="skill-cat-title">{{ category }}</div>
+        <div class="skills-grid">
+          {% for skill in skills %}
+          <div class="skill-item">
+            <div class="skill-header">
+              <div class="skill-name">
+                {% if skill.icon %}<i class="{{ skill.icon }}" style="margin-right:0.4rem"></i>{% endif %}
+                {{ skill.name }}
+              </div>
+              <div class="skill-pct">{{ skill.proficiency }}%</div>
+            </div>
+            <div class="skill-bar-bg">
+              <div class="skill-bar" data-width="{{ skill.proficiency }}"></div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ======= EXPERIENCE ======= -->
+<section id="experience" class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">// work history</span>
+      <h2 class="section-title">Experience</h2>
+      <div class="section-line"></div>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:3rem;">
+      <!-- Experience -->
+      <div>
+        <h3 style="font-size:0.8rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.15em;margin-bottom:1.5rem;font-family:'JetBrains Mono',monospace;">Work Experience</h3>
+        <div class="timeline">
+          {% for exp in experiences %}
+          <div class="timeline-item reveal" data-delay="{{ forloop.counter0 }}00">
+            <div class="timeline-date">{{ exp.start_date }} — {{ exp.end_date|default:"Present" }}</div>
+            <div class="timeline-card">
+              <div class="timeline-role">{{ exp.role }}</div>
+              <div class="timeline-company">{{ exp.company }}</div>
+              <div class="timeline-location">📍 {{ exp.location }}</div>
+              <ul class="timeline-bullets">
+                {% for bullet in exp.get_bullets %}
+                <li>{{ bullet }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+      <!-- Education -->
+      <div>
+        <h3 style="font-size:0.8rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.15em;margin-bottom:1.5rem;font-family:'JetBrains Mono',monospace;">Education</h3>
+        <div class="timeline">
+          {% for edu in education %}
+          <div class="timeline-item reveal" data-delay="{{ forloop.counter0 }}00">
+            <div class="timeline-date">{{ edu.start_year }} — {{ edu.end_year|default:"Present" }}</div>
+            <div class="timeline-card">
+              <div class="timeline-role">{{ edu.degree }}</div>
+              <div class="timeline-company">{{ edu.institution }}</div>
+              <div class="timeline-location">📍 {{ edu.location }}</div>
+              {% if edu.cgpa %}
+              <div style="margin-top:0.75rem;">
+                <span style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:var(--accent-cyan);">CGPA: {{ edu.cgpa }}</span>
+              </div>
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= PROJECTS ======= -->
+<section id="projects" class="section section-alt">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">// showcase</span>
+      <h2 class="section-title">Projects</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="projects-grid">
+      {% for project in projects %}
+      <div class="project-card {% if project.featured %}featured{% endif %} reveal" data-delay="{{ forloop.counter0 }}00">
+        <div class="project-header">
+          <div class="project-icon">
+            {% if "ML" in project.tech_tags or "Machine Learning" in project.tech_tags %}🤖
+            {% elif "Django" in project.tech_tags %}🌐
+            {% elif "LSTM" in project.tech_tags or "Keras" in project.tech_tags %}🧠
+            {% elif "NLP" in project.tech_tags %}📝
+            {% else %}⚡{% endif %}
+          </div>
+          {% if project.featured %}<span class="project-featured-badge">Featured</span>{% endif %}
+        </div>
+        <div class="project-body">
+          <h3 class="project-title">{{ project.title }}</h3>
+          <p class="project-date">{{ project.date }}</p>
+          <p class="project-desc">{{ project.description }}</p>
+          <div class="tech-tags">
+            {% for tag in project.get_tech_list %}
+            <span class="tech-tag">{{ tag }}</span>
+            {% endfor %}
+          </div>
+          <div class="project-links">
+            {% if project.github_url %}
+            <a href="{{ project.github_url }}" target="_blank" class="project-link">⌨ GitHub</a>
+            {% endif %}
+            {% if project.live_url %}
+            <a href="{{ project.live_url }}" target="_blank" class="project-link">🚀 Live Demo</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <p style="color:var(--text-muted);text-align:center;">No projects yet — add them via the admin panel.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ======= ACHIEVEMENTS ======= -->
+<section id="achievements" class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">// honors</span>
+      <h2 class="section-title">Achievements</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="achievements-grid">
+      {% for ach in achievements %}
+      <div class="achievement-card reveal" data-delay="{{ forloop.counter0 }}0">
+        <div class="achievement-icon">
+          {% if "NASA" in ach.title %}🚀
+          {% elif "Winner" in ach.title or "Champion" in ach.title %}🏆
+          {% elif "ICPC" in ach.title %}💻
+          {% elif "2nd" in ach.title or "Runner" in ach.title %}🥈
+          {% elif "3rd" in ach.title %}🥉
+          {% elif "Honorable" in ach.title %}🌟
+          {% else %}🎖
+          {% endif %}
+        </div>
+        <div class="achievement-content">
+          <div class="achievement-title">{{ ach.title }}</div>
+          <div class="achievement-meta">
+            {% if ach.year %}<span class="achievement-year">{{ ach.year }}</span>{% endif %}
+            {% if ach.rank %}<span class="achievement-rank">{{ ach.rank }}</span>{% endif %}
+            {% if ach.event %}<span style="font-size:0.72rem;color:var(--text-muted);">· {{ ach.event }}</span>{% endif %}
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <p style="color:var(--text-muted);text-align:center;">Add achievements via the admin panel.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ======= PUBLICATIONS ======= -->
+<section id="publications" class="section section-alt">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">// research</span>
+      <h2 class="section-title">Publications</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="publications-list">
+      {% for pub in publications %}
+      <div class="pub-card reveal" data-delay="{{ forloop.counter0 }}00">
+        <div class="pub-status">
+          <div class="status-dot {{ pub.status }}"></div>
+          <div class="status-label">{{ pub.get_status_display }}</div>
+        </div>
+        <div class="pub-content">
+          <h3 class="pub-title">{{ pub.title }}</h3>
+          <p class="pub-authors">{{ pub.authors }}</p>
+          {% if pub.journal %}<p class="pub-journal">{{ pub.journal }}{% if pub.year %} · {{ pub.year }}{% endif %}</p>{% endif %}
+          <span class="pub-badge {{ pub.status }}">{{ pub.get_status_display }}</span>
+          {% if pub.url %}
+          <a href="{{ pub.url }}" target="_blank" style="margin-left:0.75rem;font-size:0.8rem;color:var(--accent-cyan);">View →</a>
+          {% endif %}
+        </div>
+      </div>
+      {% empty %}
+      <p style="color:var(--text-muted);text-align:center;">Add publications via the admin panel.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ======= LEADERSHIP ======= -->
+<section id="leadership" class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">// community</span>
+      <h2 class="section-title">Leadership & Activities</h2>
+      <div class="section-line"></div>
+    </div>
+    <div class="leadership-grid">
+      {% for lead in leadership %}
+      <div class="leadership-card reveal" data-delay="{{ forloop.counter0 }}00">
+        <div class="leadership-org-header">
+          <span class="leadership-org">{{ lead.org }}</span>
+          <span class="leadership-period">{{ lead.start_date }} — {{ lead.end_date|default:"Present" }}</span>
+        </div>
+        <div class="leadership-role">{{ lead.role }}</div>
+        <div class="leadership-location">📍 {{ lead.location }}</div>
+        <ul class="leadership-bullets">
+          {% for bullet in lead.get_bullets %}
+          <li>{{ bullet }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+      {% empty %}
+      <p style="color:var(--text-muted);text-align:center;">Add leadership roles via the admin panel.</p>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ======= CONTACT ======= -->
+<section id="contact" class="section">
+  <div class="container">
+    <div class="contact-wrapper">
+      <div class="contact-left reveal-left">
+        <span class="section-tag">// let's connect</span>
+        <h2 style="margin-top:1rem;margin-bottom:1rem;font-size:clamp(2rem,4vw,3rem);">
+          Get In <span style="background:linear-gradient(135deg,var(--accent-blue),var(--accent-cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Touch</span>
+        </h2>
+        <p style="font-size:1rem;color:var(--text-secondary);line-height:1.8;margin-bottom:2rem;">
+          Whether you have a project idea, research collaboration, or just want to say hi —
+          my inbox is always open. Let's build something amazing together.
+        </p>
+        <div class="contact-links">
+          {% if profile and profile.email %}
+          <a href="mailto:{{ profile.email }}" class="contact-link">
+            <span class="link-icon">📧</span>
+            <div class="link-info">
+              <div class="link-label">Email</div>
+              <div class="link-value">{{ profile.email }}</div>
+            </div>
+          </a>
+          {% endif %}
+          {% if profile and profile.linkedin_url %}
+          <a href="{{ profile.linkedin_url }}" target="_blank" class="contact-link">
+            <span class="link-icon">💼</span>
+            <div class="link-info">
+              <div class="link-label">LinkedIn</div>
+              <div class="link-value">linkedin.com/in/mursalatul</div>
+            </div>
+          </a>
+          {% endif %}
+          {% if profile and profile.github_url %}
+          <a href="{{ profile.github_url }}" target="_blank" class="contact-link">
+            <span class="link-icon">⌨</span>
+            <div class="link-info">
+              <div class="link-label">GitHub</div>
+              <div class="link-value">github.com/mursalatul</div>
+            </div>
+          </a>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="contact-right reveal-right">
+        <div class="contact-card">
+          <h3 class="contact-card-title">Open to Opportunities</h3>
+          <p class="contact-card-sub">SWE Roles · Research Collabs · Freelance Projects</p>
+          <div class="available-badge">
+            <span class="available-dot"></span>
+            Available for new opportunities
+          </div>
+          <ul class="quick-facts">
+            <li><span class="fact-icon">🏫</span> BSc CSE — Dhaka International University</li>
+            <li><span class="fact-icon">📍</span> Dhaka, Bangladesh</li>
+            <li><span class="fact-icon">🌐</span> Open to remote roles worldwide</li>
+            <li><span class="fact-icon">🔬</span> AI/ML Research &amp; Full-stack Dev</li>
+            <li><span class="fact-icon">🏆</span> 3x NASA Space Apps Competitor</li>
+          </ul>
+          <div class="resume-btn">
+            {% if profile and profile.resume_file %}
+            <a href="{{ profile.resume_file.url }}" download class="btn-primary">
+              <span>📄</span><span>Download Resume</span>
+            </a>
+            {% else %}
+            <a href="https://linkedin.com/in/mursalatul" target="_blank" class="btn-primary">
+              <span>💼</span><span>View LinkedIn Profile</span>
+            </a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= FOOTER ======= -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Pallob</div>
+    <p class="footer-text">Md Mursalatul Islam Pallob · Software Engineer & AI/ML Researcher</p>
+    <p class="footer-mono">
+      &lt;built_with&gt; Django + Vanilla JS + ❤️ &lt;/built_with&gt;
+    </p>
+  </div>
+</footer>
+
+<script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
