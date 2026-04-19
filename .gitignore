@@ -1,38 +1,19 @@
-# Conda environment
-.conda/
-
-# Python
+# Python / Django
+__pycache__/
 *.pyc
 *.pyo
-__pycache__/
-*.egg-info/
-dist/
-build/
-.eggs/
-
-# Django
-*.log
-local_settings.py
-staticfiles/
+db.sqlite3
 media/
+staticfiles/
 
-# Database — included intentionally for Vercel deployment
-# db.sqlite3
-
-# Environment variables
+# Virtual Environments
+.conda/
 .env
-.env.*
+venv/
+env/
 
-# macOS
+# MacOS & IDEs
 .DS_Store
-Thumbs.db
-
-# IDEs
 .vscode/
 .idea/
 *.swp
-*.swo
-
-# Node (for Vercel CLI)
-node_modules/
-.vercel
