@@ -1,6 +1,4 @@
-# Exclude from Vercel lambda bundle (served by static build or not needed in lambda)
-staticfiles/
-media/
+# Keep it clean
 .conda/
 node_modules/
-*.pdf
+__pycache__/
