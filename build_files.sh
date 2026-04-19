@@ -1,8 +1,8 @@
 #!/bin/bash
 # Build script for Vercel deployment
 
-# Install Python dependencies
-pip install -r requirements.txt
+# Install Python dependencies (--break-system-packages needed for Vercel's uv-managed Python)
+pip install -r requirements.txt --break-system-packages
 
 # Collect static files
 python manage.py collectstatic --noinput
