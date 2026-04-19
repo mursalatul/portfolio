@@ -9,8 +9,8 @@ SECRET_KEY = os.environ.get(
     'django-insecure-pallob-portfolio-secret-key-change-in-production-2024'
 )
 
-# Set DEBUG=False in production via env var
-DEBUG = os.environ.get('DEBUG', 'True') == 'True'
+# Set DEBUG=False in production via env var (defaults to False if not set)
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = [
     'localhost',
