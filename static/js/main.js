@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* ===== DARK / LIGHT THEME ===== */
 function initTheme() {
-  const saved = localStorage.getItem('theme') || 'dark';
+  const saved = localStorage.getItem('theme') || 'light';
   document.documentElement.setAttribute('data-theme', saved);
   updateToggleIcon(saved);
 
