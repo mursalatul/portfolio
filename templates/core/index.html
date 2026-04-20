@@ -13,6 +13,24 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"/>
   <!-- Main CSS -->
   <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+  <style>
+    .brace-link {
+      color: var(--accent-cyan) !important;
+      text-decoration: none;
+      font-weight: 700;
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+    .brace-link:hover {
+      animation: brace-flash 0.6s ease-in-out;
+      text-shadow: 0 0 10px var(--accent-cyan), 0 0 20px var(--accent-cyan);
+    }
+    @keyframes brace-flash {
+      0% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.8; transform: scale(1.1); filter: brightness(1.5); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+  </style>
 </head>
 <body>
 
@@ -522,6 +540,9 @@
     <p class="footer-text">Md Mursalatul Islam Pallob · Software Engineer & AI/ML Researcher</p>
     <p class="footer-mono">
       &lt;built_with&gt; Django + Vanilla JS + ❤️ &lt;/built_with&gt;
+    </p>
+    <p class="footer-credit" style="font-size: 0.75rem; color: var(--text-muted); margin-top: 1rem; font-family: 'JetBrains Mono', monospace;">
+      Developed by <a href="https://bracelaboratory.com" target="_blank" class="brace-link">Brace Laboratory</a>
     </p>
   </div>
 </footer>
