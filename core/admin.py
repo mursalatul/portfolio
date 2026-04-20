@@ -50,10 +50,35 @@ class SkillAdmin(admin.ModelAdmin):
 
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('title', 'tech_tags', 'featured', 'order')
-    list_editable = ('featured', 'order')
-    search_fields = ('title', 'description')
+    list_display = ('title', 'featured_badge', 'tech_tags', 'date', 'order')
+    list_editable = ('order',)
+    search_fields = ('title', 'description', 'tech_tags')
     list_filter = ('featured',)
+    ordering = ('order',)
+
+    def featured_badge(self, obj):
+        featured_count = Project.objects.filter(featured=True).count()
+        if obj.featured:
+            return format_html(
+                '<span style="background:#2563eb;color:white;padding:2px 8px;'
+                'border-radius:12px;font-size:0.75rem;">⭐ Featured ({}/6)</span>',
+                featured_count
+            )
+        return format_html('<span style="color:#888;">—</span>')
+    featured_badge.short_description = 'Featured (max 6)'
+    featured_badge.admin_order_field = 'featured'
+
+    def save_model(self, request, obj, form, change):
+        super().save_model(request, obj, form, change)
+        featured_count = Project.objects.filter(featured=True).count()
+        if featured_count > 6:
+            self.message_user(
+                request,
+                f'⚠️ Warning: {featured_count} projects are marked as Featured. '
+                f'Only the first 6 (by order) will appear on the main page. '
+                f'Please update the "order" field or unfeatured some projects.',
+                level='warning'
+            )
 
 
 @admin.register(Experience)

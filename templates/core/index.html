@@ -211,20 +211,6 @@
 
       <div class="about-right reveal-right">
         <p class="about-text">{{ profile.about_text }}</p>
-        <div class="about-highlights">
-          <div class="highlight-card">
-            <div class="h-num" data-count="{{ achievements_count }}" data-suffix="+">{{ achievements_count }}+</div>
-            <div class="h-label">Achievements</div>
-          </div>
-          <div class="highlight-card">
-            <div class="h-num" data-count="{{ projects_count }}" data-suffix="+">{{ projects_count }}+</div>
-            <div class="h-label">Projects Built</div>
-          </div>
-          <div class="highlight-card">
-            <div class="h-num">3</div>
-            <div class="h-label">NASA Space Apps</div>
-          </div>
-        </div>
       </div>
     </div>
     {% endif %}
@@ -324,6 +310,8 @@
             {% elif "Django" in project.tech_tags %}🌐
             {% elif "LSTM" in project.tech_tags or "Keras" in project.tech_tags %}🧠
             {% elif "NLP" in project.tech_tags %}📝
+            {% elif "C++" in project.tech_tags or "DSA" in project.tech_tags %}⚙️
+            {% elif "Java" in project.tech_tags %}☕
             {% else %}⚡{% endif %}
           </div>
           {% if project.featured %}<span class="project-featured-badge">Featured</span>{% endif %}
@@ -351,15 +339,81 @@
       <p style="color:var(--text-muted);text-align:center;">No projects yet — add them via the admin panel.</p>
       {% endfor %}
     </div>
-    {% if profile.github_url %}
+
+    {% if has_more_projects %}
     <div class="projects-more reveal" style="text-align: center; margin-top: 3rem;">
-      <a href="{{ profile.github_url }}" target="_blank" class="btn-secondary">
-        <span>⌨</span><span>View More Projects</span>
-      </a>
+      <button id="open-all-projects-btn" class="btn-secondary" onclick="openProjectsModal()">
+        <span>🗂</span><span>More</span>
+      </button>
     </div>
     {% endif %}
   </div>
 </section>
+
+<!-- ======= ALL PROJECTS MODAL ======= -->
+<div id="projects-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-container">
+    <div class="modal-header">
+      <div class="modal-title-group">
+        <span class="modal-tag">// all projects</span>
+        <h2 id="modal-title" class="modal-title">All Projects</h2>
+      </div>
+      <button class="modal-close-btn" onclick="closeProjectsModal()" aria-label="Close modal" title="Close">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <div class="modal-projects-grid">
+        {% for project in all_projects %}
+        <div class="project-card {% if project.featured %}featured{% endif %}" style="opacity:1;transform:none;">
+          <div class="project-header">
+            <div class="project-icon">
+              {% if "ML" in project.tech_tags or "Machine Learning" in project.tech_tags %}🤖
+              {% elif "Django" in project.tech_tags %}🌐
+              {% elif "LSTM" in project.tech_tags or "Keras" in project.tech_tags %}🧠
+              {% elif "NLP" in project.tech_tags %}📝
+              {% elif "C++" in project.tech_tags or "DSA" in project.tech_tags %}⚙️
+              {% elif "Java" in project.tech_tags %}☕
+              {% else %}⚡{% endif %}
+            </div>
+            {% if project.featured %}<span class="project-featured-badge">Featured</span>{% endif %}
+          </div>
+          <div class="project-body">
+            <h3 class="project-title">{{ project.title }}</h3>
+            <p class="project-date">{{ project.date }}</p>
+            <p class="project-desc">{{ project.description }}</p>
+            <div class="tech-tags">
+              {% for tag in project.get_tech_list %}
+              <span class="tech-tag">{{ tag }}</span>
+              {% endfor %}
+            </div>
+            <div class="project-links">
+              {% if project.github_url %}
+              <a href="{{ project.github_url }}" target="_blank" class="project-link">⌨ GitHub</a>
+              {% endif %}
+              {% if project.live_url %}
+              <a href="{{ project.live_url }}" target="_blank" class="project-link">🚀 Live Demo</a>
+              {% endif %}
+            </div>
+          </div>
+        </div>
+        {% empty %}
+        <p style="color:var(--text-muted);text-align:center;grid-column:1/-1;">No projects yet.</p>
+        {% endfor %}
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button class="btn-primary" onclick="closeProjectsModal()">
+        <span>✕</span><span>Close</span>
+      </button>
+    </div>
+  </div>
+</div>
 
 <!-- ======= ACHIEVEMENTS ======= -->
 <section id="achievements" class="section">

@@ -199,9 +199,9 @@
   "pk": 1,
   "fields": {
     "title": "Speech Emotion Recognition in Real-time",
-    "description": "Developed a real-time Speech Emotion Recognition system using an LSTM-based deep learning model in Keras to analyze live microphone input and identify expressed emotions. Prepared and augmented audio datasets (RAVDESS, TESS), extracted acoustic features and spectrogram representations. Delivered a real-time inference pipeline achieving 87% accuracy on benchmark evaluations with silence detection for robustness.",
+    "description": "Real-time Speech Emotion Recognition system using an LSTM-based deep learning model in Keras. Analyzes live microphone input to identify expressed emotions. Achieves 87% accuracy on RAVDESS & TESS benchmarks with silence detection for robustness.",
     "tech_tags": "Python,Keras,LSTM,Audio Processing,RAVDESS,TESS",
-    "github_url": "https://github.com/mursalatul",
+    "github_url": "https://github.com/mursalatul/SpeechEmotionRecognition_Realtime",
     "live_url": "",
     "image": "",
     "date": "Jun 2024 – Jul 2024",
@@ -214,9 +214,9 @@
   "pk": 2,
   "fields": {
     "title": "Infant Cry Analysis Web Application",
-    "description": "Full-stack web application using Django and PostgreSQL for detection and multi-class diagnosis of infant distress from cry recordings. Integrated a machine learning backend capable of processing Spectro-Derivative audio features to classify cries into distress categories (pain, hunger, sleepy, healthy). Designed a responsive Bootstrap frontend for classification results and audio feature visualizations.",
-    "tech_tags": "Python,Django,PostgreSQL,Bootstrap,Machine Learning",
-    "github_url": "https://github.com/mursalatul",
+    "description": "Full-stack Django + PostgreSQL web application for multi-class diagnosis of infant distress from cry recordings. Integrates a Spectro-Derivative ML backend to classify cries into pain, hunger, sleepy, and healthy categories with an interactive Bootstrap frontend.",
+    "tech_tags": "Python,Django,PostgreSQL,Bootstrap,Machine Learning,HTML",
+    "github_url": "https://github.com/mursalatul/infant_cry_detection",
     "live_url": "",
     "image": "",
     "date": "May 2025 – Oct 2025",
@@ -228,14 +228,14 @@
   "model": "core.project",
   "pk": 3,
   "fields": {
-    "title": "Infant Cry Analysis ML Models",
-    "description": "Designed and implemented a Balanced Augmented Spectro-Derivative Ensemble Framework for multi-class infant distress diagnosis with high classification accuracy. Extracted and analyzed spectrograms and Spectro-Derivative features from infant cry audio for feature engineering. Developed and evaluated ensemble machine learning models for robust performance across different datasets.",
+    "title": "Balanced Augmented Spectro-Derivative Ensemble Framework",
+    "description": "Novel ML framework for multi-class infant distress diagnosis. Extracts and analyzes spectrograms and Spectro-Derivative features from cry audio, then leverages ensemble learning for robust classification. Research published as a preprint targeting IEEE TPAMI.",
     "tech_tags": "Python,Scikit-learn,Spectrograms,Machine Learning,Ensemble Methods",
-    "github_url": "https://github.com/mursalatul",
+    "github_url": "https://github.com/mursalatul/Balanced-Augmented-Spectro-Derivative-Ensemble-Framework-for-Multi-Class-Infant-Distress-Diagnosis",
     "live_url": "",
     "image": "",
     "date": "Mar 2025 – Oct 2025",
-    "featured": false,
+    "featured": true,
     "order": 3
   }
 },
@@ -243,8 +243,8 @@
   "model": "core.project",
   "pk": 4,
   "fields": {
-    "title": "Suicidal Ideation Prediction",
-    "description": "Built an end-to-end NLP pipeline in Python for preprocessing text data, tokenization, and feature extraction to support supervised classification of suicidal ideation from short-form text. Implemented and compared transformer-based fine-tuning and classical ML baselines. Packaged experiments in reproducible notebooks with documented ethical/privacy considerations.",
+    "title": "Suicidal Ideation Prediction (NLP)",
+    "description": "End-to-end NLP pipeline for early detection of suicidal ideation in Bangladeshi adolescents. Compares transformer-based fine-tuning with classical ML baselines on national health survey data. Packaged in reproducible notebooks with ethical/privacy documentation.",
     "tech_tags": "Python,NLP,Machine Learning,Transformers,Scikit-learn",
     "github_url": "https://github.com/mursalatul",
     "live_url": "",
@@ -252,6 +252,201 @@
     "date": "Aug 2025 – Oct 2025",
     "featured": true,
     "order": 4
+  }
+},
+{
+  "model": "core.project",
+  "pk": 5,
+  "fields": {
+    "title": "Digital Cosmos Portfolio",
+    "description": "Personal portfolio website built with Django, featuring particle canvas animations, dark/light mode toggle, skill chips, typewriter hero, project showcase, publications, achievements, and a responsive glassmorphism design. Deployed on Vercel.",
+    "tech_tags": "Python,Django,Vanilla JS,CSS,Whitenoise,Vercel",
+    "github_url": "https://github.com/mursalatul/portfolio",
+    "live_url": "https://mursalatuls.vercel.app",
+    "image": "",
+    "date": "Apr 2026",
+    "featured": true,
+    "order": 5
+  }
+},
+{
+  "model": "core.project",
+  "pk": 6,
+  "fields": {
+    "title": "Voice Processing with AI",
+    "description": "Collection of Jupyter notebooks exploring AI-driven voice processing techniques — including feature extraction (MFCCs, spectrograms), emotion analysis, and speech-to-text pipelines. Used as a research sandbox for the Speech Emotion Recognition project.",
+    "tech_tags": "Python,Jupyter Notebook,AI,Audio Processing,MFCC",
+    "github_url": "https://github.com/mursalatul/voice-processing-with-ai",
+    "live_url": "",
+    "image": "",
+    "date": "Jun 2024 – Jul 2024",
+    "featured": true,
+    "order": 6
+  }
+},
+{
+  "model": "core.project",
+  "pk": 7,
+  "fields": {
+    "title": "Code Park — DSA & CP Library",
+    "description": "Comprehensive collection of Data Structures and Algorithms (DSA) implementations alongside competitive programming templates. A go-to reference for ICPC preparation covering graphs, trees, dynamic programming, number theory, and more. Has 1 star and 2 forks on GitHub.",
+    "tech_tags": "C++,Python,DSA,Competitive Programming,Algorithms",
+    "github_url": "https://github.com/mursalatul/code-park",
+    "live_url": "https://diu-competitive-programming.vercel.app/",
+    "image": "",
+    "date": "Jan 2024 – Present",
+    "featured": false,
+    "order": 7
+  }
+},
+{
+  "model": "core.project",
+  "pk": 8,
+  "fields": {
+    "title": "Django Apps Collection",
+    "description": "A curated collection of different types of Django applications demonstrating authentication flows, REST APIs, admin customization, ORM patterns, and deployment configurations. Serves as a learning reference for Django best practices.",
+    "tech_tags": "Python,Django,REST API,PostgreSQL,SQLite",
+    "github_url": "https://github.com/mursalatul/django-apps",
+    "live_url": "",
+    "image": "",
+    "date": "Feb 2025 – Mar 2025",
+    "featured": false,
+    "order": 8
+  }
+},
+{
+  "model": "core.project",
+  "pk": 9,
+  "fields": {
+    "title": "ML Draft — Machine Learning Experiments",
+    "description": "Curated Jupyter notebooks covering classification, regression, clustering, and time series forecasting across real-world datasets. Explores diverse ML models from linear regression to gradient boosting and neural networks for prediction problems.",
+    "tech_tags": "Python,Jupyter Notebook,Scikit-learn,Machine Learning,Pandas,NumPy",
+    "github_url": "https://github.com/mursalatul/ml_draft",
+    "live_url": "",
+    "image": "",
+    "date": "Jan 2025 – Feb 2025",
+    "featured": false,
+    "order": 9
+  }
+},
+{
+  "model": "core.project",
+  "pk": 10,
+  "fields": {
+    "title": "Library Management System",
+    "description": "Full-featured desktop Library Management System built with Python and PyQt5. Allows both users and admins to manage books, borrowing records, and member accounts through an intuitive GUI. Has 1 fork on GitHub.",
+    "tech_tags": "Python,PyQt5,SQLite,GUI,Desktop App",
+    "github_url": "https://github.com/mursalatul/library-management-system",
+    "live_url": "",
+    "image": "",
+    "date": "Apr 2024 – Nov 2024",
+    "featured": false,
+    "order": 10
+  }
+},
+{
+  "model": "core.project",
+  "pk": 11,
+  "fields": {
+    "title": "Scheduling Algorithm Simulator",
+    "description": "Interactive web-based simulator for OS scheduling algorithms (FCFS, SJF, Round Robin, Priority Scheduling). Visualizes Gantt charts, computes average waiting time, and turnaround time dynamically in the browser.",
+    "tech_tags": "JavaScript,HTML,CSS,Algorithms,OS Concepts",
+    "github_url": "https://github.com/mursalatul/scheduling-algorithm-simulator",
+    "live_url": "",
+    "image": "",
+    "date": "Sep 2024",
+    "featured": false,
+    "order": 11
+  }
+},
+{
+  "model": "core.project",
+  "pk": 12,
+  "fields": {
+    "title": "Shutdown Timer for Windows",
+    "description": "PyQt5 desktop application that lets users schedule Windows shutdown with a precise timer. Features an intuitive GUI to set, cancel, and re-schedule shutdown. Has 1 star on GitHub and targets power users who need automated shutdown.",
+    "tech_tags": "Python,PyQt5,Windows,Desktop App,Automation",
+    "github_url": "https://github.com/mursalatul/shutdown-timer-for-windows",
+    "live_url": "",
+    "image": "",
+    "date": "Jul 2021 – Apr 2024",
+    "featured": false,
+    "order": 12
+  }
+},
+{
+  "model": "core.project",
+  "pk": 13,
+  "fields": {
+    "title": "Mini Projects Collection",
+    "description": "A growing collection of fun, beginner-to-intermediate Python and C++ mini-projects designed for practice and learning. Topics include games, automation scripts, file utilities, and programming challenges — proving that you can do basically anything with code.",
+    "tech_tags": "Python,C++,Games,Automation,Learning",
+    "github_url": "https://github.com/mursalatul/mini-projects",
+    "live_url": "",
+    "image": "",
+    "date": "Nov 2023 – Present",
+    "featured": false,
+    "order": 13
+  }
+},
+{
+  "model": "core.project",
+  "pk": 14,
+  "fields": {
+    "title": "Melanoma Detection (ML)",
+    "description": "Machine learning pipeline for early detection of melanoma from dermoscopic images. Explores CNN architectures and transfer learning for binary skin lesion classification, with a focus on high sensitivity to minimize false negatives.",
+    "tech_tags": "Python,Machine Learning,CNN,TensorFlow,Computer Vision",
+    "github_url": "https://github.com/mursalatul/melanoma-detection",
+    "live_url": "",
+    "image": "",
+    "date": "Apr 2025",
+    "featured": false,
+    "order": 14
+  }
+},
+{
+  "model": "core.project",
+  "pk": 15,
+  "fields": {
+    "title": "CP Resources Hub",
+    "description": "A structured repository of competitive programming resources, including problem templates, editorial notes, and C++ snippets for ICPC and IUPC preparation. Covers graph theory, combinatorics, geometry, and string algorithms.",
+    "tech_tags": "C++,Competitive Programming,Algorithms,ICPC,Templates",
+    "github_url": "https://github.com/mursalatul/cp_resourses",
+    "live_url": "",
+    "image": "",
+    "date": "Sep 2025 – Present",
+    "featured": false,
+    "order": 15
+  }
+},
+{
+  "model": "core.project",
+  "pk": 16,
+  "fields": {
+    "title": "Codebox — CP Template Archive",
+    "description": "Comprehensive algorithm and data structure archive for competitive programming. Contains ready-to-use C++ implementations for competitive programmers — from basic sorting to advanced segment trees and Dijkstra. Has 1 star and 7 forks on GitHub.",
+    "tech_tags": "C++,DSA,Competitive Programming,Algorithms,Templates",
+    "github_url": "https://github.com/mursalatul/codebox",
+    "live_url": "",
+    "image": "",
+    "date": "Mar 2021 – Jan 2025",
+    "featured": false,
+    "order": 16
+  }
+},
+{
+  "model": "core.project",
+  "pk": 17,
+  "fields": {
+    "title": "Microcontroller Projects",
+    "description": "Hands-on C++ projects for microcontrollers (Arduino/ESP32) — including sensor interfacing, LED control, motor drivers, and IoT prototyping. A practical exploration of embedded systems programming alongside software engineering.",
+    "tech_tags": "C++,Arduino,Embedded Systems,IoT,Microcontroller",
+    "github_url": "https://github.com/mursalatul/play-with-microcontroller",
+    "live_url": "",
+    "image": "",
+    "date": "Oct 2024",
+    "featured": false,
+    "order": 17
   }
 },
 {

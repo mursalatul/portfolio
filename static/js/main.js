@@ -296,3 +296,39 @@ function highlightActiveNav() {
 
   sections.forEach(s => observer.observe(s));
 }
+
+/* ===== ALL PROJECTS MODAL ===== */
+function openProjectsModal() {
+  const overlay = document.getElementById('projects-modal');
+  if (!overlay) return;
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+  // Trap focus: focus the close button
+  const closeBtn = overlay.querySelector('.modal-close-btn');
+  if (closeBtn) setTimeout(() => closeBtn.focus(), 50);
+}
+
+function closeProjectsModal() {
+  const overlay = document.getElementById('projects-modal');
+  if (!overlay) return;
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+  // Return focus to the trigger button
+  const trigger = document.getElementById('open-all-projects-btn');
+  if (trigger) trigger.focus();
+}
+
+// Close on backdrop click
+document.addEventListener('DOMContentLoaded', () => {
+  const overlay = document.getElementById('projects-modal');
+  if (!overlay) return;
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) closeProjectsModal();
+  });
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && overlay.classList.contains('open')) {
+      closeProjectsModal();
+    }
+  });
+});
