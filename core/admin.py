@@ -28,7 +28,7 @@ class ProfileAdmin(admin.ModelAdmin):
             )
         }),
         ('Stats', {
-            'fields': ('cgpa', 'years_experience', 'cp_problems_authored', 'cp_problems_solved')
+            'fields': ('years_experience', 'cp_problems_authored', 'cp_problems_solved')
         }),
     )
 
@@ -64,7 +64,7 @@ class ExperienceAdmin(admin.ModelAdmin):
 
 @admin.register(Education)
 class EducationAdmin(admin.ModelAdmin):
-    list_display = ('degree', 'institution', 'cgpa', 'start_year', 'end_year', 'order')
+    list_display = ('degree', 'institution', 'start_year', 'end_year', 'order')
     list_editable = ('order',)
 
 

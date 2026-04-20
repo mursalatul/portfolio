@@ -14,7 +14,6 @@
     "resume_file": "resume/MD_MURSALATUL_ISLAM_PALLOB___RESUME_2.pdf",
     "profile_photo": "profile/2FEB38C8-EA83-42F7-8D5E-47A69A13192A.JPG",
     "years_experience": 4,
-    "cgpa": "3.60/4.00",
     "cp_problems_authored": 59,
     "cp_problems_solved": 1000
   }
@@ -275,7 +274,6 @@
   "fields": {
     "institution": "Dhaka International University",
     "degree": "Bachelor of Science in Computer Science and Engineering",
-    "cgpa": "3.60 / 4.00",
     "start_year": "Aug 2021",
     "end_year": "Oct 2025",
     "location": "Dhaka, Bangladesh",

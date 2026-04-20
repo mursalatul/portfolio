@@ -32,7 +32,6 @@ class Profile(models.Model):
     resume_file = models.FileField(upload_to='resume/', blank=True)
     profile_photo = models.ImageField(upload_to='profile/', blank=True, null=True)
     years_experience = models.PositiveIntegerField(default=3)
-    cgpa = models.CharField(max_length=20, default='3.60/4.00')
     cp_problems_authored = models.PositiveIntegerField(default=0, help_text='Number of CP problems authored (set manually)')
     cp_problems_solved = models.PositiveIntegerField(default=0, help_text='Number of CP problems solved (set manually)')
 
@@ -112,7 +111,6 @@ class Experience(models.Model):
 class Education(models.Model):
     institution = models.CharField(max_length=200)
     degree = models.CharField(max_length=300)
-    cgpa = models.CharField(max_length=30, blank=True)
     start_year = models.CharField(max_length=10)
     end_year = models.CharField(max_length=10, blank=True)
     location = models.CharField(max_length=200, blank=True)

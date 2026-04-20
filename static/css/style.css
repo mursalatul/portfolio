@@ -488,7 +488,14 @@ img { max-width: 100%; height: auto; }
   font-size: 1rem; color: var(--text-secondary);
   line-height: 1.9; margin-bottom: 2.5rem;
 }
-.about-highlights { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.about-highlights { 
+  display: grid; 
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 1rem; 
+}
+@media (max-width: 480px) {
+  .about-highlights { grid-template-columns: 1fr; }
+}
 .highlight-card {
   background: var(--bg-card);
   border: 1px solid var(--border);

@@ -189,7 +189,6 @@
           <li><span class="icon">📱</span> {{ profile.phone }}</li>
           {% endif %}
           <li><span class="icon">📍</span> Dhaka, Bangladesh</li>
-          <li><span class="icon">🎓</span> CGPA {{ profile.cgpa }}</li>
         </ul>
         <div class="about-social">
           {% if profile.github_url and profile.show_github_in_about %}
@@ -224,10 +223,6 @@
           <div class="highlight-card">
             <div class="h-num">3</div>
             <div class="h-label">NASA Space Apps</div>
-          </div>
-          <div class="highlight-card">
-            <div class="h-num">{% if profile %}{{ profile.cgpa }}{% endif %}</div>
-            <div class="h-label">CGPA</div>
           </div>
         </div>
       </div>
@@ -303,11 +298,6 @@
               <div class="timeline-role">{{ edu.degree }}</div>
               <div class="timeline-company">{{ edu.institution }}</div>
               <div class="timeline-location">📍 {{ edu.location }}</div>
-              {% if edu.cgpa %}
-              <div style="margin-top:0.75rem;">
-                <span style="font-family:'JetBrains Mono',monospace;font-size:0.8rem;color:var(--accent-cyan);">CGPA: {{ edu.cgpa }}</span>
-              </div>
-              {% endif %}
             </div>
           </div>
           {% endfor %}
