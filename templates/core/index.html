@@ -361,6 +361,13 @@
       <p style="color:var(--text-muted);text-align:center;">No projects yet — add them via the admin panel.</p>
       {% endfor %}
     </div>
+    {% if profile.github_url %}
+    <div class="projects-more reveal" style="text-align: center; margin-top: 3rem;">
+      <a href="{{ profile.github_url }}" target="_blank" class="btn-secondary">
+        <span>⌨</span><span>View More Projects</span>
+      </a>
+    </div>
+    {% endif %}
   </div>
 </section>
 
