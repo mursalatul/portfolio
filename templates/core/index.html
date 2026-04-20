@@ -14,6 +14,12 @@
   <!-- Main CSS -->
   <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
   <style>
+    body {
+      cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' style='fill: %2300D4FF; font-family: monospace; font-size: 20px;'><text x='0' y='18'>{</text></svg>"), auto;
+    }
+    a, button, [role="button"], .btn-primary, .btn-secondary, .social-btn, .project-link, .nav-logo {
+      cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' style='fill: %2300D4FF; font-family: monospace; font-size: 20px;'><text x='0' y='18'>}</text></svg>"), pointer !important;
+    }
     .brace-link {
       color: var(--accent-cyan) !important;
       text-decoration: none;
@@ -89,11 +95,6 @@
           data-roles="{% if profile %}{{ profile.get_roles_list|join:',' }}{% else %}Software Developer,AI/ML Researcher,Competitive Programmer{% endif %}">
         </span>
       </div>
-      <p class="hero-desc">
-        {% if profile %}{{ profile.about_text|truncatewords:30 }}{% else %}
-        Building intelligent systems at the intersection of AI research and full-stack engineering.
-        {% endif %}
-      </p>
       <div class="hero-buttons">
         <a href="#projects" class="btn-primary">
           <span>🚀</span><span>View My Work</span>
