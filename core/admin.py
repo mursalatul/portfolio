@@ -34,21 +34,11 @@ class ProfileAdmin(admin.ModelAdmin):
 
 @admin.register(Skill)
 class SkillAdmin(admin.ModelAdmin):
-    list_display = ('name', 'category', 'proficiency_bar', 'order')
+    list_display = ('name', 'category', 'icon', 'order')
     list_editable = ('order',)
     list_filter = ('category',)
     search_fields = ('name',)
     ordering = ('category', 'order')
-
-    def proficiency_bar(self, obj):
-        color = '#2563EB' if obj.proficiency >= 70 else '#f59e0b' if obj.proficiency >= 50 else '#ef4444'
-        return format_html(
-            '<div style="background:#e5e7eb;border-radius:4px;width:120px;height:10px;">'
-            '<div style="background:{};width:{}%;height:100%;border-radius:4px;"></div>'
-            '</div> {}%',
-            color, obj.proficiency, obj.proficiency
-        )
-    proficiency_bar.short_description = 'Proficiency'
 
 
 @admin.register(Project)

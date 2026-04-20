@@ -222,17 +222,9 @@
         <div class="skill-cat-title">{{ category }}</div>
         <div class="skills-grid">
           {% for skill in skills %}
-          <div class="skill-item">
-            <div class="skill-header">
-              <div class="skill-name">
-                {% if skill.icon %}<i class="{{ skill.icon }}" style="margin-right:0.4rem"></i>{% endif %}
-                {{ skill.name }}
-              </div>
-              <div class="skill-pct">{{ skill.proficiency }}%</div>
-            </div>
-            <div class="skill-bar-bg">
-              <div class="skill-bar" data-width="{{ skill.proficiency }}"></div>
-            </div>
+          <div class="skill-chip">
+            {% if skill.icon %}<i class="{{ skill.icon }}"></i>{% endif %}
+            <span>{{ skill.name }}</span>
           </div>
           {% endfor %}
         </div>
