@@ -18,8 +18,8 @@ class Profile(models.Model):
     profile_photo = models.ImageField(upload_to='profile/', blank=True, null=True)
     years_experience = models.PositiveIntegerField(default=3)
     cgpa = models.CharField(max_length=20, default='3.60/4.00')
-    achievements_count = models.PositiveIntegerField(default=12)
-    projects_count = models.PositiveIntegerField(default=10)
+    cp_problems_authored = models.PositiveIntegerField(default=0, help_text='Number of CP problems authored (set manually)')
+    cp_problems_solved = models.PositiveIntegerField(default=0, help_text='Number of CP problems solved (set manually)')
 
     class Meta:
         verbose_name = 'Profile'

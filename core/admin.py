@@ -21,7 +21,7 @@ class ProfileAdmin(admin.ModelAdmin):
             'fields': ('email', 'phone', 'github_url', 'linkedin_url', 'resume_file')
         }),
         ('Stats', {
-            'fields': ('cgpa', 'years_experience', 'achievements_count', 'projects_count')
+            'fields': ('cgpa', 'years_experience', 'cp_problems_authored', 'cp_problems_solved')
         }),
     )
 

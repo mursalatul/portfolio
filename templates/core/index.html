@@ -86,19 +86,23 @@
       </div>
       <div class="hero-stats">
         <div class="hero-stat">
-          <span class="num" data-count="{% if profile %}{{ profile.achievements_count }}{% else %}12{% endif %}" data-suffix="+">0+</span>
+          <span class="num" data-count="{{ achievements_count }}" data-suffix="+">0+</span>
           <span class="label">Achievements</span>
         </div>
         <div class="hero-stat">
-          <span class="num" data-count="{% if profile %}{{ profile.projects_count }}{% else %}10{% endif %}" data-suffix="+">0+</span>
+          <span class="num" data-count="{{ projects_count }}" data-suffix="+">0+</span>
           <span class="label">Projects</span>
         </div>
         <div class="hero-stat">
-          <span class="num" data-count="59" data-suffix="">0</span>
+          <span class="num" data-count="{% if profile %}{{ profile.cp_problems_authored }}{% else %}0{% endif %}" data-suffix="">0</span>
           <span class="label">CP Problems Authored</span>
         </div>
         <div class="hero-stat">
-          <span class="num" data-count="3" data-suffix="">0</span>
+          <span class="num" data-count="{% if profile %}{{ profile.cp_problems_solved }}{% else %}0{% endif %}" data-suffix="">0</span>
+          <span class="label">CP Problems Solved</span>
+        </div>
+        <div class="hero-stat">
+          <span class="num" data-count="{{ publications_count }}" data-suffix="">0</span>
           <span class="label">Publications</span>
         </div>
       </div>
@@ -186,11 +190,11 @@
         <p class="about-text">{{ profile.about_text }}</p>
         <div class="about-highlights">
           <div class="highlight-card">
-            <div class="h-num" data-count="{{ profile.achievements_count }}" data-suffix="+">{{ profile.achievements_count }}+</div>
+            <div class="h-num" data-count="{{ achievements_count }}" data-suffix="+">{{ achievements_count }}+</div>
             <div class="h-label">Achievements</div>
           </div>
           <div class="highlight-card">
-            <div class="h-num" data-count="{{ profile.projects_count }}" data-suffix="+">{{ profile.projects_count }}+</div>
+            <div class="h-num" data-count="{{ projects_count }}" data-suffix="+">{{ projects_count }}+</div>
             <div class="h-label">Projects Built</div>
           </div>
           <div class="highlight-card">
@@ -198,7 +202,7 @@
             <div class="h-label">NASA Space Apps</div>
           </div>
           <div class="highlight-card">
-            <div class="h-num">{{ profile.cgpa }}</div>
+            <div class="h-num">{% if profile %}{{ profile.cgpa }}{% endif %}</div>
             <div class="h-label">CGPA</div>
           </div>
         </div>
