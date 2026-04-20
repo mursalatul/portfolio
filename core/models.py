@@ -73,7 +73,6 @@ class Project(models.Model):
     tech_tags = models.CharField(max_length=500, help_text='Comma-separated tags')
     github_url = models.URLField(blank=True)
     live_url = models.URLField(blank=True)
-    image = models.ImageField(upload_to='projects/', blank=True, null=True)
     date = models.CharField(max_length=50, blank=True)
     featured = models.BooleanField(default=False)
     order = models.PositiveIntegerField(default=0)

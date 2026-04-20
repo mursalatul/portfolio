@@ -1,701 +1,684 @@
 [
-{
-  "model": "core.profile",
-  "pk": 1,
-  "fields": {
-    "name": "Md Mursalatul Islam Pallob",
-    "tagline": "Software Engineer & AI/ML Researcher",
-    "roles": "Software Developer,AI/ML Researcher,Cheff,Competitive Programmer,Brazil Supporter,Full-Stack Engineer,Problem Solver,Football Lover",
-    "about_text": "I'm a passionate Computer Science graduate from Dhaka International University with a strong interest in AI/ML research and full-stack development. From building real-time emotion recognition systems to competing at ICPC, I thrive at the intersection of cutting-edge research and practical engineering. I've led programming clubs, mentored hundreds of competitive programmers, and contributed to research accepted by Taylor & Francis. When I'm not coding, I'm probably thinking about new ideas to bring to life.",
-    "email": "mursalatul.pallob@gmail.com",
-    "phone": "+8801611-920058",
-    "github_url": "https://github.com/mursalatul",
-    "linkedin_url": "https://linkedin.com/in/mursalatul",
-    "resume_file": "resume/MD_MURSALATUL_ISLAM_PALLOB___RESUME_2.pdf",
-    "profile_photo": "profile/2FEB38C8-EA83-42F7-8D5E-47A69A13192A.JPG",
-    "years_experience": 4,
-    "cp_problems_authored": 59,
-    "cp_problems_solved": 1000
+  {
+    "model": "core.profile",
+    "pk": 1,
+    "fields": {
+      "name": "Md Mursalatul Islam Pallob",
+      "tagline": "Software Engineer & AI/ML Researcher",
+      "roles": "Software Developer,AI/ML Researcher,Cheff,Competitive Programmer,Brazil Supporter,Full-Stack Engineer,Problem Solver,Football Lover",
+      "about_text": "I'm a passionate Computer Science graduate from Dhaka International University with a strong interest in AI/ML research and full-stack development. From building real-time emotion recognition systems to competing at ICPC, I thrive at the intersection of cutting-edge research and practical engineering. I've led programming clubs, mentored hundreds of competitive programmers, and contributed to research accepted by Taylor & Francis. When I'm not coding, I'm probably thinking about new ideas to bring to life.",
+      "email": "mursalatul.pallob@gmail.com",
+      "phone": "+8801611-920058",
+      "github_url": "https://github.com/mursalatul",
+      "linkedin_url": "https://linkedin.com/in/mursalatul",
+      "resume_file": "resume/MD_MURSALATUL_ISLAM_PALLOB___RESUME_2.pdf",
+      "profile_photo": "profile/2FEB38C8-EA83-42F7-8D5E-47A69A13192A.JPG",
+      "years_experience": 4,
+      "cp_problems_authored": 59,
+      "cp_problems_solved": 1000
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 1,
+    "fields": {
+      "name": "Python",
+      "category": "Languages",
+      "proficiency": 95,
+      "icon": "devicon-python-plain",
+      "order": 1
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 2,
+    "fields": {
+      "name": "C/C++",
+      "category": "Languages",
+      "proficiency": 88,
+      "icon": "devicon-cplusplus-plain",
+      "order": 2
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 3,
+    "fields": {
+      "name": "Java",
+      "category": "Languages",
+      "proficiency": 75,
+      "icon": "devicon-java-plain",
+      "order": 3
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 4,
+    "fields": {
+      "name": "JavaScript",
+      "category": "Languages",
+      "proficiency": 78,
+      "icon": "devicon-javascript-plain",
+      "order": 4
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 5,
+    "fields": {
+      "name": "SQL",
+      "category": "Languages",
+      "proficiency": 80,
+      "icon": "devicon-postgresql-plain",
+      "order": 5
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 6,
+    "fields": {
+      "name": "HTML/CSS",
+      "category": "Languages",
+      "proficiency": 82,
+      "icon": "devicon-html5-plain",
+      "order": 6
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 7,
+    "fields": {
+      "name": "Django",
+      "category": "Frameworks",
+      "proficiency": 92,
+      "icon": "devicon-django-plain",
+      "order": 1
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 10,
+    "fields": {
+      "name": "Git",
+      "category": "Tools",
+      "proficiency": 90,
+      "icon": "devicon-git-plain",
+      "order": 1
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 11,
+    "fields": {
+      "name": "Docker",
+      "category": "Tools",
+      "proficiency": 72,
+      "icon": "devicon-docker-plain",
+      "order": 2
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 12,
+    "fields": {
+      "name": "VS Code",
+      "category": "Tools",
+      "proficiency": 95,
+      "icon": "devicon-vscode-plain",
+      "order": 3
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 13,
+    "fields": {
+      "name": "PyCharm",
+      "category": "Tools",
+      "proficiency": 85,
+      "icon": "devicon-pycharm-plain",
+      "order": 4
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 14,
+    "fields": {
+      "name": "TensorFlow",
+      "category": "Libraries",
+      "proficiency": 82,
+      "icon": "devicon-tensorflow-original",
+      "order": 1
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 15,
+    "fields": {
+      "name": "Pandas",
+      "category": "Libraries",
+      "proficiency": 88,
+      "icon": "devicon-pandas-original",
+      "order": 2
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 16,
+    "fields": {
+      "name": "NumPy",
+      "category": "Libraries",
+      "proficiency": 88,
+      "icon": "devicon-numpy-original",
+      "order": 3
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 17,
+    "fields": {
+      "name": "Scikit-learn",
+      "category": "Libraries",
+      "proficiency": 85,
+      "icon": "",
+      "order": 4
+    }
+  },
+  {
+    "model": "core.skill",
+    "pk": 18,
+    "fields": {
+      "name": "Keras",
+      "category": "Libraries",
+      "proficiency": 80,
+      "icon": "",
+      "order": 5
+    }
+  },
+  {
+    "model": "core.project",
+    "pk": 1,
+    "fields": {
+      "title": "Speech Emotion Recognition in Real-time",
+      "description": "Real-time Speech Emotion Recognition system using an LSTM-based deep learning model in Keras. Analyzes live microphone input to identify expressed emotions. Achieves 87% accuracy on RAVDESS & TESS benchmarks with silence detection for robustness.",
+      "tech_tags": "Python,Keras,LSTM,Audio Processing,RAVDESS,TESS",
+      "github_url": "https://github.com/mursalatul/SpeechEmotionRecognition_Realtime",
+      "live_url": "",
+      "date": "Jun 2024 – Jul 2024",
+      "featured": true,
+      "order": 1
+    }
+  },
+  {
+    "model": "core.project",
+    "pk": 2,
+    "fields": {
+      "title": "Infant Cry Analysis Web Application",
+      "description": "Full-stack Django + PostgreSQL web application for multi-class diagnosis of infant distress from cry recordings. Integrates a Spectro-Derivative ML backend to classify cries into pain, hunger, sleepy, and healthy categories with an interactive Bootstrap frontend.",
+      "tech_tags": "Python,Django,PostgreSQL,Bootstrap,Machine Learning,HTML",
+      "github_url": "https://github.com/mursalatul/infant_cry_detection",
+      "live_url": "",
+      "date": "May 2025 – Oct 2025",
+      "featured": true,
+      "order": 2
+    }
+  },
+  {
+    "model": "core.project",
+    "pk": 3,
+    "fields": {
+      "title": "Balanced Augmented Spectro-Derivative Ensemble Framework",
+      "description": "Novel ML framework for multi-class infant distress diagnosis. Extracts and analyzes spectrograms and Spectro-Derivative features from cry audio, then leverages ensemble learning for robust classification. Research published as a preprint targeting IEEE TPAMI.",
+      "tech_tags": "Python,Scikit-learn,Spectrograms,Machine Learning,Ensemble Methods",
+      "github_url": "https://github.com/mursalatul/Balanced-Augmented-Spectro-Derivative-Ensemble-Framework-for-Multi-Class-Infant-Distress-Diagnosis",
+      "live_url": "",
+      "date": "Mar 2025 – Oct 2025",
+      "featured": true,
+      "order": 3
+    }
+  },
+  {
+    "model": "core.project",
+    "pk": 4,
+    "fields": {
+      "title": "Suicidal Ideation Prediction (NLP)",
+      "description": "End-to-end NLP pipeline for early detection of suicidal ideation in Bangladeshi adolescents. Compares transformer-based fine-tuning with classical ML baselines on national health survey data. Packaged in reproducible notebooks with ethical/privacy documentation.",
+      "tech_tags": "Python,NLP,Machine Learning,Transformers,Scikit-learn",
+      "github_url": "https://github.com/mursalatul",
+      "live_url": "",
+      "date": "Aug 2025 – Oct 2025",
+      "featured": true,
+      "order": 4
+    }
+  },
+  {
+    "model": "core.project",
+    "pk": 5,
+    "fields": {
+      "title": "Digital Cosmos Portfolio",
+      "description": "Personal portfolio website built with Django, featuring particle canvas animations, dark/light mode toggle, skill chips, typewriter hero, project showcase, publications, achievements, and a responsive glassmorphism design. Deployed on Vercel.",
+      "tech_tags": "Python,Django,Vanilla JS,CSS,Whitenoise,Vercel",
+      "github_url": "https://github.com/mursalatul/portfolio",
+      "live_url": "https://mursalatuls.vercel.app",
+      "date": "Apr 2026",
+      "featured": true,
+      "order": 5
+    }
+  },
+  {
+    "model": "core.project",
+    "pk": 6,
+    "fields": {
+      "title": "Voice Processing with AI",
+      "description": "Collection of Jupyter notebooks exploring AI-driven voice processing techniques — including feature extraction (MFCCs, spectrograms), emotion analysis, and speech-to-text pipelines. Used as a research sandbox for the Speech Emotion Recognition project.",
+      "tech_tags": "Python,Jupyter Notebook,AI,Audio Processing,MFCC",
+      "github_url": "https://github.com/mursalatul/voice-processing-with-ai",
+      "live_url": "",
+      "date": "Jun 2024 – Jul 2024",
+      "featured": true,
+      "order": 6
+    }
+  },
+  {
+    "model": "core.project",
+    "pk": 7,
+    "fields": {
+      "title": "Code Park — DSA & CP Library",
+      "description": "Comprehensive collection of Data Structures and Algorithms (DSA) implementations alongside competitive programming templates. A go-to reference for ICPC preparation covering graphs, trees, dynamic programming, number theory, and more. Has 1 star and 2 forks on GitHub.",
+      "tech_tags": "C++,Python,DSA,Competitive Programming,Algorithms",
+      "github_url": "https://github.com/mursalatul/code-park",
+      "live_url": "https://diu-competitive-programming.vercel.app/",
+      "date": "Jan 2024 – Present",
+      "featured": false,
+      "order": 7
+    }
+  },
+  {
+    "model": "core.project",
+    "pk": 8,
+    "fields": {
+      "title": "Django Apps Collection",
+      "description": "A curated collection of different types of Django applications demonstrating authentication flows, REST APIs, admin customization, ORM patterns, and deployment configurations. Serves as a learning reference for Django best practices.",
+      "tech_tags": "Python,Django,REST API,PostgreSQL,SQLite",
+      "github_url": "https://github.com/mursalatul/django-apps",
+      "live_url": "",
+      "date": "Feb 2025 – Mar 2025",
+      "featured": false,
+      "order": 8
+    }
+  },
+  {
+    "model": "core.project",
+    "pk": 9,
+    "fields": {
+      "title": "ML Draft — Machine Learning Experiments",
+      "description": "Curated Jupyter notebooks covering classification, regression, clustering, and time series forecasting across real-world datasets. Explores diverse ML models from linear regression to gradient boosting and neural networks for prediction problems.",
+      "tech_tags": "Python,Jupyter Notebook,Scikit-learn,Machine Learning,Pandas,NumPy",
+      "github_url": "https://github.com/mursalatul/ml_draft",
+      "live_url": "",
+      "date": "Jan 2025 – Feb 2025",
+      "featured": false,
+      "order": 9
+    }
+  },
+  {
+    "model": "core.project",
+    "pk": 10,
+    "fields": {
+      "title": "Library Management System",
+      "description": "Full-featured desktop Library Management System built with Python and PyQt5. Allows both users and admins to manage books, borrowing records, and member accounts through an intuitive GUI. Has 1 fork on GitHub.",
+      "tech_tags": "Python,PyQt5,SQLite,GUI,Desktop App",
+      "github_url": "https://github.com/mursalatul/library-management-system",
+      "live_url": "",
+      "date": "Apr 2024 – Nov 2024",
+      "featured": false,
+      "order": 10
+    }
+  },
+  {
+    "model": "core.project",
+    "pk": 11,
+    "fields": {
+      "title": "Scheduling Algorithm Simulator",
+      "description": "Interactive web-based simulator for OS scheduling algorithms (FCFS, SJF, Round Robin, Priority Scheduling). Visualizes Gantt charts, computes average waiting time, and turnaround time dynamically in the browser.",
+      "tech_tags": "JavaScript,HTML,CSS,Algorithms,OS Concepts",
+      "github_url": "https://github.com/mursalatul/scheduling-algorithm-simulator",
+      "live_url": "",
+      "date": "Sep 2024",
+      "featured": false,
+      "order": 11
+    }
+  },
+  {
+    "model": "core.project",
+    "pk": 12,
+    "fields": {
+      "title": "Shutdown Timer for Windows",
+      "description": "PyQt5 desktop application that lets users schedule Windows shutdown with a precise timer. Features an intuitive GUI to set, cancel, and re-schedule shutdown. Has 1 star on GitHub and targets power users who need automated shutdown.",
+      "tech_tags": "Python,PyQt5,Windows,Desktop App,Automation",
+      "github_url": "https://github.com/mursalatul/shutdown-timer-for-windows",
+      "live_url": "",
+      "date": "Jul 2021 – Apr 2024",
+      "featured": false,
+      "order": 12
+    }
+  },
+  {
+    "model": "core.project",
+    "pk": 13,
+    "fields": {
+      "title": "Mini Projects Collection",
+      "description": "A growing collection of fun, beginner-to-intermediate Python and C++ mini-projects designed for practice and learning. Topics include games, automation scripts, file utilities, and programming challenges — proving that you can do basically anything with code.",
+      "tech_tags": "Python,C++,Games,Automation,Learning",
+      "github_url": "https://github.com/mursalatul/mini-projects",
+      "live_url": "",
+      "date": "Nov 2023 – Present",
+      "featured": false,
+      "order": 13
+    }
+  },
+  {
+    "model": "core.project",
+    "pk": 14,
+    "fields": {
+      "title": "Melanoma Detection (ML)",
+      "description": "Machine learning pipeline for early detection of melanoma from dermoscopic images. Explores CNN architectures and transfer learning for binary skin lesion classification, with a focus on high sensitivity to minimize false negatives.",
+      "tech_tags": "Python,Machine Learning,CNN,TensorFlow,Computer Vision",
+      "github_url": "https://github.com/mursalatul/melanoma-detection",
+      "live_url": "",
+      "date": "Apr 2025",
+      "featured": false,
+      "order": 14
+    }
+  },
+  {
+    "model": "core.project",
+    "pk": 15,
+    "fields": {
+      "title": "CP Resources Hub",
+      "description": "A structured repository of competitive programming resources, including problem templates, editorial notes, and C++ snippets for ICPC and IUPC preparation. Covers graph theory, combinatorics, geometry, and string algorithms.",
+      "tech_tags": "C++,Competitive Programming,Algorithms,ICPC,Templates",
+      "github_url": "https://github.com/mursalatul/cp_resourses",
+      "live_url": "",
+      "date": "Sep 2025 – Present",
+      "featured": false,
+      "order": 15
+    }
+  },
+  {
+    "model": "core.project",
+    "pk": 16,
+    "fields": {
+      "title": "Codebox — CP Template Archive",
+      "description": "Comprehensive algorithm and data structure archive for competitive programming. Contains ready-to-use C++ implementations for competitive programmers — from basic sorting to advanced segment trees and Dijkstra. Has 1 star and 7 forks on GitHub.",
+      "tech_tags": "C++,DSA,Competitive Programming,Algorithms,Templates",
+      "github_url": "https://github.com/mursalatul/codebox",
+      "live_url": "",
+      "date": "Mar 2021 – Jan 2025",
+      "featured": false,
+      "order": 16
+    }
+  },
+  {
+    "model": "core.project",
+    "pk": 17,
+    "fields": {
+      "title": "Microcontroller Projects",
+      "description": "Hands-on C++ projects for microcontrollers (Arduino/ESP32) — including sensor interfacing, LED control, motor drivers, and IoT prototyping. A practical exploration of embedded systems programming alongside software engineering.",
+      "tech_tags": "C++,Arduino,Embedded Systems,IoT,Microcontroller",
+      "github_url": "https://github.com/mursalatul/play-with-microcontroller",
+      "live_url": "",
+      "date": "Oct 2024",
+      "featured": false,
+      "order": 17
+    }
+  },
+  {
+    "model": "core.experience",
+    "pk": 1,
+    "fields": {
+      "company": "Medvisor Mobile",
+      "role": "Lead Software Engineer Intern (Part-time)",
+      "location": "Irvine, CA",
+      "start_date": "Jun 2024",
+      "end_date": "Aug 2024",
+      "is_current": false,
+      "description": "Developed and implemented machine learning models for voice and emotion stress analysis.\nCollaborated closely with Flutter, DevOps, and UX/UI engineers to integrate AI-driven features into mobile apps, aligning with project goals.",
+      "order": 1
+    }
+  },
+  {
+    "model": "core.education",
+    "pk": 1,
+    "fields": {
+      "institution": "Dhaka International University",
+      "degree": "Bachelor of Science in Computer Science and Engineering",
+      "start_year": "Aug 2021",
+      "end_year": "Oct 2025",
+      "location": "Dhaka, Bangladesh",
+      "order": 1
+    }
+  },
+  {
+    "model": "core.achievement",
+    "pk": 1,
+    "fields": {
+      "title": "Winner, Programming Competition",
+      "event": "DIU",
+      "year": "2022",
+      "rank": "1st Place",
+      "description": "Won the programming competition organized at Dhaka International University.",
+      "order": 1
+    }
+  },
+  {
+    "model": "core.achievement",
+    "pk": 2,
+    "fields": {
+      "title": "2nd Place, IT Carnival Programming Competition",
+      "event": "DIU IT Carnival",
+      "year": "2022",
+      "rank": "2nd Place",
+      "description": "",
+      "order": 2
+    }
+  },
+  {
+    "model": "core.achievement",
+    "pk": 3,
+    "fields": {
+      "title": "ICPC 2021 Onsite Contestant",
+      "event": "BUBT",
+      "year": "2021",
+      "rank": "National Rank: 90",
+      "description": "Competed in the International Collegiate Programming Contest onsite round.",
+      "order": 3
+    }
+  },
+  {
+    "model": "core.achievement",
+    "pk": 4,
+    "fields": {
+      "title": "SUST IUPC 2023",
+      "event": "SUST",
+      "year": "2023",
+      "rank": "National Rank: 82",
+      "description": "",
+      "order": 4
+    }
+  },
+  {
+    "model": "core.achievement",
+    "pk": 5,
+    "fields": {
+      "title": "NASA Space Apps Challenge 2023",
+      "event": "Global",
+      "year": "2023",
+      "rank": "Global Nominee; 1st Runner Up, Barishal",
+      "description": "NASA International Space Apps Challenge 2023 — Global Nominee; 1st Runner Up, Barishal Division, Bangladesh.",
+      "order": 5
+    }
+  },
+  {
+    "model": "core.achievement",
+    "pk": 6,
+    "fields": {
+      "title": "ICPC 2022 Onsite Qualifier",
+      "event": "Green University",
+      "year": "2022",
+      "rank": "Qualified",
+      "description": "",
+      "order": 6
+    }
+  },
+  {
+    "model": "core.achievement",
+    "pk": 7,
+    "fields": {
+      "title": "ICPC 2023 Onsite Qualifier",
+      "event": "BUBT",
+      "year": "2023",
+      "rank": "Qualified",
+      "description": "",
+      "order": 7
+    }
+  },
+  {
+    "model": "core.achievement",
+    "pk": 8,
+    "fields": {
+      "title": "NASA Space Apps Challenge 2024",
+      "event": "Global",
+      "year": "2024",
+      "rank": "2nd Runner Up, Barishal Division",
+      "description": "",
+      "order": 8
+    }
+  },
+  {
+    "model": "core.achievement",
+    "pk": 9,
+    "fields": {
+      "title": "KUET IUPC 2025",
+      "event": "KUET",
+      "year": "2025",
+      "rank": "Participant",
+      "description": "Participated in the KUET Inter-University Programming Contest.",
+      "order": 9
+    }
+  },
+  {
+    "model": "core.achievement",
+    "pk": 10,
+    "fields": {
+      "title": "UIU IUPC 2025",
+      "event": "United International University",
+      "year": "2025",
+      "rank": "National Rank: 60",
+      "description": "",
+      "order": 10
+    }
+  },
+  {
+    "model": "core.achievement",
+    "pk": 11,
+    "fields": {
+      "title": "NASA Space Apps Challenge 2025",
+      "event": "Global",
+      "year": "2025",
+      "rank": "Champion, Barishal; Global Nominee; Honorable Mention",
+      "description": "NASA International Space Apps Challenge 2025 — Honorable Mention; Global Nominee; Champion, Barishal Division, Bangladesh.",
+      "order": 11
+    }
+  },
+  {
+    "model": "core.publication",
+    "pk": 1,
+    "fields": {
+      "title": "Infant Cry Analysis Using Machine Learning Models and Extended Feature Selection",
+      "authors": "M. M. I. Pallob, F. B. Orpita, N. Usha, N. Hasan, M. N. Tahira and M. A. Based",
+      "journal": "Taylor and Francis, BIM 2025",
+      "year": "2025",
+      "status": "accepted",
+      "url": "",
+      "order": 1
+    }
+  },
+  {
+    "model": "core.publication",
+    "pk": 2,
+    "fields": {
+      "title": "Early Detection of Suicidal Ideation in Bangladeshi Adolescents: A Machine Learning Approach Using National Health Survey Data",
+      "authors": "A. M. Rion and M. M. I Pallob",
+      "journal": "",
+      "year": "2025",
+      "status": "working",
+      "url": "",
+      "order": 2
+    }
+  },
+  {
+    "model": "core.publication",
+    "pk": 3,
+    "fields": {
+      "title": "Balanced Augmented Spectro-Derivative Ensemble Framework for Multi-Class Infant Distress Diagnosis",
+      "authors": "M. M. I. Pallob and F. B. Orpita",
+      "journal": "Preprint — Target: IEEE Transactions on Pattern Analysis and Machine Intelligence",
+      "year": "2025",
+      "status": "preprint",
+      "url": "",
+      "order": 3
+    }
+  },
+  {
+    "model": "core.publication",
+    "pk": 4,
+    "fields": {
+      "title": "Afdfdfdf",
+      "authors": "dfdfdf",
+      "journal": "fdfdfdfd",
+      "year": "fdfdfd",
+      "status": "working",
+      "url": "http://fdfdf.com",
+      "order": 4
+    }
+  },
+  {
+    "model": "core.leadership",
+    "pk": 1,
+    "fields": {
+      "org": "DIU Computer Programming Club",
+      "role": "Vice President",
+      "location": "Dhaka, Bangladesh",
+      "start_date": "Sep 2024",
+      "end_date": "Mar 2025",
+      "bullets": "Oversaw club activities, including organizing coding competitions, workshops, and hackathons.\nCollaborated with the executive team to create opportunities for members to advance their programming knowledge.\nOrganized DIU CSE Fall Fest 2024.",
+      "order": 1
+    }
+  },
+  {
+    "model": "core.leadership",
+    "pk": 2,
+    "fields": {
+      "org": "DIU Computer Programming Club",
+      "role": "Competition Lead",
+      "location": "Dhaka, Bangladesh",
+      "start_date": "Oct 2023",
+      "end_date": "Aug 2024",
+      "bullets": "Managed diverse programming contests and authored 59 original competitive programming problems.\nMentored club members in competitive programming, preparing teams for ICPC and IUPC.",
+      "order": 2
+    }
+  },
+  {
+    "model": "core.leadership",
+    "pk": 3,
+    "fields": {
+      "org": "IEEE DIU Student Branch",
+      "role": "Secretary General",
+      "location": "Dhaka, Bangladesh",
+      "start_date": "Sep 2021",
+      "end_date": "Sep 2023",
+      "bullets": "Organized seminars and fundraising events to facilitate student branch initiatives.",
+      "order": 3
+    }
   }
-},
-{
-  "model": "core.skill",
-  "pk": 1,
-  "fields": {
-    "name": "Python",
-    "category": "Languages",
-    "proficiency": 95,
-    "icon": "devicon-python-plain",
-    "order": 1
-  }
-},
-{
-  "model": "core.skill",
-  "pk": 2,
-  "fields": {
-    "name": "C/C++",
-    "category": "Languages",
-    "proficiency": 88,
-    "icon": "devicon-cplusplus-plain",
-    "order": 2
-  }
-},
-{
-  "model": "core.skill",
-  "pk": 3,
-  "fields": {
-    "name": "Java",
-    "category": "Languages",
-    "proficiency": 75,
-    "icon": "devicon-java-plain",
-    "order": 3
-  }
-},
-{
-  "model": "core.skill",
-  "pk": 4,
-  "fields": {
-    "name": "JavaScript",
-    "category": "Languages",
-    "proficiency": 78,
-    "icon": "devicon-javascript-plain",
-    "order": 4
-  }
-},
-{
-  "model": "core.skill",
-  "pk": 5,
-  "fields": {
-    "name": "SQL",
-    "category": "Languages",
-    "proficiency": 80,
-    "icon": "devicon-postgresql-plain",
-    "order": 5
-  }
-},
-{
-  "model": "core.skill",
-  "pk": 6,
-  "fields": {
-    "name": "HTML/CSS",
-    "category": "Languages",
-    "proficiency": 82,
-    "icon": "devicon-html5-plain",
-    "order": 6
-  }
-},
-{
-  "model": "core.skill",
-  "pk": 7,
-  "fields": {
-    "name": "Django",
-    "category": "Frameworks",
-    "proficiency": 92,
-    "icon": "devicon-django-plain",
-    "order": 1
-  }
-},
-{
-  "model": "core.skill",
-  "pk": 10,
-  "fields": {
-    "name": "Git",
-    "category": "Tools",
-    "proficiency": 90,
-    "icon": "devicon-git-plain",
-    "order": 1
-  }
-},
-{
-  "model": "core.skill",
-  "pk": 11,
-  "fields": {
-    "name": "Docker",
-    "category": "Tools",
-    "proficiency": 72,
-    "icon": "devicon-docker-plain",
-    "order": 2
-  }
-},
-{
-  "model": "core.skill",
-  "pk": 12,
-  "fields": {
-    "name": "VS Code",
-    "category": "Tools",
-    "proficiency": 95,
-    "icon": "devicon-vscode-plain",
-    "order": 3
-  }
-},
-{
-  "model": "core.skill",
-  "pk": 13,
-  "fields": {
-    "name": "PyCharm",
-    "category": "Tools",
-    "proficiency": 85,
-    "icon": "devicon-pycharm-plain",
-    "order": 4
-  }
-},
-{
-  "model": "core.skill",
-  "pk": 14,
-  "fields": {
-    "name": "TensorFlow",
-    "category": "Libraries",
-    "proficiency": 82,
-    "icon": "devicon-tensorflow-original",
-    "order": 1
-  }
-},
-{
-  "model": "core.skill",
-  "pk": 15,
-  "fields": {
-    "name": "Pandas",
-    "category": "Libraries",
-    "proficiency": 88,
-    "icon": "devicon-pandas-original",
-    "order": 2
-  }
-},
-{
-  "model": "core.skill",
-  "pk": 16,
-  "fields": {
-    "name": "NumPy",
-    "category": "Libraries",
-    "proficiency": 88,
-    "icon": "devicon-numpy-original",
-    "order": 3
-  }
-},
-{
-  "model": "core.skill",
-  "pk": 17,
-  "fields": {
-    "name": "Scikit-learn",
-    "category": "Libraries",
-    "proficiency": 85,
-    "icon": "",
-    "order": 4
-  }
-},
-{
-  "model": "core.skill",
-  "pk": 18,
-  "fields": {
-    "name": "Keras",
-    "category": "Libraries",
-    "proficiency": 80,
-    "icon": "",
-    "order": 5
-  }
-},
-{
-  "model": "core.project",
-  "pk": 1,
-  "fields": {
-    "title": "Speech Emotion Recognition in Real-time",
-    "description": "Real-time Speech Emotion Recognition system using an LSTM-based deep learning model in Keras. Analyzes live microphone input to identify expressed emotions. Achieves 87% accuracy on RAVDESS & TESS benchmarks with silence detection for robustness.",
-    "tech_tags": "Python,Keras,LSTM,Audio Processing,RAVDESS,TESS",
-    "github_url": "https://github.com/mursalatul/SpeechEmotionRecognition_Realtime",
-    "live_url": "",
-    "image": "",
-    "date": "Jun 2024 – Jul 2024",
-    "featured": true,
-    "order": 1
-  }
-},
-{
-  "model": "core.project",
-  "pk": 2,
-  "fields": {
-    "title": "Infant Cry Analysis Web Application",
-    "description": "Full-stack Django + PostgreSQL web application for multi-class diagnosis of infant distress from cry recordings. Integrates a Spectro-Derivative ML backend to classify cries into pain, hunger, sleepy, and healthy categories with an interactive Bootstrap frontend.",
-    "tech_tags": "Python,Django,PostgreSQL,Bootstrap,Machine Learning,HTML",
-    "github_url": "https://github.com/mursalatul/infant_cry_detection",
-    "live_url": "",
-    "image": "",
-    "date": "May 2025 – Oct 2025",
-    "featured": true,
-    "order": 2
-  }
-},
-{
-  "model": "core.project",
-  "pk": 3,
-  "fields": {
-    "title": "Balanced Augmented Spectro-Derivative Ensemble Framework",
-    "description": "Novel ML framework for multi-class infant distress diagnosis. Extracts and analyzes spectrograms and Spectro-Derivative features from cry audio, then leverages ensemble learning for robust classification. Research published as a preprint targeting IEEE TPAMI.",
-    "tech_tags": "Python,Scikit-learn,Spectrograms,Machine Learning,Ensemble Methods",
-    "github_url": "https://github.com/mursalatul/Balanced-Augmented-Spectro-Derivative-Ensemble-Framework-for-Multi-Class-Infant-Distress-Diagnosis",
-    "live_url": "",
-    "image": "",
-    "date": "Mar 2025 – Oct 2025",
-    "featured": true,
-    "order": 3
-  }
-},
-{
-  "model": "core.project",
-  "pk": 4,
-  "fields": {
-    "title": "Suicidal Ideation Prediction (NLP)",
-    "description": "End-to-end NLP pipeline for early detection of suicidal ideation in Bangladeshi adolescents. Compares transformer-based fine-tuning with classical ML baselines on national health survey data. Packaged in reproducible notebooks with ethical/privacy documentation.",
-    "tech_tags": "Python,NLP,Machine Learning,Transformers,Scikit-learn",
-    "github_url": "https://github.com/mursalatul",
-    "live_url": "",
-    "image": "",
-    "date": "Aug 2025 – Oct 2025",
-    "featured": true,
-    "order": 4
-  }
-},
-{
-  "model": "core.project",
-  "pk": 5,
-  "fields": {
-    "title": "Digital Cosmos Portfolio",
-    "description": "Personal portfolio website built with Django, featuring particle canvas animations, dark/light mode toggle, skill chips, typewriter hero, project showcase, publications, achievements, and a responsive glassmorphism design. Deployed on Vercel.",
-    "tech_tags": "Python,Django,Vanilla JS,CSS,Whitenoise,Vercel",
-    "github_url": "https://github.com/mursalatul/portfolio",
-    "live_url": "https://mursalatuls.vercel.app",
-    "image": "",
-    "date": "Apr 2026",
-    "featured": true,
-    "order": 5
-  }
-},
-{
-  "model": "core.project",
-  "pk": 6,
-  "fields": {
-    "title": "Voice Processing with AI",
-    "description": "Collection of Jupyter notebooks exploring AI-driven voice processing techniques — including feature extraction (MFCCs, spectrograms), emotion analysis, and speech-to-text pipelines. Used as a research sandbox for the Speech Emotion Recognition project.",
-    "tech_tags": "Python,Jupyter Notebook,AI,Audio Processing,MFCC",
-    "github_url": "https://github.com/mursalatul/voice-processing-with-ai",
-    "live_url": "",
-    "image": "",
-    "date": "Jun 2024 – Jul 2024",
-    "featured": true,
-    "order": 6
-  }
-},
-{
-  "model": "core.project",
-  "pk": 7,
-  "fields": {
-    "title": "Code Park — DSA & CP Library",
-    "description": "Comprehensive collection of Data Structures and Algorithms (DSA) implementations alongside competitive programming templates. A go-to reference for ICPC preparation covering graphs, trees, dynamic programming, number theory, and more. Has 1 star and 2 forks on GitHub.",
-    "tech_tags": "C++,Python,DSA,Competitive Programming,Algorithms",
-    "github_url": "https://github.com/mursalatul/code-park",
-    "live_url": "https://diu-competitive-programming.vercel.app/",
-    "image": "",
-    "date": "Jan 2024 – Present",
-    "featured": false,
-    "order": 7
-  }
-},
-{
-  "model": "core.project",
-  "pk": 8,
-  "fields": {
-    "title": "Django Apps Collection",
-    "description": "A curated collection of different types of Django applications demonstrating authentication flows, REST APIs, admin customization, ORM patterns, and deployment configurations. Serves as a learning reference for Django best practices.",
-    "tech_tags": "Python,Django,REST API,PostgreSQL,SQLite",
-    "github_url": "https://github.com/mursalatul/django-apps",
-    "live_url": "",
-    "image": "",
-    "date": "Feb 2025 – Mar 2025",
-    "featured": false,
-    "order": 8
-  }
-},
-{
-  "model": "core.project",
-  "pk": 9,
-  "fields": {
-    "title": "ML Draft — Machine Learning Experiments",
-    "description": "Curated Jupyter notebooks covering classification, regression, clustering, and time series forecasting across real-world datasets. Explores diverse ML models from linear regression to gradient boosting and neural networks for prediction problems.",
-    "tech_tags": "Python,Jupyter Notebook,Scikit-learn,Machine Learning,Pandas,NumPy",
-    "github_url": "https://github.com/mursalatul/ml_draft",
-    "live_url": "",
-    "image": "",
-    "date": "Jan 2025 – Feb 2025",
-    "featured": false,
-    "order": 9
-  }
-},
-{
-  "model": "core.project",
-  "pk": 10,
-  "fields": {
-    "title": "Library Management System",
-    "description": "Full-featured desktop Library Management System built with Python and PyQt5. Allows both users and admins to manage books, borrowing records, and member accounts through an intuitive GUI. Has 1 fork on GitHub.",
-    "tech_tags": "Python,PyQt5,SQLite,GUI,Desktop App",
-    "github_url": "https://github.com/mursalatul/library-management-system",
-    "live_url": "",
-    "image": "",
-    "date": "Apr 2024 – Nov 2024",
-    "featured": false,
-    "order": 10
-  }
-},
-{
-  "model": "core.project",
-  "pk": 11,
-  "fields": {
-    "title": "Scheduling Algorithm Simulator",
-    "description": "Interactive web-based simulator for OS scheduling algorithms (FCFS, SJF, Round Robin, Priority Scheduling). Visualizes Gantt charts, computes average waiting time, and turnaround time dynamically in the browser.",
-    "tech_tags": "JavaScript,HTML,CSS,Algorithms,OS Concepts",
-    "github_url": "https://github.com/mursalatul/scheduling-algorithm-simulator",
-    "live_url": "",
-    "image": "",
-    "date": "Sep 2024",
-    "featured": false,
-    "order": 11
-  }
-},
-{
-  "model": "core.project",
-  "pk": 12,
-  "fields": {
-    "title": "Shutdown Timer for Windows",
-    "description": "PyQt5 desktop application that lets users schedule Windows shutdown with a precise timer. Features an intuitive GUI to set, cancel, and re-schedule shutdown. Has 1 star on GitHub and targets power users who need automated shutdown.",
-    "tech_tags": "Python,PyQt5,Windows,Desktop App,Automation",
-    "github_url": "https://github.com/mursalatul/shutdown-timer-for-windows",
-    "live_url": "",
-    "image": "",
-    "date": "Jul 2021 – Apr 2024",
-    "featured": false,
-    "order": 12
-  }
-},
-{
-  "model": "core.project",
-  "pk": 13,
-  "fields": {
-    "title": "Mini Projects Collection",
-    "description": "A growing collection of fun, beginner-to-intermediate Python and C++ mini-projects designed for practice and learning. Topics include games, automation scripts, file utilities, and programming challenges — proving that you can do basically anything with code.",
-    "tech_tags": "Python,C++,Games,Automation,Learning",
-    "github_url": "https://github.com/mursalatul/mini-projects",
-    "live_url": "",
-    "image": "",
-    "date": "Nov 2023 – Present",
-    "featured": false,
-    "order": 13
-  }
-},
-{
-  "model": "core.project",
-  "pk": 14,
-  "fields": {
-    "title": "Melanoma Detection (ML)",
-    "description": "Machine learning pipeline for early detection of melanoma from dermoscopic images. Explores CNN architectures and transfer learning for binary skin lesion classification, with a focus on high sensitivity to minimize false negatives.",
-    "tech_tags": "Python,Machine Learning,CNN,TensorFlow,Computer Vision",
-    "github_url": "https://github.com/mursalatul/melanoma-detection",
-    "live_url": "",
-    "image": "",
-    "date": "Apr 2025",
-    "featured": false,
-    "order": 14
-  }
-},
-{
-  "model": "core.project",
-  "pk": 15,
-  "fields": {
-    "title": "CP Resources Hub",
-    "description": "A structured repository of competitive programming resources, including problem templates, editorial notes, and C++ snippets for ICPC and IUPC preparation. Covers graph theory, combinatorics, geometry, and string algorithms.",
-    "tech_tags": "C++,Competitive Programming,Algorithms,ICPC,Templates",
-    "github_url": "https://github.com/mursalatul/cp_resourses",
-    "live_url": "",
-    "image": "",
-    "date": "Sep 2025 – Present",
-    "featured": false,
-    "order": 15
-  }
-},
-{
-  "model": "core.project",
-  "pk": 16,
-  "fields": {
-    "title": "Codebox — CP Template Archive",
-    "description": "Comprehensive algorithm and data structure archive for competitive programming. Contains ready-to-use C++ implementations for competitive programmers — from basic sorting to advanced segment trees and Dijkstra. Has 1 star and 7 forks on GitHub.",
-    "tech_tags": "C++,DSA,Competitive Programming,Algorithms,Templates",
-    "github_url": "https://github.com/mursalatul/codebox",
-    "live_url": "",
-    "image": "",
-    "date": "Mar 2021 – Jan 2025",
-    "featured": false,
-    "order": 16
-  }
-},
-{
-  "model": "core.project",
-  "pk": 17,
-  "fields": {
-    "title": "Microcontroller Projects",
-    "description": "Hands-on C++ projects for microcontrollers (Arduino/ESP32) — including sensor interfacing, LED control, motor drivers, and IoT prototyping. A practical exploration of embedded systems programming alongside software engineering.",
-    "tech_tags": "C++,Arduino,Embedded Systems,IoT,Microcontroller",
-    "github_url": "https://github.com/mursalatul/play-with-microcontroller",
-    "live_url": "",
-    "image": "",
-    "date": "Oct 2024",
-    "featured": false,
-    "order": 17
-  }
-},
-{
-  "model": "core.experience",
-  "pk": 1,
-  "fields": {
-    "company": "Medvisor Mobile",
-    "role": "Lead Software Engineer Intern (Part-time)",
-    "location": "Irvine, CA",
-    "start_date": "Jun 2024",
-    "end_date": "Aug 2024",
-    "is_current": false,
-    "description": "Developed and implemented machine learning models for voice and emotion stress analysis.\nCollaborated closely with Flutter, DevOps, and UX/UI engineers to integrate AI-driven features into mobile apps, aligning with project goals.",
-    "order": 1
-  }
-},
-{
-  "model": "core.education",
-  "pk": 1,
-  "fields": {
-    "institution": "Dhaka International University",
-    "degree": "Bachelor of Science in Computer Science and Engineering",
-    "start_year": "Aug 2021",
-    "end_year": "Oct 2025",
-    "location": "Dhaka, Bangladesh",
-    "order": 1
-  }
-},
-{
-  "model": "core.achievement",
-  "pk": 1,
-  "fields": {
-    "title": "Winner, Programming Competition",
-    "event": "DIU",
-    "year": "2022",
-    "rank": "1st Place",
-    "description": "Won the programming competition organized at Dhaka International University.",
-    "order": 1
-  }
-},
-{
-  "model": "core.achievement",
-  "pk": 2,
-  "fields": {
-    "title": "2nd Place, IT Carnival Programming Competition",
-    "event": "DIU IT Carnival",
-    "year": "2022",
-    "rank": "2nd Place",
-    "description": "",
-    "order": 2
-  }
-},
-{
-  "model": "core.achievement",
-  "pk": 3,
-  "fields": {
-    "title": "ICPC 2021 Onsite Contestant",
-    "event": "BUBT",
-    "year": "2021",
-    "rank": "National Rank: 90",
-    "description": "Competed in the International Collegiate Programming Contest onsite round.",
-    "order": 3
-  }
-},
-{
-  "model": "core.achievement",
-  "pk": 4,
-  "fields": {
-    "title": "SUST IUPC 2023",
-    "event": "SUST",
-    "year": "2023",
-    "rank": "National Rank: 82",
-    "description": "",
-    "order": 4
-  }
-},
-{
-  "model": "core.achievement",
-  "pk": 5,
-  "fields": {
-    "title": "NASA Space Apps Challenge 2023",
-    "event": "Global",
-    "year": "2023",
-    "rank": "Global Nominee; 1st Runner Up, Barishal",
-    "description": "NASA International Space Apps Challenge 2023 — Global Nominee; 1st Runner Up, Barishal Division, Bangladesh.",
-    "order": 5
-  }
-},
-{
-  "model": "core.achievement",
-  "pk": 6,
-  "fields": {
-    "title": "ICPC 2022 Onsite Qualifier",
-    "event": "Green University",
-    "year": "2022",
-    "rank": "Qualified",
-    "description": "",
-    "order": 6
-  }
-},
-{
-  "model": "core.achievement",
-  "pk": 7,
-  "fields": {
-    "title": "ICPC 2023 Onsite Qualifier",
-    "event": "BUBT",
-    "year": "2023",
-    "rank": "Qualified",
-    "description": "",
-    "order": 7
-  }
-},
-{
-  "model": "core.achievement",
-  "pk": 8,
-  "fields": {
-    "title": "NASA Space Apps Challenge 2024",
-    "event": "Global",
-    "year": "2024",
-    "rank": "2nd Runner Up, Barishal Division",
-    "description": "",
-    "order": 8
-  }
-},
-{
-  "model": "core.achievement",
-  "pk": 9,
-  "fields": {
-    "title": "KUET IUPC 2025",
-    "event": "KUET",
-    "year": "2025",
-    "rank": "Participant",
-    "description": "Participated in the KUET Inter-University Programming Contest.",
-    "order": 9
-  }
-},
-{
-  "model": "core.achievement",
-  "pk": 10,
-  "fields": {
-    "title": "UIU IUPC 2025",
-    "event": "United International University",
-    "year": "2025",
-    "rank": "National Rank: 60",
-    "description": "",
-    "order": 10
-  }
-},
-{
-  "model": "core.achievement",
-  "pk": 11,
-  "fields": {
-    "title": "NASA Space Apps Challenge 2025",
-    "event": "Global",
-    "year": "2025",
-    "rank": "Champion, Barishal; Global Nominee; Honorable Mention",
-    "description": "NASA International Space Apps Challenge 2025 — Honorable Mention; Global Nominee; Champion, Barishal Division, Bangladesh.",
-    "order": 11
-  }
-},
-{
-  "model": "core.publication",
-  "pk": 1,
-  "fields": {
-    "title": "Infant Cry Analysis Using Machine Learning Models and Extended Feature Selection",
-    "authors": "M. M. I. Pallob, F. B. Orpita, N. Usha, N. Hasan, M. N. Tahira and M. A. Based",
-    "journal": "Taylor and Francis, BIM 2025",
-    "year": "2025",
-    "status": "accepted",
-    "url": "",
-    "order": 1
-  }
-},
-{
-  "model": "core.publication",
-  "pk": 2,
-  "fields": {
-    "title": "Early Detection of Suicidal Ideation in Bangladeshi Adolescents: A Machine Learning Approach Using National Health Survey Data",
-    "authors": "A. M. Rion and M. M. I Pallob",
-    "journal": "",
-    "year": "2025",
-    "status": "working",
-    "url": "",
-    "order": 2
-  }
-},
-{
-  "model": "core.publication",
-  "pk": 3,
-  "fields": {
-    "title": "Balanced Augmented Spectro-Derivative Ensemble Framework for Multi-Class Infant Distress Diagnosis",
-    "authors": "M. M. I. Pallob and F. B. Orpita",
-    "journal": "Preprint — Target: IEEE Transactions on Pattern Analysis and Machine Intelligence",
-    "year": "2025",
-    "status": "preprint",
-    "url": "",
-    "order": 3
-  }
-},
-{
-  "model": "core.publication",
-  "pk": 4,
-  "fields": {
-    "title": "Afdfdfdf",
-    "authors": "dfdfdf",
-    "journal": "fdfdfdfd",
-    "year": "fdfdfd",
-    "status": "working",
-    "url": "http://fdfdf.com",
-    "order": 4
-  }
-},
-{
-  "model": "core.leadership",
-  "pk": 1,
-  "fields": {
-    "org": "DIU Computer Programming Club",
-    "role": "Vice President",
-    "location": "Dhaka, Bangladesh",
-    "start_date": "Sep 2024",
-    "end_date": "Mar 2025",
-    "bullets": "Oversaw club activities, including organizing coding competitions, workshops, and hackathons.\nCollaborated with the executive team to create opportunities for members to advance their programming knowledge.\nOrganized DIU CSE Fall Fest 2024.",
-    "order": 1
-  }
-},
-{
-  "model": "core.leadership",
-  "pk": 2,
-  "fields": {
-    "org": "DIU Computer Programming Club",
-    "role": "Competition Lead",
-    "location": "Dhaka, Bangladesh",
-    "start_date": "Oct 2023",
-    "end_date": "Aug 2024",
-    "bullets": "Managed diverse programming contests and authored 59 original competitive programming problems.\nMentored club members in competitive programming, preparing teams for ICPC and IUPC.",
-    "order": 2
-  }
-},
-{
-  "model": "core.leadership",
-  "pk": 3,
-  "fields": {
-    "org": "IEEE DIU Student Branch",
-    "role": "Secretary General",
-    "location": "Dhaka, Bangladesh",
-    "start_date": "Sep 2021",
-    "end_date": "Sep 2023",
-    "bullets": "Organized seminars and fundraising events to facilitate student branch initiatives.",
-    "order": 3
-  }
-}
 ]
