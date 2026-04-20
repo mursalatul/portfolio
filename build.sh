@@ -1,8 +1,14 @@
 #!/bin/bash
 
-# Build the project
 echo "Building the project..."
-python3.12 -m pip install -r requirements.txt
+# Create a virtual environment to avoid "externally-managed-environment" error
+python3 -m venv venv
+source venv/bin/activate
 
+# Install dependencies within the virtual environment
+pip install --upgrade pip
+pip install -r requirements.txt
+
+# Run collectstatic to generate the staticfiles directory
 echo "Collecting static files..."
-python3.12 manage.py collectstatic --noinput
+python3 manage.py collectstatic --noinput
