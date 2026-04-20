@@ -1,0 +1,323 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>500 — Warp Core Breach</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+  <style>
+    :root {
+      --error-red: #ff4d4d;
+      --error-glow: rgba(255, 77, 77, 0.5);
+    }
+
+    #hero {
+      background: radial-gradient(circle at center, #1a0b0b 0%, #0d1117 100%);
+    }
+
+    .glitch-wrapper {
+      position: relative;
+      display: inline-block;
+    }
+
+    .glitch {
+      font-size: clamp(4rem, 15vw, 8rem);
+      font-weight: 800;
+      color: var(--error-red);
+      position: relative;
+      text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
+                   -0.025em -0.05em 0 rgba(0, 255, 0, 0.75),
+                   0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+      animation: glitch 1s infinite;
+    }
+
+    .glitch::before,
+    .glitch::after {
+      content: "500";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.8;
+    }
+
+    .glitch::before {
+      animation: glitch 650ms infinite;
+      clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+      transform: translate(-0.025em, -0.0125em);
+      color: #0ff;
+    }
+
+    .glitch::after {
+      animation: glitch 375ms infinite;
+      clip-path: polygon(0 80%, 100% 20%, 100% 100%, 0 100%);
+      transform: translate(0.0125em, 0.025em);
+      color: #f0f;
+    }
+
+    @keyframes glitch {
+      0% {
+        text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
+                     -0.05em -0.025em 0 rgba(0, 255, 0, 0.75),
+                     -0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+      }
+      14% {
+        text-shadow: 0.05em 0 0 rgba(255, 0, 0, 0.75),
+                     -0.05em -0.025em 0 rgba(0, 255, 0, 0.75),
+                     -0.025em 0.05em 0 rgba(0, 0, 255, 0.75);
+      }
+      15% {
+        text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75),
+                     0.025em 0.025em 0 rgba(0, 255, 0, 0.75),
+                     -0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
+      }
+      49% {
+        text-shadow: -0.05em -0.025em 0 rgba(255, 0, 0, 0.75),
+                     0.025em 0.025em 0 rgba(0, 255, 0, 0.75),
+                     -0.05em -0.05em 0 rgba(0, 0, 255, 0.75);
+      }
+      50% {
+        text-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 0.75),
+                     0.05em 0 0 rgba(0, 255, 0, 0.75),
+                     0 -0.05em 0 rgba(0, 0, 255, 0.75);
+      }
+      99% {
+        text-shadow: 0.025em 0.05em 0 rgba(255, 0, 0, 0.75),
+                     0.05em 0 0 rgba(0, 255, 0, 0.75),
+                     0 -0.05em 0 rgba(0, 0, 255, 0.75);
+      }
+      100% {
+        text-shadow: -0.025em 0 0 rgba(255, 0, 0, 0.75),
+                     -0.025em -0.025em 0 rgba(0, 255, 0, 0.75),
+                     -0.025em -0.05em 0 rgba(0, 0, 255, 0.75);
+      }
+    }
+
+    .status-badge {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: rgba(255, 77, 77, 0.1);
+      border: 1px solid var(--error-red);
+      color: var(--error-red);
+      border-radius: 50px;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 0.9rem;
+      margin-bottom: 1.5rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 rgba(255, 77, 77, 0.4); }
+      70% { box-shadow: 0 0 0 10px rgba(255, 77, 77, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(255, 77, 77, 0); }
+    }
+
+    .funny-reasons {
+      list-style: none;
+      padding: 0;
+      margin: 2rem 0;
+      color: var(--text-secondary);
+      font-style: italic;
+    }
+
+    .funny-reasons li {
+      margin-bottom: 0.5rem;
+      opacity: 0;
+      transform: translateY(10px);
+      animation: fadeInUp 0.5s ease forwards;
+    }
+
+    .funny-reasons li:nth-child(1) { animation-delay: 0.5s; }
+    .funny-reasons li:nth-child(2) { animation-delay: 1.2s; }
+    .funny-reasons li:nth-child(3) { animation-delay: 1.9s; }
+
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .emergency-button {
+      background: var(--error-red);
+      color: white;
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(255, 77, 77, 0.3);
+    }
+
+    .emergency-button:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 6px 20px rgba(255, 77, 77, 0.5);
+      background: #ff3333;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translate(0, 0); }
+      10%, 30%, 50%, 70%, 90% { transform: translate(-2px, -2px); }
+      20%, 40%, 60%, 80% { transform: translate(2px, 2px); }
+    }
+
+    .warning-icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      display: inline-block;
+      animation: shake 0.5s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ======= NAVIGATION ======= -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="/" class="nav-logo">P<span>allob</span></a>
+    <ul class="nav-links">
+      <li><a href="/#about">About</a></li>
+      <li><a href="/#skills">Skills</a></li>
+      <li><a href="/#experience">Experience</a></li>
+      <li><a href="/#projects">Projects</a></li>
+      <li><a href="/#achievements">Achievements</a></li>
+      <li><a href="/#publications">Research</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ======= HERO / 500 SECTION ======= -->
+<section id="hero" style="min-height: 100vh; display: flex; align-items: center; justify-content: center; padding-top: 5rem; overflow: hidden;">
+  <canvas id="particle-canvas"></canvas>
+  <div class="hero-gradient" style="background: radial-gradient(circle at center, rgba(255, 77, 77, 0.05) 0%, transparent 70%);"></div>
+  
+  <div style="text-align: center; position: relative; z-index: 10;">
+    <div style="background: rgba(13, 17, 23, 0.8); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); padding: 3rem; border-radius: 24px; border: 1px solid rgba(255, 77, 77, 0.2); max-width: 650px; margin: 2rem; box-shadow: 0 0 40px rgba(0,0,0,0.5);">
+      <div class="warning-icon">⚠️</div>
+      <div class="status-badge">System Status: Critical Anomaly</div>
+      
+      <div class="glitch-wrapper">
+        <h1 class="glitch">500</h1>
+      </div>
+      
+      <h2 style="font-size: 1.8rem; color: var(--text-primary); margin: 1.5rem 0 1rem;">Server Error!</h2>
+      <p style="color: var(--text-secondary); line-height: 1.6; font-size: 1.1rem;">
+        The server is screaming in binary and our engineers are currently in escape pods. 
+        Something went wrong in the engine room while trying to process your request.
+      </p>
+
+      <ul class="funny-reasons">
+        <li>&gt; A stray asteroid hit our primary data relay.</li>
+        <li>&gt; The AI decided to write poetry instead of code.</li>
+        <li>&gt; Space-hamsters forgot to run on their wheels.</li>
+      </ul>
+
+      <div style="margin-top: 2rem;">
+        <a href="/" class="emergency-button">
+          <span>🚀</span> <span>Emergency Eject to Home</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======= FOOTER ======= -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">Pallob</div>
+    <p class="footer-text">Md Mursalatul Islam Pallob · Software Engineer & AI/ML Researcher</p>
+    <p class="footer-mono">
+      &lt;critical_error&gt; 500: INTERNAL_SERVER_EXPLOSION &lt;/critical_error&gt;
+    </p>
+  </div>
+</footer>
+
+<script>
+  // Modify particle canvas for 500 page
+  window.addEventListener('DOMContentLoaded', () => {
+    // We wait for the main.js to initialize particles, then we can tweak them if needed
+    // But since main.js might not be loaded yet or might have different logic, 
+    // let's just override the particle drawing color if possible or re-init.
+    
+    // Actually, let's just use a custom script for this page to make particles RED and CRAZY
+    initEmergencyParticles();
+  });
+
+  function initEmergencyParticles() {
+    const canvas = document.getElementById('particle-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+
+    let particles = [];
+    const resize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    resize();
+    window.addEventListener('resize', resize);
+
+    const Particle = class {
+      constructor() { this.reset(); }
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        // Make them faster and more erratic
+        this.vx = (Math.random() - 0.5) * 2.5;
+        this.vy = (Math.random() - 0.5) * 2.5;
+        this.r = Math.random() * 2 + 0.5;
+        this.alpha = Math.random() * 0.5 + 0.2;
+      }
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
+      }
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+        // RED particles for 500 error
+        ctx.fillStyle = `rgba(255, 77, 77, ${this.alpha})`;
+        ctx.fill();
+      }
+    };
+
+    const COUNT = Math.min(150, Math.floor(canvas.width * canvas.height / 10000));
+    for (let i = 0; i < COUNT; i++) particles.push(new Particle());
+
+    function connect() {
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 100) {
+            const alpha = (1 - dist / 100) * 0.2;
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(255, 77, 77, ${alpha})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        }
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => { p.update(); p.draw(); });
+      connect();
+      requestAnimationFrame(animate);
+    }
+    animate();
+  }
+</script>
+</body>
+</html>
