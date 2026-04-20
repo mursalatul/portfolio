@@ -17,8 +17,15 @@ class ProfileAdmin(admin.ModelAdmin):
         ('Personal Info', {
             'fields': ('name', 'tagline', 'roles', 'about_text', 'profile_photo')
         }),
-        ('Contact', {
-            'fields': ('email', 'phone', 'github_url', 'linkedin_url', 'resume_file')
+        ('Contact & Visibility', {
+            'fields': (
+                ('email', 'show_email_in_about', 'show_email_in_contact'),
+                ('phone', 'show_phone_in_about', 'show_phone_in_contact'),
+                ('github_url', 'show_github_in_about', 'show_github_in_contact'),
+                ('linkedin_url', 'show_linkedin_in_about', 'show_linkedin_in_contact'),
+                ('facebook_url', 'show_facebook_in_about', 'show_facebook_in_contact'),
+                'resume_file'
+            )
         }),
         ('Stats', {
             'fields': ('cgpa', 'years_experience', 'cp_problems_authored', 'cp_problems_solved')

@@ -11,9 +11,24 @@ class Profile(models.Model):
     )
     about_text = models.TextField(blank=True)
     email = models.EmailField(blank=True)
+    show_email_in_about = models.BooleanField(default=True, verbose_name="Show Email in 'Who Am I'")
+    show_email_in_contact = models.BooleanField(default=True, verbose_name="Show Email in 'Contact'")
+
     phone = models.CharField(max_length=30, blank=True)
+    show_phone_in_about = models.BooleanField(default=True, verbose_name="Show Phone in 'Who Am I'")
+    show_phone_in_contact = models.BooleanField(default=True, verbose_name="Show Phone in 'Contact'")
+
     github_url = models.URLField(blank=True)
+    show_github_in_about = models.BooleanField(default=True, verbose_name="Show GitHub in 'Who Am I'")
+    show_github_in_contact = models.BooleanField(default=True, verbose_name="Show GitHub in 'Contact'")
+
     linkedin_url = models.URLField(blank=True)
+    show_linkedin_in_about = models.BooleanField(default=True, verbose_name="Show LinkedIn in 'Who Am I'")
+    show_linkedin_in_contact = models.BooleanField(default=True, verbose_name="Show LinkedIn in 'Contact'")
+
+    facebook_url = models.URLField(blank=True)
+    show_facebook_in_about = models.BooleanField(default=True, verbose_name="Show Facebook in 'Who Am I'")
+    show_facebook_in_contact = models.BooleanField(default=True, verbose_name="Show Facebook in 'Contact'")
     resume_file = models.FileField(upload_to='resume/', blank=True)
     profile_photo = models.ImageField(upload_to='profile/', blank=True, null=True)
     years_experience = models.PositiveIntegerField(default=3)

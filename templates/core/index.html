@@ -182,24 +182,29 @@
         <div class="about-name">{{ profile.name }}</div>
         <div class="about-university">BSc CSE · Dhaka International University</div>
         <ul class="about-contact-list">
-          {% if profile.email %}
+          {% if profile.email and profile.show_email_in_about %}
           <li><span class="icon">📧</span> {{ profile.email }}</li>
           {% endif %}
-          {% if profile.phone %}
+          {% if profile.phone and profile.show_phone_in_about %}
           <li><span class="icon">📱</span> {{ profile.phone }}</li>
           {% endif %}
           <li><span class="icon">📍</span> Dhaka, Bangladesh</li>
           <li><span class="icon">🎓</span> CGPA {{ profile.cgpa }}</li>
         </ul>
         <div class="about-social">
-          {% if profile.github_url %}
+          {% if profile.github_url and profile.show_github_in_about %}
           <a href="{{ profile.github_url }}" target="_blank" class="social-btn">
             <span>⌨</span> GitHub
           </a>
           {% endif %}
-          {% if profile.linkedin_url %}
+          {% if profile.linkedin_url and profile.show_linkedin_in_about %}
           <a href="{{ profile.linkedin_url }}" target="_blank" class="social-btn">
             <span>💼</span> LinkedIn
+          </a>
+          {% endif %}
+          {% if profile.facebook_url and profile.show_facebook_in_about %}
+          <a href="{{ profile.facebook_url }}" target="_blank" class="social-btn">
+            <span>📘</span> Facebook
           </a>
           {% endif %}
         </div>
@@ -472,7 +477,7 @@
           my inbox is always open. Let's build something amazing together.
         </p>
         <div class="contact-links">
-          {% if profile and profile.email %}
+          {% if profile and profile.email and profile.show_email_in_contact %}
           <a href="mailto:{{ profile.email }}" class="contact-link">
             <span class="link-icon">📧</span>
             <div class="link-info">
@@ -481,21 +486,39 @@
             </div>
           </a>
           {% endif %}
-          {% if profile and profile.linkedin_url %}
+          {% if profile and profile.phone and profile.show_phone_in_contact %}
+          <a href="tel:{{ profile.phone }}" class="contact-link">
+            <span class="link-icon">📱</span>
+            <div class="link-info">
+              <div class="link-label">Phone</div>
+              <div class="link-value">{{ profile.phone }}</div>
+            </div>
+          </a>
+          {% endif %}
+          {% if profile and profile.linkedin_url and profile.show_linkedin_in_contact %}
           <a href="{{ profile.linkedin_url }}" target="_blank" class="contact-link">
             <span class="link-icon">💼</span>
             <div class="link-info">
               <div class="link-label">LinkedIn</div>
-              <div class="link-value">linkedin.com/in/mursalatul</div>
+              <div class="link-value">LinkedIn Profile</div>
             </div>
           </a>
           {% endif %}
-          {% if profile and profile.github_url %}
+          {% if profile and profile.github_url and profile.show_github_in_contact %}
           <a href="{{ profile.github_url }}" target="_blank" class="contact-link">
             <span class="link-icon">⌨</span>
             <div class="link-info">
               <div class="link-label">GitHub</div>
-              <div class="link-value">github.com/mursalatul</div>
+              <div class="link-value">GitHub Profile</div>
+            </div>
+          </a>
+          {% endif %}
+          {% if profile and profile.facebook_url and profile.show_facebook_in_contact %}
+          <a href="{{ profile.facebook_url }}" target="_blank" class="contact-link">
+            <span class="link-icon">📘</span>
+            <div class="link-info">
+              <div class="link-label">Facebook</div>
+              <div class="link-value">Facebook Profile</div>
             </div>
           </a>
           {% endif %}
