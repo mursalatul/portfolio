@@ -50,7 +50,7 @@ class SkillAdmin(admin.ModelAdmin):
 
 @admin.register(Project)
 class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('title', 'featured_badge', 'tech_tags', 'date', 'order')
+    list_display = ('title', 'featured_badge', 'tech_tags', 'order')
     list_editable = ('order',)
     search_fields = ('title', 'description', 'tech_tags')
     list_filter = ('featured',)

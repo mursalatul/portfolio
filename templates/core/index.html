@@ -9,6 +9,7 @@
   <meta property="og:description" content="Software Engineer & AI/ML Researcher — Django, Python, ML, Competitive Programming"/>
   <meta property="og:type" content="website"/>
   <title>Pallob — Digital Portfolio</title>
+  <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}"/>
   <!-- Devicons for skill icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"/>
   <!-- Main CSS -->
@@ -105,7 +106,7 @@
       </div>
       <div class="hero-stats">
         <div class="hero-stat">
-          <span class="num" data-count="{{ achievements_count }}" data-suffix="+">0+</span>
+          <span class="num" data-count="{{ achievements_count }}" data-suffix="">0+</span>
           <span class="label">Achievements</span>
         </div>
         <div class="hero-stat">
@@ -113,11 +114,11 @@
           <span class="label">Projects</span>
         </div>
         <div class="hero-stat">
-          <span class="num" data-count="{% if profile %}{{ profile.cp_problems_authored }}{% else %}0{% endif %}" data-suffix="">0</span>
+          <span class="num" data-count="{% if profile %}{{ profile.cp_problems_authored }}{% else %}0{% endif %}" data-suffix="+">0</span>
           <span class="label">CP Problems Authored</span>
         </div>
         <div class="hero-stat">
-          <span class="num" data-count="{% if profile %}{{ profile.cp_problems_solved }}{% else %}0{% endif %}" data-suffix="">0</span>
+          <span class="num" data-count="{% if profile %}{{ profile.cp_problems_solved }}{% else %}0{% endif %}" data-suffix="+">0</span>
           <span class="label">CP Problems Solved</span>
         </div>
         <div class="hero-stat">
@@ -318,7 +319,6 @@
         </div>
         <div class="project-body">
           <h3 class="project-title">{{ project.title }}</h3>
-          <p class="project-date">{{ project.date }}</p>
           <p class="project-desc">{{ project.description }}</p>
           <div class="tech-tags">
             {% for tag in project.get_tech_list %}
@@ -384,7 +384,6 @@
           </div>
           <div class="project-body">
             <h3 class="project-title">{{ project.title }}</h3>
-            <p class="project-date">{{ project.date }}</p>
             <p class="project-desc">{{ project.description }}</p>
             <div class="tech-tags">
               {% for tag in project.get_tech_list %}
@@ -618,6 +617,9 @@
     </p>
     <p class="footer-credit" style="font-size: 0.75rem; color: var(--text-muted); margin-top: 1rem; font-family: 'JetBrains Mono', monospace;">
       Developed by <a href="https://bracelaboratory.com" target="_blank" class="brace-link">Brace Laboratory</a>
+    </p>
+    <p class="footer-copyright" style="font-size: 0.7rem; color: var(--text-muted); margin-top: 1.5rem; opacity: 0.6; font-family: 'Inter', sans-serif;">
+      &copy; {% now "Y" %} Md Mursalatul Islam Pallob. All rights reserved.
     </p>
   </div>
 </footer>

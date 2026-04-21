@@ -56,8 +56,7 @@ class Skill(models.Model):
     ]
     name = models.CharField(max_length=100)
     category = models.CharField(max_length=50, choices=CATEGORY_CHOICES)
-    proficiency = models.PositiveIntegerField(default=80, help_text='0-100 percentage')
-    icon = models.CharField(max_length=100, blank=True, help_text='devicon class e.g. devicon-python-plain')
+    icon = models.CharField(max_length=100, blank=True, help_text='Devicon class — see devicon.dev. E.g. devicon-python-plain. Note: DRF has no icon, use devicon-django-plain instead.')
     order = models.PositiveIntegerField(default=0)
 
     class Meta:
@@ -73,7 +72,6 @@ class Project(models.Model):
     tech_tags = models.CharField(max_length=500, help_text='Comma-separated tags')
     github_url = models.URLField(blank=True)
     live_url = models.URLField(blank=True)
-    date = models.CharField(max_length=50, blank=True)
     featured = models.BooleanField(default=False)
     order = models.PositiveIntegerField(default=0)
 

@@ -24,7 +24,6 @@
     "fields": {
       "name": "Python",
       "category": "Languages",
-      "proficiency": 95,
       "icon": "devicon-python-plain",
       "order": 1
     }
@@ -35,7 +34,6 @@
     "fields": {
       "name": "C/C++",
       "category": "Languages",
-      "proficiency": 88,
       "icon": "devicon-cplusplus-plain",
       "order": 2
     }
@@ -46,7 +44,6 @@
     "fields": {
       "name": "Java",
       "category": "Languages",
-      "proficiency": 75,
       "icon": "devicon-java-plain",
       "order": 3
     }
@@ -57,7 +54,6 @@
     "fields": {
       "name": "JavaScript",
       "category": "Languages",
-      "proficiency": 78,
       "icon": "devicon-javascript-plain",
       "order": 4
     }
@@ -68,7 +64,6 @@
     "fields": {
       "name": "SQL",
       "category": "Languages",
-      "proficiency": 80,
       "icon": "devicon-postgresql-plain",
       "order": 5
     }
@@ -79,7 +74,6 @@
     "fields": {
       "name": "HTML/CSS",
       "category": "Languages",
-      "proficiency": 82,
       "icon": "devicon-html5-plain",
       "order": 6
     }
@@ -90,7 +84,6 @@
     "fields": {
       "name": "Django",
       "category": "Frameworks",
-      "proficiency": 92,
       "icon": "devicon-django-plain",
       "order": 1
     }
@@ -101,7 +94,6 @@
     "fields": {
       "name": "Git",
       "category": "Tools",
-      "proficiency": 90,
       "icon": "devicon-git-plain",
       "order": 1
     }
@@ -112,7 +104,6 @@
     "fields": {
       "name": "Docker",
       "category": "Tools",
-      "proficiency": 72,
       "icon": "devicon-docker-plain",
       "order": 2
     }
@@ -123,7 +114,6 @@
     "fields": {
       "name": "VS Code",
       "category": "Tools",
-      "proficiency": 95,
       "icon": "devicon-vscode-plain",
       "order": 3
     }
@@ -134,7 +124,6 @@
     "fields": {
       "name": "PyCharm",
       "category": "Tools",
-      "proficiency": 85,
       "icon": "devicon-pycharm-plain",
       "order": 4
     }
@@ -145,7 +134,6 @@
     "fields": {
       "name": "TensorFlow",
       "category": "Libraries",
-      "proficiency": 82,
       "icon": "devicon-tensorflow-original",
       "order": 1
     }
@@ -156,7 +144,6 @@
     "fields": {
       "name": "Pandas",
       "category": "Libraries",
-      "proficiency": 88,
       "icon": "devicon-pandas-original",
       "order": 2
     }
@@ -167,7 +154,6 @@
     "fields": {
       "name": "NumPy",
       "category": "Libraries",
-      "proficiency": 88,
       "icon": "devicon-numpy-original",
       "order": 3
     }
@@ -178,7 +164,6 @@
     "fields": {
       "name": "Scikit-learn",
       "category": "Libraries",
-      "proficiency": 85,
       "icon": "",
       "order": 4
     }
@@ -189,7 +174,6 @@
     "fields": {
       "name": "Keras",
       "category": "Libraries",
-      "proficiency": 80,
       "icon": "",
       "order": 5
     }
@@ -203,7 +187,6 @@
       "tech_tags": "Python,Keras,LSTM,Audio Processing,RAVDESS,TESS",
       "github_url": "https://github.com/mursalatul/SpeechEmotionRecognition_Realtime",
       "live_url": "",
-      "date": "Jun 2024 – Jul 2024",
       "featured": true,
       "order": 1
     }
@@ -217,7 +200,6 @@
       "tech_tags": "Python,Django,PostgreSQL,Bootstrap,Machine Learning,HTML",
       "github_url": "https://github.com/mursalatul/infant_cry_detection",
       "live_url": "",
-      "date": "May 2025 – Oct 2025",
       "featured": true,
       "order": 2
     }
@@ -231,7 +213,6 @@
       "tech_tags": "Python,Scikit-learn,Spectrograms,Machine Learning,Ensemble Methods",
       "github_url": "https://github.com/mursalatul/Balanced-Augmented-Spectro-Derivative-Ensemble-Framework-for-Multi-Class-Infant-Distress-Diagnosis",
       "live_url": "",
-      "date": "Mar 2025 – Oct 2025",
       "featured": true,
       "order": 3
     }
@@ -245,7 +226,6 @@
       "tech_tags": "Python,NLP,Machine Learning,Transformers,Scikit-learn",
       "github_url": "https://github.com/mursalatul",
       "live_url": "",
-      "date": "Aug 2025 – Oct 2025",
       "featured": true,
       "order": 4
     }
@@ -259,7 +239,6 @@
       "tech_tags": "Python,Django,Vanilla JS,CSS,Whitenoise,Vercel",
       "github_url": "https://github.com/mursalatul/portfolio",
       "live_url": "https://mursalatuls.vercel.app",
-      "date": "Apr 2026",
       "featured": true,
       "order": 5
     }
@@ -273,7 +252,6 @@
       "tech_tags": "Python,Jupyter Notebook,AI,Audio Processing,MFCC",
       "github_url": "https://github.com/mursalatul/voice-processing-with-ai",
       "live_url": "",
-      "date": "Jun 2024 – Jul 2024",
       "featured": true,
       "order": 6
     }
@@ -287,7 +265,6 @@
       "tech_tags": "C++,Python,DSA,Competitive Programming,Algorithms",
       "github_url": "https://github.com/mursalatul/code-park",
       "live_url": "https://diu-competitive-programming.vercel.app/",
-      "date": "Jan 2024 – Present",
       "featured": false,
       "order": 7
     }
@@ -301,7 +278,6 @@
       "tech_tags": "Python,Django,REST API,PostgreSQL,SQLite",
       "github_url": "https://github.com/mursalatul/django-apps",
       "live_url": "",
-      "date": "Feb 2025 – Mar 2025",
       "featured": false,
       "order": 8
     }
@@ -315,7 +291,6 @@
       "tech_tags": "Python,Jupyter Notebook,Scikit-learn,Machine Learning,Pandas,NumPy",
       "github_url": "https://github.com/mursalatul/ml_draft",
       "live_url": "",
-      "date": "Jan 2025 – Feb 2025",
       "featured": false,
       "order": 9
     }
@@ -329,7 +304,6 @@
       "tech_tags": "Python,PyQt5,SQLite,GUI,Desktop App",
       "github_url": "https://github.com/mursalatul/library-management-system",
       "live_url": "",
-      "date": "Apr 2024 – Nov 2024",
       "featured": false,
       "order": 10
     }
@@ -343,7 +317,6 @@
       "tech_tags": "JavaScript,HTML,CSS,Algorithms,OS Concepts",
       "github_url": "https://github.com/mursalatul/scheduling-algorithm-simulator",
       "live_url": "",
-      "date": "Sep 2024",
       "featured": false,
       "order": 11
     }
@@ -357,7 +330,6 @@
       "tech_tags": "Python,PyQt5,Windows,Desktop App,Automation",
       "github_url": "https://github.com/mursalatul/shutdown-timer-for-windows",
       "live_url": "",
-      "date": "Jul 2021 – Apr 2024",
       "featured": false,
       "order": 12
     }
@@ -371,7 +343,6 @@
       "tech_tags": "Python,C++,Games,Automation,Learning",
       "github_url": "https://github.com/mursalatul/mini-projects",
       "live_url": "",
-      "date": "Nov 2023 – Present",
       "featured": false,
       "order": 13
     }
@@ -385,7 +356,6 @@
       "tech_tags": "Python,Machine Learning,CNN,TensorFlow,Computer Vision",
       "github_url": "https://github.com/mursalatul/melanoma-detection",
       "live_url": "",
-      "date": "Apr 2025",
       "featured": false,
       "order": 14
     }
@@ -399,7 +369,6 @@
       "tech_tags": "C++,Competitive Programming,Algorithms,ICPC,Templates",
       "github_url": "https://github.com/mursalatul/cp_resourses",
       "live_url": "",
-      "date": "Sep 2025 – Present",
       "featured": false,
       "order": 15
     }
@@ -413,7 +382,6 @@
       "tech_tags": "C++,DSA,Competitive Programming,Algorithms,Templates",
       "github_url": "https://github.com/mursalatul/codebox",
       "live_url": "",
-      "date": "Mar 2021 – Jan 2025",
       "featured": false,
       "order": 16
     }
@@ -427,7 +395,6 @@
       "tech_tags": "C++,Arduino,Embedded Systems,IoT,Microcontroller",
       "github_url": "https://github.com/mursalatul/play-with-microcontroller",
       "live_url": "",
-      "date": "Oct 2024",
       "featured": false,
       "order": 17
     }
