@@ -301,7 +301,7 @@ function highlightActiveNav() {
 /* ===== SKILLS MARQUEE SPEED CALIBRATION ===== */
 function initSkillsMarquee() {
   // Target: every row scrolls at this many pixels per second
-  const SPEED_PX_PER_S = 100;
+  const SPEED_PX_PER_S = 50;
 
   function calibrate() {
     document.querySelectorAll('.skills-track').forEach(track => {
