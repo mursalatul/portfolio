@@ -82,9 +82,23 @@
 
   <!-- Devicons for skill icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css"/>
+  
+  {% if settings.website_font == 'teko' %}
+  <link href="https://fonts.googleapis.com/css2?family=Teko:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  {% endif %}
+
   <!-- Main CSS -->
   <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
   <style>
+    {% if settings.website_font == 'teko' %}
+    body, h1, h2, h3, h4, h5, .section-tag, .hero-greeting, .about-university, .timeline-date, .tech-tag, .achievement-year, .status-label, .leadership-period, .footer-mono, .footer-credit, .footer-copyright {
+      font-family: 'Teko', sans-serif !important;
+    }
+    {% elif settings.website_font == 'normal' %}
+    body, h1, h2, h3, h4, h5, .section-tag, .hero-greeting, .about-university, .timeline-date, .tech-tag, .achievement-year, .status-label, .leadership-period, .footer-mono, .footer-credit, .footer-copyright {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif !important;
+    }
+    {% endif %}
     body {
       cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' style='fill: %2300D4FF; font-family: monospace; font-size: 20px;'><text x='0' y='18'>{</text></svg>"), auto;
     }

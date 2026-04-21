@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import (
     Profile, Skill, Project, Experience,
-    Education, Achievement, Publication, Leadership
+    Education, Achievement, Publication, Leadership, WebsiteSetting
 )
 
 
@@ -31,5 +31,6 @@ def index(request):
         'projects_count': all_projects_qs.count(),
         'publications_count': publications_qs.count(),
         'has_more_projects': all_projects_qs.count() > featured_projects.count(),
+        'settings': WebsiteSetting.objects.first(),
     }
     return render(request, 'core/index.html', context)

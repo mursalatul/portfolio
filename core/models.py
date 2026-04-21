@@ -172,5 +172,22 @@ class Leadership(models.Model):
     def __str__(self):
         return f'{self.role} @ {self.org}'
 
-    def get_bullets(self):
-        return [b.strip() for b in self.bullets.split('\n') if b.strip()]
+class WebsiteSetting(models.Model):
+    FONT_CHOICES = [
+        ('normal', 'Normal'),
+        ('josefin', 'Josefin Sans'),
+        ('teko', 'Teko'),
+    ]
+    website_font = models.CharField(
+        max_length=50, 
+        choices=FONT_CHOICES, 
+        default='josefin', 
+        verbose_name="Website Font"
+    )
+
+    class Meta:
+        verbose_name = 'Website Setting'
+        verbose_name_plural = 'Website Settings'
+
+    def __str__(self):
+        return "Website Settings"

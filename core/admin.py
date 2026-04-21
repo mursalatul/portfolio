@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.utils.html import format_html
 from .models import (
     Profile, Skill, Project, Experience,
-    Education, Achievement, Publication, Leadership
+    Education, Achievement, Publication, Leadership, WebsiteSetting
 )
 
 # Customize admin site header
@@ -115,3 +115,13 @@ class PublicationAdmin(admin.ModelAdmin):
 class LeadershipAdmin(admin.ModelAdmin):
     list_display = ('role', 'org', 'start_date', 'end_date', 'order')
     list_editable = ('order',)
+
+@admin.register(WebsiteSetting)
+class WebsiteSettingAdmin(admin.ModelAdmin):
+    list_display = ('website_font',)
+    
+    def has_add_permission(self, request):
+        # Only allow one instance
+        if self.model.objects.count() >= 1:
+            return False
+        return super().has_add_permission(request)
