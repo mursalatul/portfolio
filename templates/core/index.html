@@ -300,13 +300,41 @@
       {% for category, skills in skills_by_category.items %}
       <div class="skill-category reveal" data-delay="{{ forloop.counter0 }}00">
         <div class="skill-cat-title">{{ category }}</div>
-        <div class="skills-grid">
-          {% for skill in skills %}
-          <div class="skill-chip">
-            {% if skill.icon %}<i class="{{ skill.icon }}"></i>{% endif %}
-            <span>{{ skill.name }}</span>
+        <div class="skills-track-wrapper">
+          <div class="skills-track {% if forloop.counter|divisibleby:2 %}scroll-left{% else %}scroll-right{% endif %}">
+            <div class="skills-set">
+              {% for skill in skills %}
+              <div class="skill-chip">
+                {% if skill.icon %}<i class="{{ skill.icon }}"></i>{% endif %}
+                <span>{{ skill.name }}</span>
+              </div>
+              {% endfor %}
+            </div>
+            <div class="skills-set" aria-hidden="true">
+              {% for skill in skills %}
+              <div class="skill-chip">
+                {% if skill.icon %}<i class="{{ skill.icon }}"></i>{% endif %}
+                <span>{{ skill.name }}</span>
+              </div>
+              {% endfor %}
+            </div>
+            <div class="skills-set" aria-hidden="true">
+              {% for skill in skills %}
+              <div class="skill-chip">
+                {% if skill.icon %}<i class="{{ skill.icon }}"></i>{% endif %}
+                <span>{{ skill.name }}</span>
+              </div>
+              {% endfor %}
+            </div>
+            <div class="skills-set" aria-hidden="true">
+              {% for skill in skills %}
+              <div class="skill-chip">
+                {% if skill.icon %}<i class="{{ skill.icon }}"></i>{% endif %}
+                <span>{{ skill.name }}</span>
+              </div>
+              {% endfor %}
+            </div>
           </div>
-          {% endfor %}
         </div>
       </div>
       {% endfor %}

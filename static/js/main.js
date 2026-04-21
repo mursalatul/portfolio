@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initProjectTilt();
   initCounters();
   highlightActiveNav();
+  initSkillsMarquee();
 });
 
 /* ===== DARK / LIGHT THEME ===== */
@@ -295,6 +296,33 @@ function highlightActiveNav() {
   }, { threshold: 0.4 });
 
   sections.forEach(s => observer.observe(s));
+}
+
+/* ===== SKILLS MARQUEE SPEED CALIBRATION ===== */
+function initSkillsMarquee() {
+  // Target: every row scrolls at this many pixels per second
+  const SPEED_PX_PER_S = 100;
+
+  function calibrate() {
+    document.querySelectorAll('.skills-track').forEach(track => {
+      // scrollWidth = 4 copies combined; one copy = total / 4
+      const oneSetWidth = track.scrollWidth / 4;
+      if (oneSetWidth <= 0) return;
+      const duration = (oneSetWidth / SPEED_PX_PER_S).toFixed(2);
+      track.style.setProperty('--marquee-duration', duration + 's');
+    });
+  }
+
+  calibrate();
+  // Ensure calibration happens after all assets (fonts, icons) are fully loaded
+  window.addEventListener('load', calibrate);
+
+  // Re-calibrate if the window is resized (font/zoom changes affect chip widths)
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(calibrate, 200);
+  });
 }
 
 /* ===== ALL PROJECTS MODAL ===== */

@@ -531,10 +531,45 @@ img { max-width: 100%; height: auto; }
 .skill-cat-title::after {
   content: ''; flex: 1; height: 1px; background: var(--border);
 }
-.skills-grid {
-  display: flex; flex-wrap: wrap;
-  gap: 0.5rem;
+/* Marquee scrolling track */
+.skills-track-wrapper {
+  overflow: hidden;
+  position: relative;
+  /* soft fade edges */
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
 }
+.skills-track {
+  display: flex;
+  width: max-content;
+  padding: 0.5rem 0;
+  will-change: transform;
+}
+.skills-set {
+  display: flex;
+  gap: 0.8rem;
+  padding-right: 0.8rem; /* Matches the gap for perfect seamless loop */
+  flex-shrink: 0;
+}
+.skills-track.scroll-left {
+  animation: marquee-left var(--marquee-duration, 30s) linear infinite;
+}
+.skills-track.scroll-right {
+  animation: marquee-right var(--marquee-duration, 30s) linear infinite;
+}
+@keyframes marquee-left {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-25%); }
+}
+@keyframes marquee-right {
+  0%   { transform: translateX(-25%); }
+  100% { transform: translateX(0); }
+}
+/* Pause on hover for readability */
+.skills-track-wrapper:hover .skills-track {
+  animation-play-state: paused;
+}
+
 .skill-chip {
   display: inline-flex; align-items: center; gap: 0.45rem;
   background: var(--bg-card);
@@ -545,6 +580,7 @@ img { max-width: 100%; height: auto; }
   color: var(--text-secondary);
   transition: all 0.25s ease;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 .skill-chip i {
   font-size: 1rem;
