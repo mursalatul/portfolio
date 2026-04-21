@@ -139,6 +139,11 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="nav-right">
+      {% if profile and profile.resume_file %}
+      <a href="{{ profile.resume_file.url }}" download class="btn-primary nav-resume-btn">
+        <span>📄</span><span>Resume</span>
+      </a>
+      {% endif %}
       <button id="theme-toggle" aria-label="Toggle dark/light mode">
         <div class="toggle-track">
           <div class="toggle-icons"><span>🌙</span><span>☀️</span></div>
@@ -159,6 +164,13 @@
       <li><a href="#achievements">Achievements</a></li>
       <li><a href="#publications">Research</a></li>
       <li><a href="#contact">Contact</a></li>
+      {% if profile and profile.resume_file %}
+      <li style="margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--border);">
+        <a href="{{ profile.resume_file.url }}" download class="btn-primary" style="width: 100%; justify-content: center; padding: 0.75rem;">
+          <span>📄</span><span>Download Resume</span>
+        </a>
+      </li>
+      {% endif %}
     </ul>
   </div>
 </nav>
