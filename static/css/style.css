@@ -414,6 +414,9 @@ img { max-width: 100%; height: auto; }
 .badge-1 { top: 10%; right: -5%; animation: float 4s ease-in-out infinite; }
 .badge-2 { bottom: 20%; left: -10%; animation: float 4s ease-in-out infinite 1s; }
 .badge-3 { top: 60%; right: -12%; animation: float 4s ease-in-out infinite 2s; }
+.badge-4 { top: 30%; left: -15%; animation: float 4s ease-in-out infinite 1.5s; }
+.badge-5 { bottom: 5%; right: 5%; animation: float 4s ease-in-out infinite 0.5s; }
+.badge-6 { top: 80%; left: -5%; animation: float 4s ease-in-out infinite 2.5s; }
 @keyframes float {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-10px); }

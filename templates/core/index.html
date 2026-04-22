@@ -239,6 +239,13 @@
             </div>
           {% endif %}
         </div>
+        {% for badge in profile.hero_badges.all %}
+        <div class="floating-badge badge-{{ forloop.counter }}">
+          <span class="dot" style="background:{{ badge.color }}"></span>
+          <span>{{ badge.text }}</span>
+        </div>
+        {% empty %}
+        <!-- Fallback if no badges are added in admin -->
         <div class="floating-badge badge-1">
           <span class="dot" style="background:#10B981"></span>
           <span>AI/ML Research</span>
@@ -251,6 +258,7 @@
           <span class="dot" style="background:#F59E0B"></span>
           <span>ICPC Contestant</span>
         </div>
+        {% endfor %}
       </div>
     </div>
   </div>

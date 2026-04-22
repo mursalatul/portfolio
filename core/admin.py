@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.html import format_html
 from .models import (
-    Profile, Skill, Project, Experience,
+    Profile, HeroBadge, Skill, Project, Experience,
     Education, Achievement, Publication, Leadership, WebsiteSetting
 )
 
@@ -11,8 +11,14 @@ admin.site.site_title = 'Portfolio Admin'
 admin.site.index_title = 'Portfolio Management'
 
 
+class HeroBadgeInline(admin.TabularInline):
+    model = HeroBadge
+    extra = 3
+
+
 @admin.register(Profile)
 class ProfileAdmin(admin.ModelAdmin):
+    inlines = [HeroBadgeInline]
     fieldsets = (
         ('Personal Info', {
             'fields': ('name', 'tagline', 'roles', 'about_text', 'profile_photo')

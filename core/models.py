@@ -46,6 +46,19 @@ class Profile(models.Model):
         return [r.strip() for r in self.roles.split(',')]
 
 
+class HeroBadge(models.Model):
+    profile = models.ForeignKey(Profile, related_name='hero_badges', on_delete=models.CASCADE)
+    text = models.CharField(max_length=50)
+    color = models.CharField(max_length=50, default='#10B981', help_text='Hex color or CSS variable')
+    order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ['order']
+
+    def __str__(self):
+        return self.text
+
+
 class Skill(models.Model):
     CATEGORY_CHOICES = [
         ('Languages', 'Languages'),
