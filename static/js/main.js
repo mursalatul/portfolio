@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCounters();
   highlightActiveNav();
   initSkillsMarquee();
+  initContactForm();
 });
 
 /* ===== DARK / LIGHT THEME ===== */
@@ -360,3 +361,81 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
+/* ===== CONTACT FORM (AJAX) ===== */
+function initContactForm() {
+  const form    = document.getElementById('contact-form');
+  const toast   = document.getElementById('cf-toast');
+  const btn     = document.getElementById('cf-submit-btn');
+  const btnIcon = document.getElementById('cf-btn-icon');
+  const btnText = document.getElementById('cf-btn-text');
+  if (!form) return;
+
+  function showToast(type, msg) {
+    toast.textContent = msg;
+    toast.className = 'cf-toast ' + type;
+    // Auto-hide success after 6 s
+    if (type === 'success') {
+      setTimeout(() => { toast.className = 'cf-toast'; }, 6000);
+    }
+  }
+
+  function setLoading(on) {
+    btn.disabled = on;
+    btnIcon.textContent = on ? '⏳' : '✉️';
+    btnText.textContent = on ? 'Sending…' : 'Send Message';
+  }
+
+  function getCSRF() {
+    const el = form.querySelector('[name=csrfmiddlewaretoken]');
+    return el ? el.value : '';
+  }
+
+  function validateField(input) {
+    const empty = !input.value.trim();
+    input.classList.toggle('cf-error', empty);
+    return !empty;
+  }
+
+  // Live-clear error on input
+  form.querySelectorAll('input, textarea').forEach(el => {
+    el.addEventListener('input', () => el.classList.remove('cf-error'));
+  });
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Client-side validation
+    const fields = ['cf-name', 'cf-email', 'cf-subject', 'cf-message'];
+    const valid = fields.map(id => validateField(document.getElementById(id)));
+    if (valid.includes(false)) {
+      showToast('error', '⚠️ Please fill in all fields before sending.');
+      return;
+    }
+
+    setLoading(true);
+    toast.className = 'cf-toast'; // hide previous toast
+
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch('/contact/submit/', {
+        method: 'POST',
+        headers: { 'X-CSRFToken': getCSRF() },
+        body: data,
+      });
+      const json = await res.json();
+
+      if (json.success) {
+        showToast('success', '✅ Message sent! I\'ll get back to you soon.');
+        form.reset();
+      } else {
+        showToast('error', '❌ Failed to send: ' + (json.error || 'Unknown error.'));
+      }
+    } catch (err) {
+      showToast('error', '❌ Network error. Please try again later.');
+    } finally {
+      setLoading(false);
+    }
+  });
+}

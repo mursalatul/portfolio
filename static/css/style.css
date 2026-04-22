@@ -948,6 +948,92 @@ img { max-width: 100%; height: auto; }
   display: flex; justify-content: center;
 }
 
+/* ===== CONTACT FORM ===== */
+.contact-form-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 2.5rem;
+  position: relative; overflow: hidden;
+  box-shadow: var(--card-shadow);
+}
+.contact-form-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-cyan));
+}
+
+/* Row of two inputs */
+.cf-row {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+}
+@media (max-width: 600px) { .cf-row { grid-template-columns: 1fr; } }
+
+.cf-group {
+  display: flex; flex-direction: column; gap: 0.4rem;
+  margin-bottom: 1.1rem;
+}
+.cf-group label {
+  font-size: 0.78rem; font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+.cf-group input,
+.cf-group textarea {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  font-size: 0.92rem;
+  font-family: 'Josefin Sans', sans-serif;
+  color: var(--text-primary);
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  resize: vertical;
+}
+.cf-group input::placeholder,
+.cf-group textarea::placeholder { color: var(--text-muted); }
+.cf-group input:focus,
+.cf-group textarea:focus {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 0 3px var(--accent-cyan-glow);
+}
+.cf-group input.cf-error,
+.cf-group textarea.cf-error { border-color: #ef4444; }
+
+.cf-submit {
+  width: 100%; justify-content: center;
+  margin-top: 0.5rem;
+  font-size: 1rem; padding: 0.9rem;
+  letter-spacing: 0.04em;
+}
+.cf-submit:disabled { opacity: 0.7; cursor: not-allowed; transform: none !important; }
+
+/* Toast notification */
+.cf-toast {
+  margin-top: 1rem; padding: 0.75rem 1.1rem;
+  border-radius: 10px; font-size: 0.88rem; font-weight: 600;
+  text-align: center; display: none;
+  animation: toast-in 0.35s ease;
+}
+.cf-toast.success {
+  display: block;
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  color: #10B981;
+}
+.cf-toast.error {
+  display: block;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  color: #ef4444;
+}
+@keyframes toast-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
 /* ===== FOOTER ===== */
 footer {
   background: var(--bg-primary);

@@ -199,6 +199,11 @@
         <a href="#contact" class="btn-secondary">
           <span>💬</span><span>Get In Touch</span>
         </a>
+        {% if profile and profile.resume_file %}
+        <a href="{{ profile.resume_file.url }}" download class="btn-primary">
+          <span>📄</span><span>Resume</span>
+        </a>
+        {% endif %}
       </div>
       <div class="hero-stats">
         <div class="hero-stat">
@@ -708,31 +713,35 @@
       </div>
 
       <div class="contact-right reveal-right">
-        <div class="contact-card">
-          <h3 class="contact-card-title">Open to Opportunities</h3>
-          <p class="contact-card-sub">SWE Roles · Research Collabs · Freelance Projects</p>
-          <div class="available-badge">
-            <span class="available-dot"></span>
-            Available for new opportunities
-          </div>
-          <ul class="quick-facts">
-            <li><span class="fact-icon">🏫</span> BSc CSE — Dhaka International University</li>
-            <li><span class="fact-icon">📍</span> Dhaka, Bangladesh</li>
-            <li><span class="fact-icon">🌐</span> Open to remote roles worldwide</li>
-            <li><span class="fact-icon">🔬</span> AI/ML Research &amp; Full-stack Dev</li>
-            <li><span class="fact-icon">🏆</span> 3x NASA Space Apps Competitor</li>
-          </ul>
-          <div class="resume-btn">
-            {% if profile and profile.resume_file %}
-            <a href="{{ profile.resume_file.url }}" download class="btn-primary">
-              <span>📄</span><span>Download Resume</span>
-            </a>
-            {% else %}
-            <a href="https://linkedin.com/in/mursalatul" target="_blank" class="btn-primary">
-              <span>💼</span><span>View LinkedIn Profile</span>
-            </a>
-            {% endif %}
-          </div>
+        <div class="contact-form-card">
+          <h3 class="contact-card-title">Send a Message</h3>
+          <p class="contact-card-sub">Fill in the form below — I'll reply to your email.</p>
+          <form id="contact-form" novalidate>
+            {% csrf_token %}
+            <div class="cf-row">
+              <div class="cf-group">
+                <label for="cf-name">Full Name</label>
+                <input type="text" id="cf-name" name="name" placeholder="John Doe" required autocomplete="name"/>
+              </div>
+              <div class="cf-group">
+                <label for="cf-email">Email Address</label>
+                <input type="email" id="cf-email" name="email" placeholder="john@example.com" required autocomplete="email"/>
+              </div>
+            </div>
+            <div class="cf-group">
+              <label for="cf-subject">Subject</label>
+              <input type="text" id="cf-subject" name="subject" placeholder="Project idea, collaboration…" required/>
+            </div>
+            <div class="cf-group">
+              <label for="cf-message">Message</label>
+              <textarea id="cf-message" name="message" rows="5" placeholder="Tell me about your project or question…" required></textarea>
+            </div>
+            <button type="submit" class="btn-primary cf-submit" id="cf-submit-btn">
+              <span id="cf-btn-icon">✉️</span>
+              <span id="cf-btn-text">Send Message</span>
+            </button>
+          </form>
+          <div id="cf-toast" class="cf-toast" aria-live="polite"></div>
         </div>
       </div>
     </div>
