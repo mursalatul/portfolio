@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   highlightActiveNav();
   initSkillsMarquee();
   initContactForm();
+  initMissionControl();
 });
 
 /* ===== DARK / LIGHT THEME ===== */
@@ -437,5 +438,51 @@ function initContactForm() {
     } finally {
       setLoading(false);
     }
+  });
+}
+
+/* ===== MISSION CONTROL — WIP SECTION ===== */
+function initMissionControl() {
+  // ── Live clock ──
+  const clockEl = document.getElementById('wip-clock');
+  if (clockEl) {
+    const tick = () => {
+      const n = new Date();
+      clockEl.textContent = [n.getHours(), n.getMinutes(), n.getSeconds()]
+        .map(v => String(v).padStart(2, '0')).join(':');
+    };
+    tick();
+    setInterval(tick, 1000);
+  }
+
+  // ── Orbit-dot hover sync ──
+  // When a mission entry is hovered, scale up its orbiting planet dot.
+  document.querySelectorAll('.wip-mission').forEach(mission => {
+    const idx = mission.dataset.index;
+    const dot = document.querySelector(`.wip-orbit-dot[data-mission="${idx}"]`);
+    
+    // Desktop hover behaviors
+    mission.addEventListener('mouseenter', () => {
+      if (dot) dot.classList.add('wip-dot-active');
+    });
+    mission.addEventListener('mouseleave', () => {
+      if (dot) dot.classList.remove('wip-dot-active');
+    });
+
+    // Mobile/tablet click-to-expand behavior
+    mission.addEventListener('click', (e) => {
+      // Don't toggle if the user clicked on a link or button inside the card
+      if (e.target.closest('.wip-detail-link')) return;
+
+      const isExpanded = mission.classList.contains('wip-mission-expanded');
+      
+      // Close all other missions
+      document.querySelectorAll('.wip-mission').forEach(m => {
+        if (m !== mission) m.classList.remove('wip-mission-expanded');
+      });
+
+      // Toggle current mission
+      mission.classList.toggle('wip-mission-expanded', !isExpanded);
+    });
   });
 }

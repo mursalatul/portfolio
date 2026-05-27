@@ -2,7 +2,8 @@ from django.contrib import admin
 from django.utils.html import format_html
 from .models import (
     Profile, HeroBadge, Skill, Project, Experience,
-    Education, Achievement, Publication, Leadership, WebsiteSetting
+    Education, Achievement, Publication, Leadership, WebsiteSetting,
+    CurrentlyWorkingOn
 )
 
 # Customize admin site header
@@ -131,3 +132,12 @@ class WebsiteSettingAdmin(admin.ModelAdmin):
         if self.model.objects.count() >= 1:
             return False
         return super().has_add_permission(request)
+
+
+@admin.register(CurrentlyWorkingOn)
+class CurrentlyWorkingOnAdmin(admin.ModelAdmin):
+    list_display = ('title', 'category', 'progress', 'is_active', 'order')
+    list_editable = ('order', 'is_active')
+    list_filter = ('category', 'is_active')
+    search_fields = ('title', 'description')
+    ordering = ('order',)

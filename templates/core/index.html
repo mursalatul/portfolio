@@ -134,6 +134,7 @@
       <li><a href="#skills">Skills</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#working-on">Working On</a></li>
       <li><a href="#achievements">Achievements</a></li>
       <li><a href="#publications">Research</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -161,6 +162,7 @@
       <li><a href="#skills">Skills</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#working-on">Working On</a></li>
       <li><a href="#achievements">Achievements</a></li>
       <li><a href="#publications">Research</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -550,6 +552,145 @@
     </div>
   </div>
 </div>
+
+<!-- ======= CURRENTLY WORKING ON ======= -->
+<section id="working-on" class="wip-terminal-section">
+  <!-- Atmosphere -->
+  <div class="wip-scanlines" aria-hidden="true"></div>
+  <div class="wip-ambient"   aria-hidden="true"></div>
+
+  <div class="container">
+    <!-- ── Terminal chrome bar ── -->
+    <div class="wip-chrome-bar" aria-hidden="true">
+      <div class="wip-chrome-dots">
+        <span class="wdc-red"></span>
+        <span class="wdc-yellow"></span>
+        <span class="wdc-green"></span>
+      </div>
+      <span class="wip-chrome-file">mission_control.sh — pallob@devbox</span>
+      <div class="wip-chrome-right">
+        <span class="wip-live-indicator"><span class="wip-live-dot"></span>LIVE</span>
+        <span class="wip-chrome-clock" id="wip-clock">00:00:00</span>
+      </div>
+    </div>
+
+    <!-- ── Prompt line ── -->
+    <div class="wip-prompt-line" aria-hidden="true">
+      <span class="wip-pl-user">pallob</span><span class="wip-pl-at">@</span><span class="wip-pl-host">devbox</span><span class="wip-pl-sep">:</span><span class="wip-pl-path">~/active-missions</span><span class="wip-pl-sym"> $ </span><span class="wip-pl-cmd">status --watch --live</span><span class="wip-cursor">▋</span>
+    </div>
+
+    <!-- ── Section header ── -->
+    <div class="section-header reveal" style="margin-top: 2.5rem;">
+      <span class="section-tag">// in progress</span>
+      <h2 class="section-title">Currently Working On</h2>
+      <div class="section-line"></div>
+    </div>
+
+    <!-- ── Main 2-column: Orbit hub + Mission log ── -->
+    <div class="wip-main-layout">
+
+      <!-- LEFT: Orbit Hub -->
+      <aside class="wip-orbit-hub" aria-label="Active missions overview">
+        <!-- Static orbit rings -->
+        <div class="wip-ring wip-ring-outer"></div>
+        <div class="wip-ring wip-ring-mid"></div>
+        <div class="wip-ring wip-ring-inner"></div>
+        <!-- Radar sweep overlay -->
+        <div class="wip-radar-sweep"></div>
+        <!-- Orbiting dots — one per mission -->
+        {% for item in currently_working_on %}
+        <div class="wip-orbit wip-orbit-{{ forloop.counter }}">
+          <div class="wip-orbit-dot wip-ocat-{{ item.category }}" data-mission="{{ forloop.counter0 }}">
+            <span class="wip-dot-ring"></span>
+          </div>
+        </div>
+        {% endfor %}
+        <!-- Hub center display -->
+        <div class="wip-hub-center">
+          <div class="wip-hub-count">{{ currently_working_on|length }}</div>
+          <div class="wip-hub-label">ACTIVE</div>
+          <div class="wip-hub-sub">MISSIONS</div>
+        </div>
+      </aside>
+
+      <!-- RIGHT: Mission log -->
+      <div class="wip-missions-panel">
+        {% for item in currently_working_on %}
+        <article class="wip-mission reveal" data-index="{{ forloop.counter0 }}" data-delay="{{ forloop.counter0 }}50">
+
+          <!-- Colored side gutter with mission ID -->
+          <div class="wip-mission-gutter wip-gc-{{ item.category }}">
+            <span class="wip-mission-num">{{ forloop.counter|stringformat:"02d" }}</span>
+          </div>
+
+          <!-- Mission content -->
+          <div class="wip-mission-content">
+            <!-- Header: title + category chip + active pip -->
+            <div class="wip-mission-header">
+              <div class="wip-mission-name-wrap">
+                <span class="wip-active-pip wip-pip-{{ item.category }}"></span>
+                <h3 class="wip-mission-title">{{ item.title }}</h3>
+              </div>
+              <span class="wip-cat-chip wip-cc-{{ item.category }}">
+                {% if item.category == 'research' %}🔬 Research
+                {% elif item.category == 'project' %}⚙️ Project
+                {% elif item.category == 'learning' %}📚 Learning
+                {% elif item.category == 'competition' %}🏆 Competition
+                {% else %}✨ Other{% endif %}
+              </span>
+            </div>
+
+            {% if item.subtitle %}
+            <div class="wip-mission-meta">▸ {{ item.subtitle }}</div>
+            {% endif %}
+
+            <!-- Segmented progress bar -->
+            <div class="wip-progress-row">
+              <div class="wip-segbar">
+                <div class="wip-segbar-track">
+                  <div class="wip-segbar-fill" style="--wp: {{ item.progress }}%;"></div>
+                </div>
+              </div>
+              <span class="wip-segbar-pct">{{ item.progress }}%</span>
+            </div>
+
+            <!-- Expandable detail on hover (CSS grid trick) -->
+            <div class="wip-detail-collapse">
+              <div class="wip-detail-inner">
+                {% if item.description %}
+                <p class="wip-detail-text">{{ item.description }}</p>
+                {% endif %}
+                {% if item.link_url %}
+                <a href="{{ item.link_url }}" target="_blank" class="wip-detail-link">
+                  <span>{{ item.link_label|default:"View Project" }}</span>
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg>
+                </a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </article>
+        {% empty %}
+        <p class="wip-empty">Add missions via the admin panel.</p>
+        {% endfor %}
+      </div><!-- /.wip-missions-panel -->
+    </div><!-- /.wip-main-layout -->
+
+    <!-- ── Scrolling status ticker ── -->
+    {% if currently_working_on %}
+    <div class="wip-ticker-bar">
+      <span class="wip-ticker-tag">◈ STATUS</span>
+      <div class="wip-ticker-mask">
+        <div class="wip-ticker-inner">
+          {% for item in currently_working_on %}<span>◆ <strong>{{ item.title }}</strong> &mdash; {{ item.progress }}% complete &nbsp;&nbsp;&nbsp;</span>{% endfor %}{% for item in currently_working_on %}<span>◆ <strong>{{ item.title }}</strong> &mdash; {{ item.progress }}% complete &nbsp;&nbsp;&nbsp;</span>{% endfor %}
+        </div>
+      </div>
+    </div>
+    {% endif %}
+
+  </div><!-- /.container -->
+</section>
+
 
 <!-- ======= ACHIEVEMENTS ======= -->
 <section id="achievements" class="section">

@@ -647,5 +647,50 @@
       "bullets": "Organized seminars and fundraising events to facilitate student branch initiatives.",
       "order": 3
     }
+  },
+  {
+    "model": "core.currentlyworkingon",
+    "pk": 1,
+    "fields": {
+      "title": "Suicidal Ideation Prediction (NLP)",
+      "subtitle": "ML Research Paper",
+      "description": "Building an end-to-end NLP pipeline for early detection of suicidal ideation in Bangladeshi adolescents. Comparing transformer fine-tuning vs classical ML baselines on national health survey data.",
+      "category": "research",
+      "progress": 70,
+      "link_url": "",
+      "link_label": "",
+      "is_active": true,
+      "order": 1
+    }
+  },
+  {
+    "model": "core.currentlyworkingon",
+    "pk": 2,
+    "fields": {
+      "title": "Infant Cry Analysis — Ensemble Framework",
+      "subtitle": "IEEE TPAMI Target Paper",
+      "description": "Refining the Balanced Augmented Spectro-Derivative Ensemble Framework for multi-class infant distress diagnosis. Targeting IEEE Transactions on Pattern Analysis and Machine Intelligence.",
+      "category": "research",
+      "progress": 55,
+      "link_url": "https://github.com/mursalatul/Balanced-Augmented-Spectro-Derivative-Ensemble-Framework-for-Multi-Class-Infant-Distress-Diagnosis",
+      "link_label": "View on GitHub",
+      "is_active": true,
+      "order": 2
+    }
+  },
+  {
+    "model": "core.currentlyworkingon",
+    "pk": 3,
+    "fields": {
+      "title": "Portfolio Website v2",
+      "subtitle": "Personal Project",
+      "description": "Continuously improving this Django-powered portfolio with new sections, micro-animations, and better admin content management. Deployed on Vercel.",
+      "category": "project",
+      "progress": 85,
+      "link_url": "https://github.com/mursalatul/portfolio",
+      "link_label": "View on GitHub",
+      "is_active": true,
+      "order": 3
+    }
   }
 ]

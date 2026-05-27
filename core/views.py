@@ -5,7 +5,8 @@ from django.conf import settings
 from django.utils import timezone
 from .models import (
     Profile, Skill, Project, Experience,
-    Education, Achievement, Publication, Leadership, WebsiteSetting
+    Education, Achievement, Publication, Leadership, WebsiteSetting,
+    CurrentlyWorkingOn
 )
 
 
@@ -31,6 +32,7 @@ def index(request):
         'achievements': achievements_qs,
         'publications': publications_qs,
         'leadership': Leadership.objects.all(),
+        'currently_working_on': CurrentlyWorkingOn.objects.filter(is_active=True),
         # Auto-computed counts
         'achievements_count': achievements_qs.count(),
         'projects_count': all_projects_qs.count(),

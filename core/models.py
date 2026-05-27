@@ -185,6 +185,33 @@ class Leadership(models.Model):
     def __str__(self):
         return f'{self.role} @ {self.org}'
 
+class CurrentlyWorkingOn(models.Model):
+    CATEGORY_CHOICES = [
+        ('research', 'Research'),
+        ('project', 'Project'),
+        ('learning', 'Learning'),
+        ('competition', 'Competition'),
+        ('other', 'Other'),
+    ]
+    title = models.CharField(max_length=200)
+    subtitle = models.CharField(max_length=300, blank=True, help_text='Short descriptor, e.g. "ML Research Paper"')
+    description = models.TextField(blank=True)
+    category = models.CharField(max_length=30, choices=CATEGORY_CHOICES, default='project')
+    progress = models.PositiveIntegerField(default=0, help_text='Progress percentage 0-100')
+    link_url = models.URLField(blank=True, help_text='Optional link (GitHub, paper, etc.)')
+    link_label = models.CharField(max_length=100, blank=True, help_text='Link button label, e.g. "View on GitHub"')
+    is_active = models.BooleanField(default=True, help_text='Show this item on the portfolio')
+    order = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ['order']
+        verbose_name = 'Currently Working On'
+        verbose_name_plural = 'Currently Working On'
+
+    def __str__(self):
+        return self.title
+
+
 class WebsiteSetting(models.Model):
     FONT_CHOICES = [
         ('normal', 'Normal'),
