@@ -1,0 +1,416 @@
+{% extends "admin/change_list.html" %}
+{% load i18n %}
+
+{% block object-tools-items %}
+  {{ block.super }}
+  <li>
+    <button type="button" id="gh-check-btn" onclick="openGithubPanel()"
+      style="
+        background: linear-gradient(135deg, #238636, #2ea043);
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        padding: 8px 16px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        box-shadow: 0 2px 8px rgba(35,134,54,0.35);
+        transition: all 0.2s ease;
+        letter-spacing: 0.3px;
+      "
+      onmouseover="this.style.background='linear-gradient(135deg,#2ea043,#3fb950)'; this.style.boxShadow='0 4px 14px rgba(35,134,54,0.5)'"
+      onmouseout="this.style.background='linear-gradient(135deg,#238636,#2ea043)'; this.style.boxShadow='0 2px 8px rgba(35,134,54,0.35)'"
+    >
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482
+          0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462
+          -.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832
+          .092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683
+          -.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836a9.59 9.59
+          0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699
+          1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852
+          0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.138 20.163 22 16.418 22 12
+          c0-5.523-4.477-10-10-10z"/>
+      </svg>
+      Check for New Projects
+    </button>
+  </li>
+{% endblock %}
+
+{% block content %}
+  {{ block.super }}
+
+  <!-- ── GitHub Import Panel ────────────────────────────────── -->
+  <div id="gh-panel" style="display:none; margin-top:24px;">
+    <div style="
+      background: #1a1f2e;
+      border: 1px solid #30363d;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    ">
+
+      <!-- Panel header -->
+      <div style="
+        background: linear-gradient(135deg,#161b22,#21262d);
+        border-bottom: 1px solid #30363d;
+        padding: 16px 20px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      ">
+        <div style="display:flex;align-items:center;gap:10px;">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="#58a6ff">
+            <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482
+              0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.342-3.369-1.342-.454-1.155-1.11-1.462-1.11-1.462
+              -.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832
+              .092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683
+              -.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836a9.59 9.59
+              0 012.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699
+              1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852
+              0 1.336-.012 2.415-.012 2.743 0 .267.18.579.688.481C19.138 20.163 22 16.418 22 12
+              c0-5.523-4.477-10-10-10z"/>
+          </svg>
+          <span style="color:#e6edf3;font-size:16px;font-weight:600;">New GitHub Repositories</span>
+          <span id="gh-repo-count" style="
+            background:#21262d;
+            border:1px solid #30363d;
+            color:#8b949e;
+            font-size:12px;
+            padding:2px 8px;
+            border-radius:20px;
+          "></span>
+        </div>
+        <button onclick="closeGithubPanel()" style="
+          background:none;border:none;color:#8b949e;cursor:pointer;
+          font-size:20px;line-height:1;padding:4px;border-radius:4px;
+          transition:color 0.2s;
+        " onmouseover="this.style.color='#e6edf3'" onmouseout="this.style.color='#8b949e'">&times;</button>
+      </div>
+
+      <!-- Panel body -->
+      <div id="gh-body" style="padding:20px;">
+
+        <!-- Loading state -->
+        <div id="gh-loading" style="text-align:center;padding:40px 0;">
+          <div style="
+            width:36px;height:36px;border:3px solid #30363d;
+            border-top-color:#58a6ff;border-radius:50%;
+            animation:ghspin 0.8s linear infinite;
+            margin:0 auto 14px;
+          "></div>
+          <p style="color:#8b949e;margin:0;font-size:14px;">Fetching repositories from GitHub…</p>
+        </div>
+
+        <!-- Repo list (injected by JS) -->
+        <div id="gh-repo-list" style="display:none;"></div>
+
+        <!-- Empty state -->
+        <div id="gh-empty" style="display:none;text-align:center;padding:40px 0;">
+          <div style="font-size:40px;margin-bottom:12px;">🎉</div>
+          <p style="color:#8b949e;margin:0;font-size:14px;">All your GitHub repositories are already in the projects list!</p>
+        </div>
+
+        <!-- Error state -->
+        <div id="gh-error" style="display:none;text-align:center;padding:40px 0;">
+          <div style="font-size:36px;margin-bottom:12px;">⚠️</div>
+          <p id="gh-error-msg" style="color:#f85149;margin:0 0 8px;font-size:14px;"></p>
+          <button onclick="loadGithubRepos()" style="
+            background:#21262d;border:1px solid #30363d;color:#58a6ff;
+            padding:6px 14px;border-radius:6px;cursor:pointer;font-size:13px;
+          ">Retry</button>
+        </div>
+
+      </div>
+
+      <!-- Panel footer (action bar) -->
+      <div id="gh-footer" style="
+        display:none;
+        background:#161b22;
+        border-top:1px solid #30363d;
+        padding:14px 20px;
+        display:none;
+        align-items:center;
+        gap:12px;
+        flex-wrap:wrap;
+      ">
+        <div style="display:flex;gap:8px;flex:1;align-items:center;">
+          <button id="gh-select-all" onclick="toggleSelectAll(true)" style="
+            background:none;border:1px solid #30363d;color:#8b949e;
+            padding:5px 12px;border-radius:6px;cursor:pointer;font-size:12px;
+            transition:all 0.2s;
+          " onmouseover="this.style.borderColor='#58a6ff';this.style.color='#58a6ff'"
+             onmouseout="this.style.borderColor='#30363d';this.style.color='#8b949e'">
+            Select All
+          </button>
+          <button id="gh-deselect-all" onclick="toggleSelectAll(false)" style="
+            background:none;border:1px solid #30363d;color:#8b949e;
+            padding:5px 12px;border-radius:6px;cursor:pointer;font-size:12px;
+            transition:all 0.2s;
+          " onmouseover="this.style.borderColor='#58a6ff';this.style.color='#58a6ff'"
+             onmouseout="this.style.borderColor='#30363d';this.style.color='#8b949e'">
+            Deselect All
+          </button>
+          <span id="gh-selected-count" style="color:#8b949e;font-size:12px;margin-left:4px;">0 selected</span>
+        </div>
+        <button id="gh-import-btn" onclick="importSelected()" disabled style="
+          background:linear-gradient(135deg,#238636,#2ea043);
+          color:#fff;border:none;border-radius:6px;
+          padding:8px 20px;font-size:13px;font-weight:600;
+          cursor:not-allowed;opacity:0.5;
+          transition:all 0.2s;display:flex;align-items:center;gap:6px;
+        ">
+          ➕ Add Selected Projects
+        </button>
+      </div>
+
+      <!-- Success banner -->
+      <div id="gh-success" style="
+        display:none;
+        background:linear-gradient(135deg,#0d1117,#0f2d14);
+        border-top:1px solid #238636;
+        padding:16px 20px;
+        text-align:center;
+      ">
+        <div style="font-size:28px;margin-bottom:8px;">✅</div>
+        <p id="gh-success-msg" style="color:#3fb950;margin:0 0 6px;font-weight:600;font-size:14px;"></p>
+        <p style="color:#8b949e;margin:0;font-size:12px;">Refreshing page…</p>
+      </div>
+
+    </div>
+  </div>
+
+  <style>
+    @keyframes ghspin { to { transform: rotate(360deg); } }
+    .gh-repo-card {
+      background: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .gh-repo-card:hover { border-color: #58a6ff; background: #1c2128; }
+    .gh-repo-card.selected { border-color: #2ea043; background: #0f2d14; }
+    .gh-repo-card input[type=checkbox] {
+      margin-top: 2px;
+      width: 16px; height: 16px;
+      accent-color: #2ea043;
+      flex-shrink: 0;
+      cursor: pointer;
+    }
+    .gh-repo-name {
+      color: #58a6ff;
+      font-size: 14px;
+      font-weight: 600;
+      margin: 0 0 4px;
+    }
+    .gh-repo-desc {
+      color: #8b949e;
+      font-size: 12px;
+      margin: 0 0 8px;
+      line-height: 1.5;
+    }
+    .gh-lang-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: #21262d;
+      border: 1px solid #30363d;
+      color: #c9d1d9;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 20px;
+    }
+    .gh-lang-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .gh-star-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      color: #8b949e;
+      font-size: 11px;
+      margin-left: 8px;
+    }
+  </style>
+
+  <script>
+    const LANG_COLORS = {
+      Python:'#3572A5', JavaScript:'#f1e05a', 'C++':'#f34b7d',
+      C:'#555555', Java:'#b07219', TypeScript:'#2b7489',
+      HTML:'#e34c26', CSS:'#563d7c', Go:'#00ADD8',
+      Rust:'#dea584', Ruby:'#701516', Swift:'#ffac45',
+      Kotlin:'#A97BFF', Shell:'#89e051', Jupyter:'#DA5B0B',
+    };
+
+    function openGithubPanel() {
+      const panel = document.getElementById('gh-panel');
+      panel.style.display = 'block';
+      panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      loadGithubRepos();
+    }
+
+    function closeGithubPanel() {
+      document.getElementById('gh-panel').style.display = 'none';
+    }
+
+    function showState(state) {
+      ['gh-loading','gh-repo-list','gh-empty','gh-error','gh-success'].forEach(id => {
+        document.getElementById(id).style.display = 'none';
+      });
+      if (state) document.getElementById(state).style.display = (state === 'gh-repo-list') ? 'block' : state === 'gh-success' ? 'block' : 'block';
+      const footer = document.getElementById('gh-footer');
+      footer.style.display = (state === 'gh-repo-list') ? 'flex' : 'none';
+    }
+
+    function loadGithubRepos() {
+      showState('gh-loading');
+      document.getElementById('gh-repo-count').textContent = '';
+
+      fetch('{% url "admin:project_check_github" %}', {
+        headers: { 'X-Requested-With': 'XMLHttpRequest' }
+      })
+      .then(r => r.json())
+      .then(data => {
+        if (data.error) { showError(data.error); return; }
+        renderRepos(data.repos);
+      })
+      .catch(err => showError('Network error: ' + err.message));
+    }
+
+    function showError(msg) {
+      document.getElementById('gh-error-msg').textContent = msg;
+      showState('gh-error');
+    }
+
+    function renderRepos(repos) {
+      if (!repos || repos.length === 0) { showState('gh-empty'); return; }
+
+      document.getElementById('gh-repo-count').textContent = repos.length + ' new';
+
+      const list = document.getElementById('gh-repo-list');
+      list.innerHTML = repos.map((repo, i) => {
+        const color = LANG_COLORS[repo.language] || '#8b949e';
+        const langBadge = repo.language
+          ? `<span class="gh-lang-badge">
+               <span class="gh-lang-dot" style="background:${color}"></span>
+               ${repo.language}
+             </span>`
+          : '';
+        const starBadge = repo.stars > 0
+          ? `<span class="gh-star-badge">⭐ ${repo.stars}</span>` : '';
+        const forkBadge = repo.forks > 0
+          ? `<span class="gh-star-badge">🍴 ${repo.forks}</span>` : '';
+        const privateBadge = repo.private
+          ? `<span class="gh-lang-badge" style="border-color:#6e40c9;color:#a371f7;background:#1e1033;">🔒 Private</span>`
+          : '';
+
+        return `
+          <div class="gh-repo-card" id="card-${i}" onclick="toggleCard(${i})">
+            <input type="checkbox" id="chk-${i}" value="${repo.name}"
+                   data-url="${repo.html_url}"
+                   data-desc="${(repo.description||'').replace(/"/g,'&quot;')}"
+                   data-live="${repo.homepage||''}"
+                   data-private="${repo.private ? '1' : '0'}"
+                   data-tech-tags="${(repo.tech_tags||'').replace(/"/g,'&quot;')}"
+                   onchange="onCheckChange()" onclick="event.stopPropagation()">
+            <div style="flex:1;min-width:0;">
+              <p class="gh-repo-name">${repo.title}
+                ${repo.private ? '' : `<a href="${repo.html_url}" target="_blank" onclick="event.stopPropagation()" style="color:#8b949e;font-size:11px;margin-left:6px;">⧉</a>`}
+              </p>
+              <p class="gh-repo-desc">${repo.description || '<em style="color:#484f58">No description</em>'}</p>
+              <div style="display:flex;align-items:center;flex-wrap:wrap;gap:4px;">
+                ${langBadge}${starBadge}${forkBadge}${privateBadge}
+                ${repo.homepage ? `<span class="gh-lang-badge">🔗 Live</span>` : ''}
+                ${repo.tech_tags ? `<span class="gh-lang-badge" style="color:#79c0ff;">🏷 ${repo.tech_tags}</span>` : ''}
+              </div>
+            </div>
+          </div>`;
+      }).join('');
+
+      showState('gh-repo-list');
+      updateSelectedCount();
+    }
+
+    function toggleCard(i) {
+      const chk = document.getElementById('chk-' + i);
+      chk.checked = !chk.checked;
+      document.getElementById('card-' + i).classList.toggle('selected', chk.checked);
+      onCheckChange();
+    }
+
+    function toggleSelectAll(select) {
+      document.querySelectorAll('#gh-repo-list input[type=checkbox]').forEach(chk => {
+        chk.checked = select;
+        document.getElementById(chk.id.replace('chk','card')).classList.toggle('selected', select);
+      });
+      onCheckChange();
+    }
+
+    function onCheckChange() {
+      updateSelectedCount();
+    }
+
+    function updateSelectedCount() {
+      const checked = document.querySelectorAll('#gh-repo-list input[type=checkbox]:checked').length;
+      document.getElementById('gh-selected-count').textContent = checked + ' selected';
+      const btn = document.getElementById('gh-import-btn');
+      btn.disabled = checked === 0;
+      btn.style.opacity = checked ? '1' : '0.5';
+      btn.style.cursor = checked ? 'pointer' : 'not-allowed';
+    }
+
+    function importSelected() {
+      const checkboxes = document.querySelectorAll('#gh-repo-list input[type=checkbox]:checked');
+      if (!checkboxes.length) return;
+
+      const repos = Array.from(checkboxes).map(chk => ({
+        name:      chk.value,
+        github_url: chk.dataset.url,
+        description: chk.dataset.desc,
+        live_url:  chk.dataset.live,
+        private:   chk.dataset.private === '1',
+        tech_tags: chk.dataset.techTags || '',
+      }));
+
+      const btn = document.getElementById('gh-import-btn');
+      btn.disabled = true;
+      btn.textContent = 'Importing…';
+
+      const csrfToken = document.cookie.match(/csrftoken=([^;]+)/)?.[1] || '';
+
+      fetch('{% url "admin:project_import_github" %}', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': csrfToken,
+          'X-Requested-With': 'XMLHttpRequest',
+        },
+        body: JSON.stringify({ repos }),
+      })
+      .then(r => r.json())
+      .then(data => {
+        if (data.error) { showError(data.error); return; }
+        document.getElementById('gh-success-msg').textContent =
+          `✅ Added ${data.created} project${data.created !== 1 ? 's' : ''}: ${data.titles.join(', ')}`;
+        showState('gh-success');
+        document.getElementById('gh-success').style.display = 'block';
+        document.getElementById('gh-footer').style.display = 'none';
+        document.getElementById('gh-repo-list').style.display = 'none';
+        setTimeout(() => location.reload(), 1800);
+      })
+      .catch(err => showError('Import failed: ' + err.message));
+    }
+  </script>
+{% endblock %}
