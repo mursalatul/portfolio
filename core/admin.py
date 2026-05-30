@@ -282,8 +282,14 @@ class ExperienceAdmin(admin.ModelAdmin):
 
 @admin.register(Education)
 class EducationAdmin(admin.ModelAdmin):
-    list_display  = ('degree', 'institution', 'start_year', 'end_year', 'order')
+    list_display  = ('logo_preview', 'degree', 'institution', 'start_year', 'end_year', 'order')
     list_editable = ('order',)
+
+    def logo_preview(self, obj):
+        if obj.logo:
+            return format_html('<img src="{}" style="width:40px;height:40px;border-radius:4px;object-fit:cover;"/>', obj.logo.url)
+        return format_html('<span style="color:#888;">No Logo</span>')
+    logo_preview.short_description = 'Logo'
 
 
 @admin.register(Achievement)

@@ -121,6 +121,7 @@ class Experience(models.Model):
 class Education(models.Model):
     institution = models.CharField(max_length=200)
     degree = models.CharField(max_length=300)
+    logo = models.ImageField(upload_to='education/', blank=True, null=True)
     start_year = models.CharField(max_length=10)
     end_year = models.CharField(max_length=10, blank=True)
     location = models.CharField(max_length=200, blank=True)

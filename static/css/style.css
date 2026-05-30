@@ -2382,3 +2382,385 @@ section { width: 100%; overflow-x: hidden; }
   #hero { min-height: 100dvh; }
 }
 
+/* ===== FUTURISTIC INTERACTIVE EDUCATION TIMELINE CONSOLE ===== */
+.edu-console {
+  position: relative;
+  max-width: 900px;
+  margin: 2.5rem auto 0;
+  padding-left: 5rem; /* Space for the timeline */
+}
+
+/* Vertical high-tech laser line */
+.edu-laser-path {
+  position: absolute;
+  left: 1.5rem;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.05);
+  overflow: hidden;
+}
+
+.edu-laser-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(to bottom, transparent, var(--accent-cyan), var(--accent-blue), transparent);
+  animation: laser-pulse 6s infinite linear;
+}
+
+@keyframes laser-pulse {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(200%); }
+}
+
+.edu-item {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 3.5rem;
+}
+
+.edu-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Node layout */
+.edu-node-wrap {
+  position: absolute;
+  left: -5rem;
+  width: 5rem;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.edu-node {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  border: 2px solid var(--accent-blue);
+  box-shadow: 0 0 8px var(--accent-glow);
+  z-index: 2;
+  transition: all 0.4s ease;
+}
+
+.edu-node-inner {
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: var(--accent-cyan);
+  transition: all 0.4s ease;
+}
+
+.edu-node-pulse {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 1px solid var(--accent-cyan);
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.4s ease;
+}
+
+/* Branch laser connector */
+.edu-laser-branch {
+  position: absolute;
+  left: -2.3rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.3rem;
+  height: 1px;
+  background: linear-gradient(to right, var(--accent-blue), transparent);
+  transition: all 0.4s ease;
+}
+
+/* Hologram screen styling */
+.edu-terminal {
+  position: relative;
+  flex: 1;
+  background: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: var(--card-shadow);
+}
+
+/* Hover effects */
+.edu-item:hover .edu-node {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 18px var(--accent-cyan-glow);
+}
+
+.edu-item:hover .edu-node-inner {
+  background: #fff;
+  transform: scale(1.1);
+}
+
+.edu-item:hover .edu-node-pulse {
+  animation: node-ripple 1.5s infinite ease-out;
+}
+
+@keyframes node-ripple {
+  0% { transform: scale(0.8); opacity: 0.8; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+.edu-item:hover .edu-laser-branch {
+  background: linear-gradient(to right, var(--accent-cyan), var(--accent-blue));
+  height: 2px;
+  box-shadow: 0 0 8px var(--accent-cyan-glow);
+}
+
+.edu-item:hover .edu-terminal {
+  transform: translateX(6px) translateY(-2px);
+  border-color: rgba(0, 212, 255, 0.4);
+  box-shadow: 0 10px 40px -10px var(--accent-glow), 0 0 15px rgba(0, 212, 255, 0.08);
+}
+
+/* CRT Scanline styling */
+.edu-scanline {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to bottom, transparent, rgba(0, 212, 255, 0.15), transparent);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.edu-item:hover .edu-scanline {
+  opacity: 1;
+  animation: scanline-sweep 2.5s infinite linear;
+}
+
+@keyframes scanline-sweep {
+  0% { transform: translateY(-20px); }
+  100% { transform: translateY(220px); }
+}
+
+/* High-tech tech grid */
+.edu-grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 16px 16px;
+  pointer-events: none;
+  opacity: 0.05;
+}
+
+.edu-item:hover .edu-grid-overlay {
+  opacity: 0.6;
+}
+
+/* Bracket details */
+.edu-bracket-tl, .edu-bracket-tr, .edu-bracket-bl, .edu-bracket-br {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-color: var(--border);
+  border-style: solid;
+  opacity: 0.4;
+  transition: opacity 0.3s ease, border-color 0.3s ease;
+}
+
+.edu-bracket-tl { top: 8px; left: 8px; border-width: 1px 0 0 1px; }
+.edu-bracket-tr { top: 8px; right: 8px; border-width: 1px 1px 0 0; }
+.edu-bracket-bl { bottom: 8px; left: 8px; border-width: 0 0 1px 1px; }
+.edu-bracket-br { bottom: 8px; right: 8px; border-width: 0 1px 1px 0; }
+
+.edu-item:hover .edu-bracket-tl,
+.edu-item:hover .edu-bracket-tr,
+.edu-item:hover .edu-bracket-bl,
+.edu-item:hover .edu-bracket-br {
+  opacity: 0.9;
+  border-color: var(--accent-cyan);
+}
+
+/* Header bar specs */
+.edu-terminal-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.68rem;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.edu-status-pip {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-blue);
+  box-shadow: 0 0 6px var(--accent-glow);
+}
+
+.edu-item:hover .edu-status-pip {
+  background: var(--accent-cyan);
+  box-shadow: 0 0 8px var(--accent-cyan-glow);
+}
+
+.edu-spec-code {
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.edu-terminal-spinner {
+  margin-left: auto;
+  width: 10px;
+  height: 10px;
+  border: 1px solid rgba(0, 212, 255, 0.2);
+  border-top-color: var(--accent-cyan);
+  border-radius: 50%;
+  animation: term-spin 1.5s infinite linear;
+}
+
+@keyframes term-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Content details */
+.edu-terminal-content {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.edu-media-frame {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.edu-media-logo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.85;
+  transition: opacity 0.3s ease;
+}
+
+.edu-item:hover .edu-media-logo {
+  opacity: 1;
+}
+
+.edu-media-fallback {
+  color: var(--accent-blue);
+  transition: all 0.3s ease;
+}
+
+.edu-item:hover .edu-media-fallback {
+  color: var(--accent-cyan);
+  transform: rotate(-12deg) scale(1.05);
+}
+
+.edu-frame-bracket {
+  position: absolute;
+  inset: -1px;
+  border: 1px solid transparent;
+  pointer-events: none;
+}
+
+.edu-item:hover .edu-media-frame {
+  border-color: var(--accent-cyan);
+  background: rgba(0, 212, 255, 0.03);
+}
+
+.edu-terminal-details {
+  flex-grow: 1;
+}
+
+.edu-terminal-degree {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.2rem;
+  letter-spacing: -0.01em;
+}
+
+.edu-terminal-institution {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--accent-cyan);
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+}
+
+.edu-terminal-meta {
+  display: flex;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.edu-badge-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.edu-badge-item svg {
+  color: var(--accent-blue);
+  flex-shrink: 0;
+}
+
+.edu-item:hover .edu-badge-item svg {
+  color: var(--accent-cyan);
+}
+
+.exp-timeline-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Responsive console adjustments */
+@media (max-width: 768px) {
+  .edu-console {
+    padding-left: 2rem;
+  }
+  .edu-laser-path {
+    left: 0.5rem;
+  }
+  .edu-node-wrap {
+    left: -2rem;
+    width: 2rem;
+  }
+  .edu-laser-branch {
+    left: -1.3rem;
+    width: 1.3rem;
+  }
+  .edu-terminal-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}
+
