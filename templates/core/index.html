@@ -485,11 +485,38 @@
       <div class="section-line"></div>
     </div>
     <div class="exp-timeline-container">
-      <div class="timeline">
+      <div class="edu-console">
+        <!-- High-tech laser trace path -->
+        <div class="edu-laser-path">
+          <div class="edu-laser-fill"></div>
+        </div>
+        
         {% for exp in experiences %}
-        <div class="timeline-item reveal" data-delay="{{ forloop.counter0 }}00">
-          <div class="timeline-date">{{ exp.start_date }} — {{ exp.end_date|default:"Present" }}</div>
+        <div class="edu-item reveal" data-delay="{{ forloop.counter0 }}00">
+          <!-- Interactive glowing terminal node -->
+          <div class="edu-node-wrap">
+            <div class="edu-node">
+              <div class="edu-node-inner"></div>
+              <div class="edu-node-pulse"></div>
+            </div>
+          </div>
+          
+          <!-- Laser link branch -->
+          <div class="edu-laser-branch"></div>
+          
+          <!-- Holographic terminal display panel -->
           <div class="timeline-card">
+            <!-- CRT Scanline overlay -->
+            <div class="edu-scanline"></div>
+            <div class="edu-grid-overlay"></div>
+            
+            <!-- Cyberpunk bracket decors -->
+            <div class="edu-bracket-tl"></div>
+            <div class="edu-bracket-tr"></div>
+            <div class="edu-bracket-bl"></div>
+            <div class="edu-bracket-br"></div>
+
+            <div class="timeline-date">{{ exp.start_date }} — {{ exp.end_date|default:"Present" }}</div>
             <div class="timeline-role">{{ exp.role }}</div>
             <div class="timeline-company">{{ exp.company }}</div>
             <div class="timeline-location">

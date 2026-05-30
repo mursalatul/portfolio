@@ -854,16 +854,21 @@ img { max-width: 100%; height: auto; }
   letter-spacing: 0.04em;
 }
 .timeline-card {
-  background: var(--bg-card);
+  position: relative;
+  background: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border);
-  border-radius: 14px; padding: 1.5rem;
-  transition: all 0.3s ease;
+  border-radius: 12px; padding: 1.5rem;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: var(--card-shadow);
   cursor: default;
 }
 .timeline-card:hover {
-  border-color: rgba(0, 212, 255, 0.25);
-  box-shadow: var(--card-shadow-hover);
-  transform: translateX(4px);
+  transform: translateX(6px) translateY(-2px);
+  border-color: rgba(0, 212, 255, 0.4);
+  box-shadow: 0 10px 40px -10px var(--accent-glow), 0 0 15px rgba(0, 212, 255, 0.08);
 }
 .timeline-role {
   font-family: 'Archivo', sans-serif;
@@ -2521,7 +2526,8 @@ section { width: 100%; overflow-x: hidden; }
   box-shadow: 0 0 8px var(--accent-cyan-glow);
 }
 
-.edu-item:hover .edu-terminal {
+.edu-item:hover .edu-terminal,
+.edu-item:hover .timeline-card {
   transform: translateX(6px) translateY(-2px);
   border-color: rgba(0, 212, 255, 0.4);
   box-shadow: 0 10px 40px -10px var(--accent-glow), 0 0 15px rgba(0, 212, 255, 0.08);
@@ -2540,7 +2546,8 @@ section { width: 100%; overflow-x: hidden; }
   transition: opacity 0.3s ease;
 }
 
-.edu-item:hover .edu-scanline {
+.edu-item:hover .edu-scanline,
+.timeline-card:hover .edu-scanline {
   opacity: 1;
   animation: scanline-sweep 2.5s infinite linear;
 }
@@ -2562,7 +2569,8 @@ section { width: 100%; overflow-x: hidden; }
   opacity: 0.05;
 }
 
-.edu-item:hover .edu-grid-overlay {
+.edu-item:hover .edu-grid-overlay,
+.timeline-card:hover .edu-grid-overlay {
   opacity: 0.6;
 }
 
@@ -2585,7 +2593,11 @@ section { width: 100%; overflow-x: hidden; }
 .edu-item:hover .edu-bracket-tl,
 .edu-item:hover .edu-bracket-tr,
 .edu-item:hover .edu-bracket-bl,
-.edu-item:hover .edu-bracket-br {
+.edu-item:hover .edu-bracket-br,
+.timeline-card:hover .edu-bracket-tl,
+.timeline-card:hover .edu-bracket-tr,
+.timeline-card:hover .edu-bracket-bl,
+.timeline-card:hover .edu-bracket-br {
   opacity: 0.9;
   border-color: var(--accent-cyan);
 }
