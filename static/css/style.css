@@ -600,7 +600,7 @@ img { max-width: 100%; height: auto; }
 
 /* ===== ABOUT SECTION ===== */
 .about-grid {
-  display: grid; grid-template-columns: 340px 1fr;
+  display: grid; grid-template-columns: 360px 1fr;
   gap: 4rem; align-items: start;
 }
 .about-card {
@@ -2782,6 +2782,64 @@ section { width: 100%; overflow-x: hidden; }
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
+  }
+}
+
+/* ===== DEDICATED ABOUT PORTRAIT COLLAGE ===== */
+.about-collage-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.about-collage {
+  position: relative;
+  display: flex;
+  gap: 8px;
+  width: 352px;
+  height: 524px;
+  margin: 0 auto;
+}
+
+.collage-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: calc(33.333% - 5.333px);
+}
+
+.collage-col.col-1 { margin-top: 50px; }
+.collage-col.col-2 { margin-top: 0px; }
+.collage-col.col-3 { margin-top: 90px; }
+
+.collage-cell {
+  position: relative;
+  width: var(--w);
+  height: var(--ch);
+  border-radius: 18px;
+  background-image: var(--photo-url);
+  background-repeat: no-repeat;
+  background-size: 352px 524px;
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  background-position: calc(-1 * var(--x)) calc(-1 * var(--y));
+  pointer-events: none;
+}
+
+@media (max-width: 1024px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-collage {
+    transform: scale(0.85);
+    transform-origin: top center;
+    margin-bottom: -70px;
   }
 }
 
