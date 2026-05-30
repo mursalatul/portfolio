@@ -288,14 +288,15 @@ function highlightActiveNav() {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         navLinks.forEach(link => {
+          link.classList.remove('active');
           link.style.color = '';
           if (link.getAttribute('href') === '#' + entry.target.id) {
-            link.style.color = 'var(--accent-cyan)';
+            link.classList.add('active');
           }
         });
       }
     });
-  }, { threshold: 0.4 });
+  }, { threshold: 0.35, rootMargin: '-10% 0px -60% 0px' });
 
   sections.forEach(s => observer.observe(s));
 }
@@ -383,7 +384,8 @@ function initContactForm() {
 
   function setLoading(on) {
     btn.disabled = on;
-    btnIcon.textContent = on ? '⏳' : '✉️';
+    const svgIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>`;
+    btnIcon.innerHTML = on ? '⏳' : svgIcon;
     btnText.textContent = on ? 'Sending…' : 'Send Message';
   }
 

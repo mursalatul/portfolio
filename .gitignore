@@ -15,3 +15,5 @@ env/
 .vscode/
 .idea/
 *.swp
+
+.agent/
