@@ -232,3 +232,17 @@ class WebsiteSetting(models.Model):
 
     def __str__(self):
         return "Website Settings"
+
+
+class AnalyticsMetric(models.Model):
+    date = models.DateField(auto_now_add=True, unique=True)
+    visits = models.PositiveIntegerField(default=0)
+    resume_downloads = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        ordering = ['-date']
+        verbose_name = 'Analytics Metric'
+        verbose_name_plural = 'Analytics Metrics'
+
+    def __str__(self):
+        return f"Analytics for {self.date}: Visits={self.visits}, Downloads={self.resume_downloads}"

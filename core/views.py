@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.core.mail import send_mail
 from django.conf import settings
@@ -6,12 +6,22 @@ from django.utils import timezone
 from .models import (
     Profile, Skill, Project, Experience,
     Education, Achievement, Publication, Leadership, WebsiteSetting,
-    CurrentlyWorkingOn
+    CurrentlyWorkingOn, AnalyticsMetric
 )
 
 
 
 def index(request):
+    # Track daily site visits (unique visits per user session per day)
+    today = timezone.localtime(timezone.now()).date()
+    metric, created = AnalyticsMetric.objects.get_or_create(date=today)
+    
+    session_key = f'visited_today_{today.isoformat()}'
+    if not request.session.get(session_key):
+        metric.visits += 1
+        metric.save()
+        request.session[session_key] = True
+
     profile = Profile.objects.first()
     skills_by_category = {}
     for skill in Skill.objects.all():
@@ -92,3 +102,18 @@ Reply directly to {email} to respond.
         return JsonResponse({'success': True})
     except Exception as e:
         return JsonResponse({'success': False, 'error': str(e)}, status=500)
+
+
+def download_resume(request):
+    # Track daily resume downloads
+    today = timezone.localtime(timezone.now()).date()
+    metric, created = AnalyticsMetric.objects.get_or_create(date=today)
+    metric.resume_downloads += 1
+    metric.save()
+
+    profile = Profile.objects.first()
+    if profile and profile.resume_file:
+        return redirect(profile.resume_file.url)
+    
+    from django.http import Http404
+    raise Http404("Resume file not configured.")

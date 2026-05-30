@@ -1,0 +1,62 @@
+{% extends "admin/change_list.html" %}
+{% load i18n admin_urls static admin_list %}
+
+{% block object-tools %}
+  {{ block.super }}
+  <!-- Cyberpunk Inspired Portfolio Dashboard Widget -->
+  <div style="margin: 20px 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+      
+      <!-- Card 1: Today's Visits -->
+      <div style="background: #111827; border: 1px solid #10b981; border-radius: 12px; padding: 20px; box-shadow: 0 4px 20px rgba(16, 185, 129, 0.15); display: flex; flex-direction: column; position: relative; overflow: hidden;">
+          <div style="font-size: 0.85rem; text-transform: uppercase; color: #10b981; font-weight: bold; letter-spacing: 0.05em; margin-bottom: 8px;">Today's Visits</div>
+          <div style="font-size: 2.2rem; font-weight: 800; color: #ffffff; line-height: 1.2;">{{ today_visits }}</div>
+          <div style="font-size: 0.75rem; color: #9ca3af; margin-top: 8px;">
+              <span>Unique visitors today</span>
+          </div>
+          <!-- Decorative SVG icon -->
+          <div style="position: absolute; right: 15px; bottom: 15px; opacity: 0.1; color: #10b981; pointer-events: none;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+      </div>
+
+      <!-- Card 2: Today's Downloads -->
+      <div style="background: #111827; border: 1px solid #6366f1; border-radius: 12px; padding: 20px; box-shadow: 0 4px 20px rgba(99, 102, 241, 0.15); display: flex; flex-direction: column; position: relative; overflow: hidden;">
+          <div style="font-size: 0.85rem; text-transform: uppercase; color: #6366f1; font-weight: bold; letter-spacing: 0.05em; margin-bottom: 8px;">Today's Downloads</div>
+          <div style="font-size: 2.2rem; font-weight: 800; color: #ffffff; line-height: 1.2;">{{ today_downloads }}</div>
+          <div style="font-size: 0.75rem; color: #9ca3af; margin-top: 8px;">
+              <span>Resume downloads today</span>
+          </div>
+          <!-- Decorative SVG icon -->
+          <div style="position: absolute; right: 15px; bottom: 15px; opacity: 0.1; color: #6366f1; pointer-events: none;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          </div>
+      </div>
+
+      <!-- Card 3: Total Page Visits -->
+      <div style="background: #1f2937; border: 1px solid #374151; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; position: relative; overflow: hidden;">
+          <div style="font-size: 0.85rem; text-transform: uppercase; color: #9ca3af; font-weight: bold; letter-spacing: 0.05em; margin-bottom: 8px;">Total Page Visits</div>
+          <div style="font-size: 2.2rem; font-weight: 800; color: #ffffff; line-height: 1.2;">{{ total_visits }}</div>
+          <div style="font-size: 0.75rem; color: #9ca3af; margin-top: 8px;">
+              <span>Cumulative visits tracked</span>
+          </div>
+          <!-- Decorative SVG icon -->
+          <div style="position: absolute; right: 15px; bottom: 15px; opacity: 0.05; color: #ffffff; pointer-events: none;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          </div>
+      </div>
+
+      <!-- Card 4: Total Resume Downloads -->
+      <div style="background: #1f2937; border: 1px solid #374151; border-radius: 12px; padding: 20px; display: flex; flex-direction: column; position: relative; overflow: hidden;">
+          <div style="font-size: 0.85rem; text-transform: uppercase; color: #9ca3af; font-weight: bold; letter-spacing: 0.05em; margin-bottom: 8px;">Total Downloads</div>
+          <div style="font-size: 2.2rem; font-weight: 800; color: #ffffff; line-height: 1.2;">{{ total_downloads }}</div>
+          <div style="font-size: 0.75rem; color: #9ca3af; margin-top: 8px;">
+              <span>Cumulative downloads tracked</span>
+          </div>
+          <!-- Decorative SVG icon -->
+          <div style="position: absolute; right: 15px; bottom: 15px; opacity: 0.05; color: #ffffff; pointer-events: none;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+          </div>
+      </div>
+      
+  </div>
+{% endblock %}

@@ -12,7 +12,7 @@ from django.contrib.admin.views.decorators import staff_member_required
 from .models import (
     Profile, HeroBadge, Skill, Project, Experience,
     Education, Achievement, Publication, Leadership, WebsiteSetting,
-    CurrentlyWorkingOn
+    CurrentlyWorkingOn, AnalyticsMetric
 )
 
 # ── Admin site branding ───────────────────────────────────────────────────────
@@ -333,3 +333,39 @@ class CurrentlyWorkingOnAdmin(admin.ModelAdmin):
     list_filter   = ('category', 'is_active')
     search_fields = ('title', 'description')
     ordering      = ('order',)
+
+
+@admin.register(AnalyticsMetric)
+class AnalyticsMetricAdmin(admin.ModelAdmin):
+    list_display = ('date', 'visits', 'resume_downloads')
+    ordering = ('-date',)
+    list_per_page = 30
+
+    def changelist_view(self, request, extra_context=None):
+        from django.db.models import Sum
+        from django.utils import timezone
+        
+        today = timezone.localtime(timezone.now()).date()
+        today_metric = AnalyticsMetric.objects.filter(date=today).first()
+        
+        # Today's metrics
+        today_visits = today_metric.visits if today_metric else 0
+        today_downloads = today_metric.resume_downloads if today_metric else 0
+        
+        # Total metrics
+        totals = AnalyticsMetric.objects.aggregate(
+            total_visits=Sum('visits'),
+            total_downloads=Sum('resume_downloads')
+        )
+        total_visits = totals['total_visits'] or 0
+        total_downloads = totals['total_downloads'] or 0
+        
+        extra_context = extra_context or {}
+        extra_context.update({
+            'today_visits': today_visits,
+            'today_downloads': today_downloads,
+            'total_visits': total_visits,
+            'total_downloads': total_downloads,
+            'title': 'Analytics Dashboard: Visitor Sessions & Resume Downloads',
+        })
+        return super().changelist_view(request, extra_context=extra_context)
