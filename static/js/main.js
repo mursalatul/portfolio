@@ -65,6 +65,16 @@ function initHamburger() {
       menu.classList.remove('open');
     });
   });
+
+  // Close menu when clicking outside of it
+  document.addEventListener('click', (e) => {
+    if (menu.classList.contains('open')) {
+      if (!menu.contains(e.target) && !btn.contains(e.target)) {
+        btn.classList.remove('active');
+        menu.classList.remove('open');
+      }
+    }
+  });
 }
 
 /* ===== FLOATING BADGES DYNAMIC COLOR ===== */
