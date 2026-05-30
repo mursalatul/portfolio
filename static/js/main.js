@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSkillsMarquee();
   initContactForm();
   initMissionControl();
+  initFloatingBadges();
 });
 
 /* ===== DARK / LIGHT THEME ===== */
@@ -63,6 +64,16 @@ function initHamburger() {
       btn.classList.remove('active');
       menu.classList.remove('open');
     });
+  });
+}
+
+/* ===== FLOATING BADGES DYNAMIC COLOR ===== */
+function initFloatingBadges() {
+  document.querySelectorAll('.floating-badge .dot[data-bg]').forEach(dot => {
+    const bg = dot.getAttribute('data-bg');
+    if (bg) {
+      dot.style.backgroundColor = bg;
+    }
   });
 }
 

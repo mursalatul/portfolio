@@ -91,17 +91,19 @@
 
   <!-- Main CSS -->
   <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+  {% if settings.website_font == 'teko' %}
   <style>
-    {% if settings.website_font == 'teko' %}
     body, h1, h2, h3, h4, h5, .section-tag, .hero-greeting, .about-university, .timeline-date, .tech-tag, .achievement-year, .status-label, .leadership-period, .footer-mono, .footer-credit, .footer-copyright {
       font-family: 'Teko', sans-serif !important;
     }
-    {% elif settings.website_font == 'normal' %}
+  </style>
+  {% elif settings.website_font == 'normal' %}
+  <style>
     body, h1, h2, h3, h4, h5, .section-tag, .hero-greeting, .about-university, .timeline-date, .tech-tag, .achievement-year, .status-label, .leadership-period, .footer-mono, .footer-credit, .footer-copyright {
       font-family: 'Space Grotesk', system-ui, sans-serif !important;
     }
-    {% endif %}
   </style>
+  {% endif %}
 </head>
 <body>
 
@@ -233,7 +235,7 @@
         </div>
         {% for badge in profile.hero_badges.all %}
         <div class="floating-badge badge-{{ forloop.counter }}">
-          <span class="dot" style="background:{{ badge.color }}"></span>
+          <span class="dot" data-bg="{{ badge.color }}"></span>
           <span>{{ badge.text }}</span>
         </div>
         {% empty %}
