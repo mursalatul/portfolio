@@ -1,4 +1,20 @@
+import os
 from django.db import models
+from django.core.files.storage import FileSystemStorage
+from django.utils.deconstruct import deconstructible
+
+
+@deconstructible
+class OverwriteStorage(FileSystemStorage):
+    def get_available_name(self, name, max_length=None):
+        if self.exists(name):
+            self.delete(name)
+        return name
+
+
+def get_resume_upload_path(instance, filename):
+    return 'resume/MD_MURSALATUL_ISLAM_PALLOB_RESUME.pdf'
+
 
 
 class Profile(models.Model):
@@ -29,7 +45,7 @@ class Profile(models.Model):
     facebook_url = models.URLField(blank=True)
     show_facebook_in_about = models.BooleanField(default=True, verbose_name="Show Facebook in 'Who Am I'")
     show_facebook_in_contact = models.BooleanField(default=True, verbose_name="Show Facebook in 'Contact'")
-    resume_file = models.FileField(upload_to='resume/', blank=True)
+    resume_file = models.FileField(upload_to=get_resume_upload_path, storage=OverwriteStorage(), blank=True)
     profile_photo = models.ImageField(upload_to='profile/', blank=True, null=True)
     years_experience = models.PositiveIntegerField(default=3)
     cp_problems_authored = models.PositiveIntegerField(default=0, help_text='Number of CP problems authored (set manually)')
@@ -44,6 +60,26 @@ class Profile(models.Model):
 
     def get_roles_list(self):
         return [r.strip() for r in self.roles.split(',')]
+
+    def save(self, *args, **kwargs):
+        if self.pk:
+            try:
+                old_instance = Profile.objects.get(pk=self.pk)
+                if old_instance.resume_file and old_instance.resume_file != self.resume_file:
+                    old_file_path = old_instance.resume_file.path
+                    if os.path.isfile(old_file_path):
+                        os.remove(old_file_path)
+            except Profile.DoesNotExist:
+                pass
+        super().save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        if self.resume_file:
+            old_file_path = self.resume_file.path
+            if os.path.isfile(old_file_path):
+                os.remove(old_file_path)
+        super().delete(*args, **kwargs)
+
 
 
 class HeroBadge(models.Model):
